@@ -141,6 +141,7 @@
     <Content Include="images\carousel\carousel1.jpeg" />
     <Content Include="images\carousel\carousel2.jpg" />
     <Content Include="images\carousel\carousel3.jpg" />
+    <Content Include="images\contactenos.png" />
     <Content Include="images\logo.png" />
     <Content Include="images\productos\astro_a20.png" />
     <Content Include="images\productos\asus_G512LIHN054T.png" />
