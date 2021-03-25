@@ -1,5 +1,5 @@
 ﻿body {
-    padding-top: 50px;
+    padding-top: 0px;
     padding-bottom: 20px;
 }
 
@@ -21,4 +21,49 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+.nav-link:hover {
+    transition: all 0.2s ease-out;
+    color: darkblue;
+    font-weight: bold;
+}
+.nav-link{
+    color:red;
+    font-weight: bold;
+    font-size:medium;
+    padding-bottom: 10px;
+}
+
+.card:hover {
+    transition: all 0.2s ease-out;
+    box-shadow: 0px 4px 8px rgba(38, 38, 38, 0.2);
+    top: -4px;
+    border: 1px solid #cccccc;
+    background-color: white;
+}
+
+.card-inicio {
+    font-weight: bold;
+    color: green;
+}
+
+.card-inicio:hover {
+    font-weight: bold;
+    color: green;
+    text-decoration: none;
+}
+
+.card-title {
+    margin-top: 12px;
+}
+
+.precio {
+    margin-top: 2px;
+}
+
+.card {
+    min-width: 244px;
+    max-width: 244px;
+    margin-top: 10px;
 }
