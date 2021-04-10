@@ -24,7 +24,7 @@ idDireccion int primary key,
 provincia varchar(25),
 canton varchar (25),
 codigoPostal varchar (25),
-dirExacta varchar (50),
+dirExacta varchar (100),
 indicaciones varchar (50)
 )
 create table Ordenes(
