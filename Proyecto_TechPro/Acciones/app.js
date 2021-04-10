@@ -1,5 +1,21 @@
 ﻿function agregarCarrito(itemID) {
-    var item = $(itemID).attr("itemid");
-    sessionStorage.setItem("ejemplo", item);
-    alert("El id del item es: "+sessionStorage.getItem("ejemplo"));
+
+    $.ajax({
+        type: 'Post',
+        url: '/Home/AgregaItem',
+        data: {
+            item: $(itemID).attr("itemid")
+        },
+        cache: false,
+        dataType: 'string',
+        success: function (data) {
+            alert("dfsgv");
+        },
+        error: function() {
+            alert("ERROR KRUK");
+        }
+    
+        
+    });
+
 }
