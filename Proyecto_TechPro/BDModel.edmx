@@ -1,0 +1,348 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ProyectoPrograModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="administrador">
+          <Key>
+            <PropertyRef Name="idAdmin" />
+          </Key>
+          <Property Name="idAdmin" Type="int" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="35" />
+          <Property Name="nombre" Type="varchar" MaxLength="20" />
+          <Property Name="primerApellido" Type="varchar" MaxLength="20" />
+          <Property Name="segundoApellido" Type="varchar" MaxLength="20" />
+          <Property Name="cedula" Type="int" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'ProyectoProgra.dbo.adminPassword' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="adminPassword">
+          <Property Name="idAdmin" Type="int" />
+          <Property Name="pass" Type="varchar" MaxLength="30" />
+        </EntityType>-->
+        <EntityType Name="Categoria">
+          <Key>
+            <PropertyRef Name="idCategoria" />
+          </Key>
+          <Property Name="idCategoria" Type="int" Nullable="false" />
+          <Property Name="nombreCategoria" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Direccion">
+          <Key>
+            <PropertyRef Name="idDireccion" />
+          </Key>
+          <Property Name="idDireccion" Type="int" Nullable="false" />
+          <Property Name="provincia" Type="varchar" MaxLength="25" />
+          <Property Name="canton" Type="varchar" MaxLength="25" />
+          <Property Name="codigoPostal" Type="varchar" MaxLength="25" />
+          <Property Name="dirExacta" Type="varchar" MaxLength="100" />
+          <Property Name="indicaciones" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Invetario">
+          <Key>
+            <PropertyRef Name="idProducto" />
+          </Key>
+          <Property Name="idProducto" Type="int" Nullable="false" />
+          <Property Name="cantidad" Type="int" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'ProyectoProgra.dbo.Ordenes' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="Ordenes">
+          <Property Name="idProducto" Type="int" />
+          <Property Name="cantidad" Type="int" />
+          <Property Name="idDireccion" Type="int" />
+          <Property Name="idUsuario" Type="int" />
+          <Property Name="idCategoria" Type="int" />
+        </EntityType>-->
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'ProyectoProgra.dbo.Password' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="Password">
+          <Property Name="idUsuario" Type="int" />
+          <Property Name="Pass" Type="varchar" MaxLength="30" />
+        </EntityType>-->
+        <EntityType Name="Productos">
+          <Key>
+            <PropertyRef Name="idProducto" />
+          </Key>
+          <Property Name="idProducto" Type="int" Nullable="false" />
+          <Property Name="nombreProducto" Type="varchar" MaxLength="50" />
+          <Property Name="precio" Type="int" />
+          <Property Name="descripcion" Type="varchar" MaxLength="100" />
+          <Property Name="idCategoria" Type="int" />
+          <Property Name="imagen" Type="varchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="idUsuario" />
+          </Key>
+          <Property Name="idUsuario" Type="int" Nullable="false" />
+          <Property Name="telefono" Type="int" />
+          <Property Name="email" Type="varchar" MaxLength="30" />
+          <Property Name="idDireccion" Type="int" />
+          <Property Name="nombre" Type="varchar" MaxLength="25" />
+          <Property Name="primerApellido" Type="varchar" MaxLength="25" />
+          <Property Name="segundoApellido" Type="varchar" MaxLength="25" />
+        </EntityType>
+        <!--Errores durante la generación:
+error 6004: Una relación hace referencia a la tabla 'ProyectoProgra.dbo.adminPassword', pero no se encuentra la tabla.
+        <Association Name="FK__adminPassw__pass__33D4B598" />-->
+        <!--Errores durante la generación:
+advertencia 6035: La relación 'FK__Categoria__idCat__2A4B4B5E' tiene columnas que no forman parte de la clave de la tabla en el lado principal de la relación. Se excluyó la relación.
+        <Association Name="FK__Categoria__idCat__2A4B4B5E" />-->
+        <Association Name="FK__Invetario__idPro__276EDEB3">
+          <End Role="Productos" Type="Self.Productos" Multiplicity="1" />
+          <End Role="Invetario" Type="Self.Invetario" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Productos">
+              <PropertyRef Name="idProducto" />
+            </Principal>
+            <Dependent Role="Invetario">
+              <PropertyRef Name="idProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <!--Errores durante la generación:
+error 6004: Una relación hace referencia a la tabla 'ProyectoProgra.dbo.Ordenes', pero no se encuentra la tabla.
+        <Association Name="FK__Ordenes__idCateg__2F10007B" />-->
+        <!--Errores durante la generación:
+error 6004: Una relación hace referencia a la tabla 'ProyectoProgra.dbo.Ordenes', pero no se encuentra la tabla.
+        <Association Name="FK__Ordenes__idDirec__300424B4" />-->
+        <!--Errores durante la generación:
+error 6004: Una relación hace referencia a la tabla 'ProyectoProgra.dbo.Ordenes', pero no se encuentra la tabla.
+        <Association Name="FK__Ordenes__idProdu__2E1BDC42" />-->
+        <!--Errores durante la generación:
+error 6004: Una relación hace referencia a la tabla 'ProyectoProgra.dbo.Password', pero no se encuentra la tabla.
+        <Association Name="FK__Password__Pass__38996AB5" />-->
+        <Association Name="FK__usuario__idDirec__36B12243">
+          <End Role="Direccion" Type="Self.Direccion" Multiplicity="0..1" />
+          <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Direccion">
+              <PropertyRef Name="idDireccion" />
+            </Principal>
+            <Dependent Role="usuario">
+              <PropertyRef Name="idDireccion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ProyectoPrograModelStoreContainer">
+          <EntitySet Name="administrador" EntityType="Self.administrador" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Categoria" EntityType="Self.Categoria" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Direccion" EntityType="Self.Direccion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Invetario" EntityType="Self.Invetario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Productos" EntityType="Self.Productos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="usuario" EntityType="Self.usuario" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Invetario__idPro__276EDEB3" Association="Self.FK__Invetario__idPro__276EDEB3">
+            <End Role="Productos" EntitySet="Productos" />
+            <End Role="Invetario" EntitySet="Invetario" />
+          </AssociationSet>
+          <AssociationSet Name="FK__usuario__idDirec__36B12243" Association="Self.FK__usuario__idDirec__36B12243">
+            <End Role="Direccion" EntitySet="Direccion" />
+            <End Role="usuario" EntitySet="usuario" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ProyectoPrograModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="administrador">
+          <Key>
+            <PropertyRef Name="idAdmin" />
+          </Key>
+          <Property Name="idAdmin" Type="Int32" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+          <Property Name="nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="primerApellido" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="segundoApellido" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="cedula" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Categoria">
+          <Key>
+            <PropertyRef Name="idCategoria" />
+          </Key>
+          <Property Name="idCategoria" Type="Int32" Nullable="false" />
+          <Property Name="nombreCategoria" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Direccion">
+          <Key>
+            <PropertyRef Name="idDireccion" />
+          </Key>
+          <Property Name="idDireccion" Type="Int32" Nullable="false" />
+          <Property Name="provincia" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="canton" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="codigoPostal" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="dirExacta" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="indicaciones" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="usuario" Relationship="Self.FK__usuario__idDirec__36B12243" FromRole="Direccion" ToRole="usuario" />
+        </EntityType>
+        <EntityType Name="Invetario">
+          <Key>
+            <PropertyRef Name="idProducto" />
+          </Key>
+          <Property Name="idProducto" Type="Int32" Nullable="false" />
+          <Property Name="cantidad" Type="Int32" />
+          <NavigationProperty Name="Productos" Relationship="Self.FK__Invetario__idPro__276EDEB3" FromRole="Invetario" ToRole="Productos" />
+        </EntityType>
+        <EntityType Name="Productos">
+          <Key>
+            <PropertyRef Name="idProducto" />
+          </Key>
+          <Property Name="idProducto" Type="Int32" Nullable="false" />
+          <Property Name="nombreProducto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="precio" Type="Int32" />
+          <Property Name="descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="idCategoria" Type="Int32" />
+          <Property Name="imagen" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Invetario" Relationship="Self.FK__Invetario__idPro__276EDEB3" FromRole="Productos" ToRole="Invetario" />
+        </EntityType>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="idUsuario" />
+          </Key>
+          <Property Name="idUsuario" Type="Int32" Nullable="false" />
+          <Property Name="telefono" Type="Int32" />
+          <Property Name="email" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="idDireccion" Type="Int32" />
+          <Property Name="nombre" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="primerApellido" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="segundoApellido" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Direccion" Relationship="Self.FK__usuario__idDirec__36B12243" FromRole="usuario" ToRole="Direccion" />
+        </EntityType>
+        <Association Name="FK__usuario__idDirec__36B12243">
+          <End Role="Direccion" Type="Self.Direccion" Multiplicity="0..1" />
+          <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Direccion">
+              <PropertyRef Name="idDireccion" />
+            </Principal>
+            <Dependent Role="usuario">
+              <PropertyRef Name="idDireccion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Invetario__idPro__276EDEB3">
+          <End Role="Productos" Type="Self.Productos" Multiplicity="1" />
+          <End Role="Invetario" Type="Self.Invetario" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Productos">
+              <PropertyRef Name="idProducto" />
+            </Principal>
+            <Dependent Role="Invetario">
+              <PropertyRef Name="idProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ProyectoPrograEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="administrador" EntityType="Self.administrador" />
+          <EntitySet Name="Categoria" EntityType="Self.Categoria" />
+          <EntitySet Name="Direccion" EntityType="Self.Direccion" />
+          <EntitySet Name="Invetario" EntityType="Self.Invetario" />
+          <EntitySet Name="Productos" EntityType="Self.Productos" />
+          <EntitySet Name="usuario" EntityType="Self.usuario" />
+          <AssociationSet Name="FK__usuario__idDirec__36B12243" Association="Self.FK__usuario__idDirec__36B12243">
+            <End Role="Direccion" EntitySet="Direccion" />
+            <End Role="usuario" EntitySet="usuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Invetario__idPro__276EDEB3" Association="Self.FK__Invetario__idPro__276EDEB3">
+            <End Role="Productos" EntitySet="Productos" />
+            <End Role="Invetario" EntitySet="Invetario" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ProyectoPrograModelStoreContainer" CdmEntityContainer="ProyectoPrograEntities">
+          <EntitySetMapping Name="administrador">
+            <EntityTypeMapping TypeName="ProyectoPrograModel.administrador">
+              <MappingFragment StoreEntitySet="administrador">
+                <ScalarProperty Name="idAdmin" ColumnName="idAdmin" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="primerApellido" ColumnName="primerApellido" />
+                <ScalarProperty Name="segundoApellido" ColumnName="segundoApellido" />
+                <ScalarProperty Name="cedula" ColumnName="cedula" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categoria">
+            <EntityTypeMapping TypeName="ProyectoPrograModel.Categoria">
+              <MappingFragment StoreEntitySet="Categoria">
+                <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
+                <ScalarProperty Name="nombreCategoria" ColumnName="nombreCategoria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Direccion">
+            <EntityTypeMapping TypeName="ProyectoPrograModel.Direccion">
+              <MappingFragment StoreEntitySet="Direccion">
+                <ScalarProperty Name="idDireccion" ColumnName="idDireccion" />
+                <ScalarProperty Name="provincia" ColumnName="provincia" />
+                <ScalarProperty Name="canton" ColumnName="canton" />
+                <ScalarProperty Name="codigoPostal" ColumnName="codigoPostal" />
+                <ScalarProperty Name="dirExacta" ColumnName="dirExacta" />
+                <ScalarProperty Name="indicaciones" ColumnName="indicaciones" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Invetario">
+            <EntityTypeMapping TypeName="ProyectoPrograModel.Invetario">
+              <MappingFragment StoreEntitySet="Invetario">
+                <ScalarProperty Name="idProducto" ColumnName="idProducto" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Productos">
+            <EntityTypeMapping TypeName="ProyectoPrograModel.Productos">
+              <MappingFragment StoreEntitySet="Productos">
+                <ScalarProperty Name="idProducto" ColumnName="idProducto" />
+                <ScalarProperty Name="nombreProducto" ColumnName="nombreProducto" />
+                <ScalarProperty Name="precio" ColumnName="precio" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
+                <ScalarProperty Name="imagen" ColumnName="imagen" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usuario">
+            <EntityTypeMapping TypeName="ProyectoPrograModel.usuario">
+              <MappingFragment StoreEntitySet="usuario">
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="idDireccion" ColumnName="idDireccion" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="primerApellido" ColumnName="primerApellido" />
+                <ScalarProperty Name="segundoApellido" ColumnName="segundoApellido" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

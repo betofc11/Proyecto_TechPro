@@ -65,5 +65,26 @@ namespace Proyecto_TechPro.Controllers
 
             return View("Index", cantidad);
         }
+        [HttpPost]
+        public ActionResult FiltrarCategoria()
+        {
+            
+
+            return View();
+        }
+
+        public ActionResult ConsultaIndex()
+        {
+            //CargarViewBag();
+
+            using (var contexto = new PracticaS13Entities())
+            {
+                var Productos = (from x in contexto.Principal
+                                 select x).ToList();
+
+                return View(Productos);
+            }
+        }
+
     }
 }
