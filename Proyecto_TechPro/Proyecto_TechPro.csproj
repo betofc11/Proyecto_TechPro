@@ -205,9 +205,12 @@
     <Content Include="images\productos\asus_G512LIHN054T.png" />
     <Content Include="images\productos\asus_rog_strix_XG32VQR.png" />
     <Content Include="images\productos\cougar_armor_one.png" />
+    <Content Include="images\productos\iphone12ProMax.png" />
     <Content Include="images\productos\logitech_g502.png" />
+    <Content Include="images\productos\QLEDSamsung.jpg" />
     <Content Include="images\productos\razer_basilisk.png" />
     <Content Include="images\productos\razer_blackwidow.png" />
+    <Content Include="images\iconosSist\shopping-cart-solid.svg" />
     <Content Include="images\TopCategorias\audifinos.jpg" />
     <Content Include="images\TopCategorias\componentesPC.jpg" />
     <Content Include="images\TopCategorias\laptops.jpg" />
@@ -363,7 +366,9 @@
     <Content Include="Views\Home\VistaCarrito.cshtml" />
     <Content Include="Views\Home\LaptopView.cshtml" />
     <Content Include="Views\Home\TelevisorView.cshtml" />
-    <Content Include="Views\Home\FiltroCategorias.cshtml" />
+    <Content Include="Views\Home\AudifonosView.cshtml" />
+    <Content Include="Views\Home\ComponentesPCView.cshtml" />
+    <Content Include="Views\Home\SmartphonesView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

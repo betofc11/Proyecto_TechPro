@@ -9,10 +9,13 @@
     @Styles.Render("~/Content/Site.css")
 </head>
 <body>
-
+    
     <div class="d-flex justify-content-center">
-        <a href="Index"> <img class="d-flex justify-content-center" src="~/images/logo.png" alt="Master Pizza" style="max-width:100%;" /></a>
-</div>
+        <a href="@Url.Action("Index", "Home")" title="Logo">
+            <img alt="logo" src="@Url.Content("~/images/logo.png")">
+        </a>
+
+    </div>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -51,6 +54,58 @@
         @RenderBody()
         <hr />
         <footer>
+            <div class="flex-wrapper gray-theme imageAndLink-type ">
+
+                <h2 class="heading heading-focus v-fw-medium">Marcas Destacadas</h2>
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <img width="133px" alt="133 px" src="~/images/LogoMarcas/AMD_logo.png" />
+                        </div>
+                        <div class="col">
+                            <img width="133 px" alt="133 px" src="~/images/LogoMarcas/flx_Razer_green_hz_RGB.jpg" />
+                        </div>
+                        <div class="col">
+                            <img width="133 px" alt="133 px" src="~/images/LogoMarcas/HpOmen.jpg" />
+                        </div>
+                        <div class="col">
+                            <img width="133 px" alt="133 px" src="~/images/LogoMarcas/LenovoLegion.jpg" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+
+                            <img width="133 px" alt="133 px" src="~/images/LogoMarcas/LogitechLogo.jpg" />
+                        </div>
+                        <div class="col">
+
+                            <img width="133 px" alt="133 px" src="~/images/LogoMarcas/logo_acer.jpg" />
+                        </div>
+                        <div class="col">
+                            <img width="133 px" alt="133 px" src="~/images/LogoMarcas/logo_alienware.jpg" />
+                        </div>
+                        <div class="col">
+                            <img width="133 px" alt="133 px" src="~/images/LogoMarcas/logo_asus.jpg" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <img width="133 px" alt="133 px" src="~/images/LogoMarcas/logo_intel.jpg" />
+
+                        </div>
+                        <div class="col">
+                            <img width="133 px" alt="133 px" src="~/images/LogoMarcas/logo_MSI.jpg" />
+
+                        </div>
+                        <div class="col">
+                            <img width="133 px" alt="133 px" src="~/images/LogoMarcas/nvidia_logo.jpg" />
+                        </div>
+                        <div class="col">
+                            <img width="133 px" alt="133 px" src="~/images/LogoMarcas/SamsungLogo.png" />
+                        </div>
+                    </div>
+                </div>
+            </div>
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
         </footer>
     </div>
