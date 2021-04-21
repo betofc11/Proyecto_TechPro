@@ -1,6 +1,11 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿
+@{
+    ViewBag.Title = "LaptopView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+<h2>LaptopView</h2>
+
 
 
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -34,11 +39,11 @@
 <center>
 
 
-    
+
     <h2 style="font-family:Arial; font-size:30px"> Top de Categorias </h2>
     <div style="text-align-last: justify;">
 
-        <a href="@Url.Action("LaptopView", "Home")" title="Audifinos" class="links">
+        <a href="@Url.Action("LaptopView", "Home")" title="Audifinos">
             <img alt="audifinos" src="@Url.Content("~/images/TopCategorias/laptops.jpg")">
         </a>
         <img src="~/images/TopCategorias/laptops.jpg" width="205px" height="200px" alt="audifinos" title="Audifinos" style="float:center">
@@ -53,7 +58,7 @@
         <img src="https://i.imgur.com/EhQ6tSt.png" width="205px" height="200px" alt="iphone" title="Samsung" style="float:center">
         <img src="https://i.imgur.com/5M4RBaE.png" width="205px" height="200px" alt="iphone" title="Laptop" style="float:center">
         <img src="https://i.imgur.com/cIUCjAr.png" width="205px" height="200px" alt="iphone" title="Camera" style="float:center">*@
-  
+
 </center>
 <br>
 <br>
@@ -73,83 +78,6 @@
         </div>
     </div>
 
-    <div class="card">
-        <div class="text-center">
-            <img class="card-img-top align-content-center" alt="Imagen de pizza" src="~/images/productos/razer_basilisk.png" style="max-width: 200px" />
-        </div>
-        <div class="card-body">
-            <h5 class="card-title">Mouse Razer Basilisk</h5>
-        </div>
-        <div class="card-footer justify-content-center">
-            <h6 class="precio text-center"><b>₡35 000.00</b></h6>
-            <a class="btn btn-success d-flex justify-content-center" href="#">Agregar al carrito</a>
-        </div>
-    </div>
-
-    <div class="card">
-        <div class="text-center">
-            <img class="card-img-top align-content-center" alt="Imagen de pizza" src="~/images/productos/razer_blackwidow.png" style="max-width: 200px" />
-        </div>
-        <div class="card-body">
-            <h5 class="card-title">Teclado mecanico Razer Blackwidow</h5>
-        </div>
-        <div class="card-footer justify-content-center">
-            <h6 class="precio text-center"><b>₡65 000.00</b></h6>
-            <a class="btn btn-success d-flex justify-content-center" href="#">Agregar al carrito</a>
-        </div>
-    </div>
-
-    <div class="card">
-        <div class="text-center">
-            <img class="card-img-top align-content-center" alt="Imagen de pizza" src="~/images/productos/astro_a20.png" style="max-width: 200px" />
-        </div>
-        <div class="card-body">
-            <h5 class="card-title">Headset gaming PS4-PC Astro A20</h5>
-        </div>
-        <div class="card-footer justify-content-center">
-            <h6 class="precio text-center"><b>₡95 000.00</b></h6>
-            <a class="btn btn-success d-flex justify-content-center" href="#">Agregar al carrito</a>
-        </div>
-    </div>
-
-    <div class="card">
-        <div class="text-center">
-            <img class="card-img-top align-content-center" alt="Imagen de pizza" src="~/images/productos/logitech_g502.png" style="max-width: 200px" />
-        </div>
-        <div class="card-body">
-            <h5 class="card-title">Teclado Logitech G513</h5>
-        </div>
-        <div class="card-footer justify-content-center">
-            <h6 class="precio text-center"><b>₡44 900.00</b></h6>
-            <a class="btn btn-success d-flex justify-content-center" href="#">Agregar al carrito</a>
-        </div>
-    </div>
-
-    <div class="card">
-        <div class="text-center">
-            <img class="card-img-top align-content-center" alt="Imagen de pizza" src="~/images/productos/asus_rog_strix_XG32VQR.png" style="max-width: 200px" />
-        </div>
-        <div class="card-body">
-            <h5 class="card-title">Monitor Asus Rog Strix</h5>
-        </div>
-        <div class="card-footer justify-content-center">
-            <h6 class="precio text-center"><b>₡349 900.00</b></h6>
-            <a class="btn btn-success d-flex justify-content-center" href="#">Agregar al carrito</a>
-        </div>
-    </div>
-    <div class="card">
-        <div class="text-center">
-            <img class="card-img-top align-content-center" alt="Imagen de pizza" src="~/images/productos/cougar_armor_one.png" style="max-width: 200px" />
-        </div>
-        <div class="card-body">
-            <h5 class="card-title">Silla Cougar Armor One</h5>
-        </div>
-        <div class="card-footer justify-content-center">
-            <h6 class="precio text-center"><b>₡134 500.00</b></h6>
-            <a class="btn btn-success d-flex justify-content-center" href="#">Agregar al carrito</a>
-        </div>
-    </div>
-</div>
 <br />
 <br />
 <div class="flex-wrapper gray-theme imageAndLink-type ">
