@@ -34,7 +34,8 @@
 <br />
 <br>
 <center>
-    <form>
+    @using (Html.BeginForm("AgregaItem", "Home", FormMethod.Post))
+    {
         <h2 style="font-family:Arial; font-size:30px"> Top de Categorias </h2>
         <br />
         <div style="text-align-last: justify;">
@@ -57,8 +58,8 @@
             </a>
 
         </div>
-    </form>
-</center>
+    }
+    </center>
 @*@{
     var categoriaBtn = Request.Form.GetValues.;
     if (categoriaBtn == 0)
@@ -88,7 +89,7 @@
         </div>
         <div class="card-footer justify-content-center">
             <h6 class="precio text-center"><b>₡990 000.00</b></h6>
-            <a class="btn btn-success d-flex justify-content-center" itemid="001" onclick="agregarCarrito(this)">Agregar al carrito</a>
+            <a class="btn btn-success d-flex justify-content-center" id="resultadoSeleccion" itemid="001" onclick="agregarCarrito(this)">Agregar al carrito</a>
         </div>
     </div>
 
@@ -109,7 +110,8 @@
             <img class="card-img-top align-content-center" alt="Imagen de pizza" src="~/images/productos/iphone12ProMax.png" style="max-width: 200px" />
         </div>
         <div class="card-body">
-            <input type="text" id="" value="001" hidden />
+            @*@Html.TextBoxFor(m => m., new { @class = "form-control", @placeholder = "Monto a Abonar", @id = "nuevoAbono" })*@
+            <input type="text" id="" value="003" hidden />
             <h5 class="card-title">IPHONE 12 Pro Max</h5>
         </div>
         <div class="card-footer justify-content-center">

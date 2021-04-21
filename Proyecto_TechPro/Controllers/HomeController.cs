@@ -154,14 +154,47 @@ namespace Proyecto_TechPro.Controllers
             }
         }
         [HttpPost]
-        public ActionResult ConsultaCategoria()
+        public ActionResult ConsultaCategoria(string cat)
+        {
+            CargarViewBag();
+           
+                if (Session["ProductosCarrito"] == null)
+                {
+                    List<Producto> prod = new List<Producto>();
+                    using (var contexto = new ProyectoPrograEntities())
+                    {
+                        int idP = int.Parse(cat);
+                        var resultado = (from x in contexto.Productos
+                                         where x.idCategoria == idP
+                                         select x).FirstOrDefault();
+
+                        if (resultado != null)
+                        {
+                            prod.Add(new Producto
+                            {
+                                idProducto = resultado.idProducto,
+                                nombreProducto = resultado.nombreProducto,
+                                precio = resultado.precio,
+                                idCategoria = resultado.idCategoria,
+                                descripcion = resultado.descripcion,
+                                imagen = resultado.imagen
+                            });
+
+                            Session["ProductosCarrito"] = prod;
+                            Session["CantidadCarrito"] = 1;
+                        }
+                    }
+                }
+                return View();
+            
+        }
+        public ActionResult CarritoConsultaParcial()
         {
             CargarViewBag();
 
             return View();
-            
-        }
 
+        }
         public void CargarViewBag()
         {
             using (var contexto = new ProyectoPrograEntities())
