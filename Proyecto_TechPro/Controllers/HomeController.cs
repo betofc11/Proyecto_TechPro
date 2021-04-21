@@ -107,6 +107,13 @@ namespace Proyecto_TechPro.Controllers
             return View("LaptopView");
         }
 
+        public ActionResult TelevisorView()
+        {
+            ViewBag.Message = "Laptos";
+
+            return View("TelevisorView");
+        }
+
 
 
 

@@ -221,6 +221,7 @@
     <Content Include="images\TopCategorias\componentesPC.jpg" />
     <Content Include="images\TopCategorias\laptops.jpg" />
     <Content Include="images\TopCategorias\smartphones.jpg" />
+    <Content Include="images\TopCategorias\televisores.jpg" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -360,6 +361,7 @@
     <Content Include="Views\Home\FiltrarCategoria.cshtml" />
     <Content Include="Views\Home\VistaCarrito.cshtml" />
     <Content Include="Views\Home\LaptopView.cshtml" />
+    <Content Include="Views\Home\TelevisorView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
