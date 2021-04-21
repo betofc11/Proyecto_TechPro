@@ -72,5 +72,53 @@ namespace Proyecto_TechPro.Controllers
 
             }
         }
+        //[HttpPost]
+        public ActionResult FiltrarCategoria(Categoria p)
+        {
+            using (var contexto = new ProyectoPrograEntities())
+            {
+                var Productos = (from x in contexto.Categoria
+                                 where x.idCategoria == p.idCategoria
+                                 select x).ToList();
+
+                return View("ConsultaCategoria", Productos);
+            }
+
+           
+        }
+        [HttpPost]
+        public ActionResult ConsultaCategoria()
+        {
+            //CargarViewBag();
+
+            using (var contexto = new ProyectoPrograEntities())
+            {
+                var Productos = (from x in contexto.Categoria
+                                 select x).ToList();
+
+                return View(Productos);
+            }
+        }
+        public ActionResult VistaCarrito()
+        {
+            ViewBag.Message = "Carrito";
+
+            return View("VistaCarrito");
+        }
+
+
+        public ActionResult LaptopView()
+        {
+            ViewBag.Message = "Laptos";
+
+            return View("LaptopView");
+        }
+
+
+
+
+
+
+
     }
 }
