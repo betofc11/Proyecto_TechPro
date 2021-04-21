@@ -46,7 +46,7 @@ namespace Proyecto_TechPro.Controllers
             }
             else
             {
-
+                
                 List<Producto> prod = new List<Producto>();
                 prod = (List<Producto>)Session["ProductosCarrito"];
 
@@ -61,9 +61,16 @@ namespace Proyecto_TechPro.Controllers
                 Session["CantidadCarrito"] = prodNuevos.Count;
             }
             string cantidad = Session["CantidadCarrito"].ToString();
-            ViewBag.CantidadCarrito = Session["CantidadCarrito"];
+            if (cantidad != null)
+            {
+                return Json(cantidad, JsonRequestBehavior.AllowGet);
 
-            return View("Index", cantidad);
+            }
+            else
+            {
+                return Json(null, JsonRequestBehavior.DenyGet);
+
+            }
         }
     }
 }

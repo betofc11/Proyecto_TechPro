@@ -7,9 +7,9 @@
             item: $(itemID).attr("itemid")
         },
         cache: false,
-        dataType: 'string',
+        dataType: 'json',
         success: function (data) {
-            alert("dfsgv");
+            $("#badgeCart").text(data);
         },
         error: function() {
             alert("ERROR KRUK");
