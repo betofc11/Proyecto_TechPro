@@ -32,29 +32,46 @@
 <br />
 <br>
 <center>
+    <form>
+        <h2 style="font-family:Arial; font-size:30px"> Top de Categorias </h2>
+        <br />
+        <div style="text-align-last: justify;">
 
+            <a href="@Url.Action("LaptopView", "Home")" name="lkLaptop" title="Laptops" class="links">
+                <img alt="laptops" src="@Url.Content("~/images/TopCategorias/laptops.jpg")">
+            </a>
+            <a href="@Url.Action("TelevisorView", "Home")" title="Televisor">
+                <img alt="televisor" src="@Url.Content("~/images/TopCategorias/televisores.jpg")">
+            </a>
 
-    
-    <h2 style="font-family:Arial; font-size:30px"> Top de Categorias </h2>
-    <div style="text-align-last: justify;">
+            <a href="@Url.Action("ComponentesPCView", "Home")" title="ComponentesPC">
+                <img alt="componentesPC" src="@Url.Content("~/images/TopCategorias/componentesPC.jpg")">
+            </a>
+            <a href="@Url.Action("SmartphonesView", "Home")" title="Smartphones">
+                <img alt="componentesPC" src="@Url.Content("~/images/TopCategorias/smartphones.jpg")">
+            </a>
+            <a href="@Url.Action("AudifinosView", "Home")" title="Audifinos">
+                <img alt="audifinos" src="@Url.Content("~/images/TopCategorias/audifinos.jpg")">
+            </a>
 
-        <a href="@Url.Action("LaptopView", "Home")" title="Audifinos" class="links">
-            <img alt="audifinos" src="@Url.Content("~/images/TopCategorias/laptops.jpg")">
-        </a>
-        <img src="~/images/TopCategorias/laptops.jpg" width="205px" height="200px" alt="audifinos" title="Audifinos" style="float:center">
-
-        <img src="~/images/TopCategorias/componentesPC.jpg" width="205px" height="200px" alt="laptops" title="Laptops" style="float:center">
-
-        <img src="~/images/TopCategorias/smartphones.jpg" width="205px" height="200px" alt="smartphones" title="Smartphones" style="float:center">
-
-        <img src="~/images/TopCategorias/audifinos.jpg" width="205px" height="200px" alt="audifinos" title="Audifinos" style="float:center">
-    </div>
-    @*<img src="https://i.imgur.com/JUPTqvv.png" width="205px" height="200px" alt="iphone" title="Apple Phone" style="float:center">
-        <img src="https://i.imgur.com/EhQ6tSt.png" width="205px" height="200px" alt="iphone" title="Samsung" style="float:center">
-        <img src="https://i.imgur.com/5M4RBaE.png" width="205px" height="200px" alt="iphone" title="Laptop" style="float:center">
-        <img src="https://i.imgur.com/cIUCjAr.png" width="205px" height="200px" alt="iphone" title="Camera" style="float:center">*@
-  
+        </div>
+    </form>
 </center>
+@*@{
+    var categoriaBtn = Request.Form.GetValues.;
+    if (categoriaBtn == 0)
+    {
+        <p>You have a zero balance.</p>
+    }
+    else if (theBalance > 0 && theBalance <= 5)
+    {
+        <p>Your balance of $@theBalance is very low.</p>
+    }
+    else
+    {
+        <p>Your balance is: $@theBalance</p>
+    }
+}*@
 <br>
 <br>
 <div class="card-deck d-flex flex-wrap justify-content-center">
@@ -85,7 +102,19 @@
             <a class="btn btn-success d-flex justify-content-center" href="#">Agregar al carrito</a>
         </div>
     </div>
-
+    <div class="card">
+        <div class="text-center">
+            <img class="card-img-top align-content-center" alt="Imagen de pizza" src="~/images/productos/iphone12ProMax.png" style="max-width: 200px" />
+        </div>
+        <div class="card-body">
+            <input type="text" id="" value="001" hidden />
+            <h5 class="card-title">IPHONE 12 Pro Max</h5>
+        </div>
+        <div class="card-footer justify-content-center">
+            <h6 class="precio text-center"><b>₡850 000.00</b></h6>
+            <a class="btn btn-success d-flex justify-content-center" itemid="001" onclick="agregarCarrito(this)">Agregar al carrito</a>
+        </div>
+    </div>
     <div class="card">
         <div class="text-center">
             <img class="card-img-top align-content-center" alt="Imagen de pizza" src="~/images/productos/razer_blackwidow.png" style="max-width: 200px" />
@@ -127,6 +156,19 @@
 
     <div class="card">
         <div class="text-center">
+            <img class="card-img-top align-content-center" alt="Imagen de pizza" src="~/images/productos/QLEDSamsung.jpg" style="max-width: 200px" />
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Televisor Samsung 73 pulgadas</h5>
+        </div>
+        <div class="card-footer justify-content-center">
+            <h6 class="precio text-center"><b>₡1 900 000.00</b></h6>
+            <a class="btn btn-success d-flex justify-content-center" href="#">Agregar al carrito</a>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="text-center">
             <img class="card-img-top align-content-center" alt="Imagen de pizza" src="~/images/productos/asus_rog_strix_XG32VQR.png" style="max-width: 200px" />
         </div>
         <div class="card-body">
@@ -152,55 +194,4 @@
 </div>
 <br />
 <br />
-<div class="flex-wrapper gray-theme imageAndLink-type ">
 
-    <h2 class="heading heading-focus v-fw-medium">Marcas Destacadas</h2>
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <img width="133px" alt="133 px" src="~/images/LogoMarcas/AMD_logo.png" />
-            </div>
-            <div class="col">
-                <img width="133 px" alt="133 px" src="~/images/LogoMarcas/flx_Razer_green_hz_RGB.jpg" />
-            </div>
-            <div class="col">
-                <img width="133 px" alt="133 px" src="~/images/LogoMarcas/HpOmen.jpg" />
-            </div>
-            <div class="col">
-                <img width="133 px" alt="133 px" src="~/images/LogoMarcas/LenovoLegion.jpg" />
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-
-                <img width="133 px" alt="133 px" src="~/images/LogoMarcas/LogitechLogo.jpg" />
-            </div>
-            <div class="col">
-
-                <img width="133 px" alt="133 px" src="~/images/LogoMarcas/logo_acer.jpg" />
-            </div>
-            <div class="col">
-                <img width="133 px" alt="133 px" src="~/images/LogoMarcas/logo_alienware.jpg" />
-            </div>
-            <div class="col">
-                <img width="133 px" alt="133 px" src="~/images/LogoMarcas/logo_asus.jpg" />
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <img width="133 px" alt="133 px" src="~/images/LogoMarcas/logo_intel.jpg" />
-
-            </div>
-            <div class="col">
-                <img width="133 px" alt="133 px" src="~/images/LogoMarcas/logo_MSI.jpg" />
-
-            </div>
-            <div class="col">
-                <img width="133 px" alt="133 px" src="~/images/LogoMarcas/nvidia_logo.jpg" />
-            </div>
-            <div class="col">
-                <img width="133 px" alt="133 px" src="~/images/LogoMarcas/SamsungLogo.png" />
-            </div>
-        </div>
-    </div>
-</div>

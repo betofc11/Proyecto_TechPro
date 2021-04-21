@@ -116,16 +116,32 @@ namespace Proyecto_TechPro.Controllers
 
         public ActionResult TelevisorView()
         {
-            ViewBag.Message = "Laptos";
+            ViewBag.Message = "Televisor";
 
             return View("TelevisorView");
         }
 
+        public ActionResult ComponentesPCView()
+        {
+            //ViewBag.Message = "Laptos";
+
+            return View("ComponentesPCView");
+        }
 
 
+        public ActionResult AudifonosView()
+        {
+            //ViewBag.Message = "Laptos";
 
+            return View("AudifonosView");
+        }
 
+        public ActionResult SmartphonesView()
+        {
+            //ViewBag.Message = "Laptos";
 
+            return View("SmartphonesView");
+        }
 
     }
 }

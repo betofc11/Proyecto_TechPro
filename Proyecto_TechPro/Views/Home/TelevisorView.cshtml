@@ -4,7 +4,56 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>TelevisorView</h2>
 
+<br />
+<br />
+<br />
+<center>
+    <h2 style="font-family:Arial; font-size:30px"> Top de Categorias </h2>
+    <br />
+    <div style="text-align-last: justify;">
 
+        <a href="@Url.Action("LaptopView", "Home")" title="Laptops" class="links">
+            <img alt="laptops" src="@Url.Content("~/images/TopCategorias/laptops.jpg")">
+        </a>
+        <a href="@Url.Action("TelevisorView", "Home")" title="Televisor">
+            <img alt="televisor" src="@Url.Content("~/images/TopCategorias/televisores.jpg")">
+        </a>
 
+        <a href="@Url.Action("ComponentesPCView", "Home")" title="ComponentesPC">
+            <img alt="componentesPC" src="@Url.Content("~/images/TopCategorias/componentesPC.jpg")">
+        </a>
+        <a href="@Url.Action("SmartphonesView", "Home")" title="Smartphones">
+            <img alt="componentesPC" src="@Url.Content("~/images/TopCategorias/smartphones.jpg")">
+        </a>
+        <a href="@Url.Action("AudifinosView", "Home")" title="Audifinos">
+            <img alt="audifinos" src="@Url.Content("~/images/TopCategorias/audifinos.jpg")">
+        </a>
+    </div>
+</center>
+
+<br>
+<br>
+
+<h4>>Televisores</h4>
+<br>
+
+<div style="text-align: -webkit-left;">
+   
+    <div class="card">
+        <div class="text-center">
+            <img class="card-img-top align-content-center" alt="Imagen de pizza" src="~/images/productos/QLEDSamsung.jpg" style="max-width: 200px" />
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Televisor Samsung 73 pulgadas</h5>
+        </div>
+        <div class="card-footer justify-content-center">
+            <h6 class="precio text-center"><b>₡1 900 000.00</b></h6>
+            <a class="btn btn-success d-flex justify-content-center" href="#">Agregar al carrito</a>
+        </div>
+    </div>
+  
+    <br />
+    <br />
+
+</div>
