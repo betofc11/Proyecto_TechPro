@@ -1,0 +1,9 @@
+﻿@model Productos
+
+@using (Html.BeginForm("FiltrarConsulta", "Consulta", FormMethod.Post))
+{
+
+    @Html.DropDownListFor(m => m.idCategoria, ViewBag.comboCategorias as IEnumerable<SelectListItem>, new { @class = "dropdown" })
+
+    <input type="submit" class="btn btn-success" value="Filtrar" />
+}

@@ -11,11 +11,19 @@ namespace Proyecto_TechPro.Controllers
     {
         public ActionResult Index()
         {
+            CargarViewBag();
+
             if (ViewBag.CantidadCarrito == null)
             {
                 ViewBag.CantidadCarrito = 0;
             }
-            return View();
+
+            using (var contexto = new ProyectoPrograEntities())
+            {
+                var resultado = (from x in contexto.Productos
+                                 select x).ToList();
+                return View(resultado);
+            }
         }
 
         public ActionResult About()
@@ -37,39 +45,100 @@ namespace Proyecto_TechPro.Controllers
         {
             if (Session["ProductosCarrito"] == null)
             {
-
                 List<Producto> prod = new List<Producto>();
-                prod.Add(new Producto { idProducto = int.Parse(item), nombreProducto = "Primer producto", precio = 300, idCategoria = 001, descripcion = "xdd", imagen = "sjdncjhswdn" });
+                using (var contexto = new ProyectoPrograEntities())
+                {
+                    int idP = int.Parse(item);
+                    var resultado = (from x in contexto.Productos
+                                     where x.idProducto == idP
+                                     select x).FirstOrDefault();
 
-                Session["ProductosCarrito"] = prod;
-                Session["CantidadCarrito"] = 1;
+                    if (resultado != null)
+                    {
+                        prod.Add(new Producto
+                        {
+                            idProducto = resultado.idProducto,
+                            nombreProducto = resultado.nombreProducto,
+                            precio = resultado.precio,
+                            idCategoria = resultado.idCategoria,
+                            descripcion = resultado.descripcion,
+                            imagen = resultado.imagen
+                        });
+
+                        Session["ProductosCarrito"] = prod;
+                        Session["CantidadCarrito"] = 1;
+                    }
+                }
             }
             else
             {
-                
-                List<Producto> prod = new List<Producto>();
-                prod = (List<Producto>)Session["ProductosCarrito"];
+                List<Producto> prods = new List<Producto>();
+                prods = (List<Producto>)Session["ProductosCarrito"];
 
                 List<Producto> prodNuevos = new List<Producto>();
 
-                foreach (var items in prod)
+                foreach (var items in prods)
                 {
-                    prodNuevos.Add(new Producto { idProducto = items.idProducto, nombreProducto = items.nombreProducto, precio = items.precio, idCategoria = items.idCategoria, imagen = items.imagen, descripcion = items.descripcion });
+                    prodNuevos.Add(new Producto { 
+                        idProducto = items.idProducto, 
+                        nombreProducto = items.nombreProducto, 
+                        precio = items.precio, 
+                        idCategoria = items.idCategoria, 
+                        imagen = items.imagen, 
+                        descripcion = items.descripcion });
                 }
-                prodNuevos.Add(new Producto { idProducto = int.Parse(item), nombreProducto = "Primer producto", precio = 300, idCategoria = 001, descripcion = "xdd", imagen = "sjdncjhswdn" });
-                Session["ArticulosCarrito"] = prodNuevos;
-                Session["CantidadCarrito"] = prodNuevos.Count;
+
+                using (var contexto = new ProyectoPrograEntities())
+                {
+                    int idP = int.Parse(item);
+                    var resultado = (from x in contexto.Productos
+                                     where x.idProducto == idP
+                                     select x).ToList();
+
+                    var nuev = (from x in contexto.Productos
+                                     where x.idProducto == idP
+                                     select x).FirstOrDefault();
+
+                    var sesionProductos = (List<Producto>)Session["ProductosCarrito"];
+
+                    bool repeated = false;
+
+                    foreach (var sesP in sesionProductos)
+                    {
+                        foreach (var res in resultado)
+                        {
+                            if (sesP.idProducto != res.idProducto)
+                            {
+                                repeated = true;
+                            }
+                        }
+                    }
+
+                    if (repeated)
+                    {
+                        prodNuevos.Add(new Producto { 
+                            idProducto = nuev.idProducto, 
+                            nombreProducto = nuev.nombreProducto, 
+                            precio = nuev.precio, 
+                            idCategoria = nuev.idCategoria, 
+                            descripcion = nuev.descripcion, 
+                            imagen = nuev.imagen 
+                        });
+
+                        Session["ProductosCarrito"] = prodNuevos;
+                        Session["CantidadCarrito"] = prodNuevos.Count;
+
+                    }
+                }
             }
             string cantidad = Session["CantidadCarrito"].ToString();
             if (cantidad != null)
             {
                 return Json(cantidad, JsonRequestBehavior.AllowGet);
-
             }
             else
             {
                 return Json(null, JsonRequestBehavior.DenyGet);
-
             }
         }
         //[HttpPost]
@@ -83,22 +152,34 @@ namespace Proyecto_TechPro.Controllers
 
                 return View("ConsultaCategoria", Productos);
             }
-
-           
         }
         [HttpPost]
         public ActionResult ConsultaCategoria()
         {
-            //CargarViewBag();
+            CargarViewBag();
 
+            return View();
+            
+        }
+
+        public void CargarViewBag()
+        {
             using (var contexto = new ProyectoPrograEntities())
             {
-                var Productos = (from x in contexto.Categoria
-                                 select x).ToList();
+                var res = (from x in contexto.Categoria
+                           select x).ToList();
 
-                return View(Productos);
+                List<SelectListItem> lista = new List<SelectListItem>();
+
+                foreach (var item in res)
+                {
+                    lista.Add(new SelectListItem { Value = item.idCategoria.ToString(), Text = item.nombreCategoria });
+                }
+
+                ViewBag.comboCategorias = lista;
             }
         }
+
         public ActionResult VistaCarrito()
         {
             ViewBag.Message = "Carrito";

@@ -9,9 +9,9 @@ namespace Proyecto_TechPro.Entidades
     {
         public int idProducto { get; set; }
         public string nombreProducto { get; set; }
-        public decimal precio { get; set; }
+        public int? precio { get; set; }
         public string descripcion { get; set; }
-        public int idCategoria { get; set; }
+        public int? idCategoria { get; set; }
         public string imagen { get; set; }
     }
 }

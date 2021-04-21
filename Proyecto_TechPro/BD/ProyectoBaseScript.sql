@@ -1,24 +1,27 @@
 Create database ProyectoProgra; 
 
+
+
+create table Categoria(
+idCategoria int primary key, 
+nombreCategoria varchar(50)
+);
+
 create table Productos(
-idProducto int primary  key, 
+idProducto int primary key, 
 nombreProducto varchar(50),
 precio int, 
 descripcion varchar(100),
-idCategoria int unique, 
-imagen varchar(150) 
-)
+idCategoria int, 
+imagen varchar(150),
+FOREIGN KEY (idCategoria) REFERENCES Categoria(idCategoria) 
+);
 create table Invetario(
-idProducto int primary  key, 
+idProducto int primary key, 
 cantidad int,
 FOREIGN KEY (idProducto) REFERENCES Productos(idProducto)
-)
+);
 
-create table Categoria(
-idCategoria int primary  key, 
-nombreCategoria varchar(50),
-FOREIGN KEY (idCategoria) REFERENCES Productos(idCategoria)
-)
 create table Direccion(
 idDireccion int primary key,
 provincia varchar(25),
@@ -26,7 +29,21 @@ canton varchar (25),
 codigoPostal varchar (25),
 dirExacta varchar (100),
 indicaciones varchar (50)
-)
+);
+
+
+create table usuario(
+idUsuario int primary key,
+telefono int ,
+email  varchar(30),
+Pass varchar(30),
+idDireccion int ,
+nombre varchar (25),
+primerApellido varchar (25),
+segundoApellido varchar (25),
+Foreign Key (idDireccion) references Direccion(idDireccion)
+);
+
 create table Ordenes(
 idProducto int,
 cantidad int,
@@ -34,34 +51,156 @@ idDireccion int ,
 idUsuario int,
 idCategoria int,
 FOREIGN KEY (idProducto) REFERENCES Productos(idProducto),
-FOREIGN KEY (idCategoria) REFERENCES Productos(idCategoria),
+FOREIGN KEY (idCategoria) REFERENCES Categoria(idCategoria),
+FOREIGN KEY (idUsuario) REFERENCES usuario(idUsuario),
 Foreign Key (idDireccion) references Direccion(idDireccion)
-)
+);
 Create table administrador(
 idAdmin int primary key,
 email varchar(35),
+adminPass varchar(30),
 nombre varchar (20),
 primerApellido varchar (20),
 segundoApellido varchar(20),
-cedula int)
+cedula int);
 
-create table adminPassword(
-idAdmin int,
-pass varchar(30)
-Foreign Key (idAdmin) references administrador(idAdmin)
-)
-create table usuario(
-idUsuario int primary key,
-telefono int ,
-email  varchar(30),
-idDireccion int ,
-nombre varchar (25),
-primerApellido varchar (25),
-segundoApellido varchar (25),
-Foreign Key (idDireccion) references Direccion(idDireccion)
-)
-Create table Password(
-idUsuario int,
-Pass varchar(30)
-Foreign Key (idUsuario) references usuario(idUsuario)
-)
+	USE [ProyectoProgra]
+	GO
+
+	INSERT INTO [dbo].[Categoria]
+			   ([idCategoria]
+			   ,[nombreCategoria])
+		 VALUES
+			   (1, 'Componentes')
+	GO
+	INSERT INTO [dbo].[Categoria]
+			   ([idCategoria]
+			   ,[nombreCategoria])
+		 VALUES
+			   (2, 'Perifericos')
+	GO
+	INSERT INTO [dbo].[Categoria]
+			   ([idCategoria]
+			   ,[nombreCategoria])
+		 VALUES
+			   (3, 'Laptops')
+	GO
+	INSERT INTO [dbo].[Categoria]
+			   ([idCategoria]
+			   ,[nombreCategoria])
+		 VALUES
+			   (4, 'Smartphones')
+	GO
+
+
+-----------------------------------------------------------------
+
+
+USE [ProyectoProgra]
+GO
+
+INSERT INTO [dbo].[Productos]
+           ([idProducto]
+           ,[nombreProducto]
+           ,[precio]
+           ,[descripcion]
+           ,[idCategoria]
+           ,[imagen])
+     VALUES
+           (1
+           ,'Laptop ASUS G512LIHN054T'
+           ,990000
+           ,'Laptop gaming de la marca ASUS'
+           ,3
+           ,'asus_G512LIHN054T.png')
+GO
+INSERT INTO [dbo].[Productos]
+           ([idProducto]
+           ,[nombreProducto]
+           ,[precio]
+           ,[descripcion]
+           ,[idCategoria]
+           ,[imagen])
+     VALUES
+           (2
+           ,'Mouse Razer Basilisk'
+           ,35000
+           ,'Mose inalambrico de la marca Razer'
+           ,2
+           ,'razer_basilisk.png')
+GO
+INSERT INTO [dbo].[Productos]
+           ([idProducto]
+           ,[nombreProducto]
+           ,[precio]
+           ,[descripcion]
+           ,[idCategoria]
+           ,[imagen])
+     VALUES
+           (3
+           ,'Teclado mecanico Razer Blackwidow'
+           ,65000
+           ,'Teclado mechanico 60% de la marca Razer'
+           ,2
+           ,'razer_blackwidow.png')
+GO
+INSERT INTO [dbo].[Productos]
+           ([idProducto]
+           ,[nombreProducto]
+           ,[precio]
+           ,[descripcion]
+           ,[idCategoria]
+           ,[imagen])
+     VALUES
+           (4
+           ,'Headset gaming PS4-PC Astro A20'
+           ,95000
+           ,'Headset Astro a20 compatible con la consola PS$ y PC'
+           ,2
+           ,'astro_a20.png')
+GO
+INSERT INTO [dbo].[Productos]
+           ([idProducto]
+           ,[nombreProducto]
+           ,[precio]
+           ,[descripcion]
+           ,[idCategoria]
+           ,[imagen])
+     VALUES
+           (5
+           ,'Teclado Logitech G513'
+           ,44900
+           ,'Teclado mecanico de la marca Logitech'
+           ,2
+           ,'logitech_g502.png')
+GO
+INSERT INTO [dbo].[Productos]
+           ([idProducto]
+           ,[nombreProducto]
+           ,[precio]
+           ,[descripcion]
+           ,[idCategoria]
+           ,[imagen])
+     VALUES
+           (6
+           ,'Monitor Asus Rog Strix'
+           ,349900
+           ,'Monitor de la marca Asus con 240Hz'
+           ,2
+           ,'asus_rog_strix_XG32VQR.png')
+GO
+INSERT INTO [dbo].[Productos]
+           ([idProducto]
+           ,[nombreProducto]
+           ,[precio]
+           ,[descripcion]
+           ,[idCategoria]
+           ,[imagen])
+     VALUES
+           (7
+           ,'Silla Cougar Armor One'
+           ,349900
+           ,'Silla gaming de la marca Cougar'
+           ,2
+           ,'cougar_armor_one.png')
+GO
