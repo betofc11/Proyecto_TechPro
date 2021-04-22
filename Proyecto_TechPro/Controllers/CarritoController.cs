@@ -30,12 +30,14 @@ namespace Proyecto_TechPro.Controllers
 
         public ActionResult CarritoView()
         {
-
+            var nuevos = "";
+            //int idPs = int.Parse(idp);
             using (var contexto = new ProyectoPrograEntities())
             {
-                
 
 
+                List<Producto> prods = new List<Producto>();
+                prods = (List<Producto>)Session["ProductosCarrito"];
 
 
 
@@ -46,18 +48,12 @@ namespace Proyecto_TechPro.Controllers
                 }
                 else
                 {
-                    var idp = Int64.Parse( Session["ProductosCarrito"]);
-                    var resultado = (from x in contexto.Productos
-                                     where x.idProducto==idp
-                                     select x).ToList();
-                    List<Producto> prods = new List<Producto>();
-                    prods = (List<Producto>)Session["ProductosCarrito"];
-
+                  
                     List<Producto> prodNuevos = new List<Producto>();
                     foreach (var items in prods)
                     {
 
-
+                       
                         
                         prodNuevos.Add(new Producto
                         {
@@ -68,12 +64,25 @@ namespace Proyecto_TechPro.Controllers
                             imagen = items.imagen,
                             descripcion = items.descripcion
                         });
-                    }
-                }
-                return View(resultado);
-            }
 
+
+
+                        var resultado = (from x in contexto.Productos
+                                         where x.idProducto == items.idProducto
+                                 select x).ToList();
+
+                        
+                         View(resultado);
+                    }
+                    
+
+                }
+              
+                return View();
+            }
+        
         }
+       
 
     }
 }
