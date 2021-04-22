@@ -369,6 +369,7 @@
     <Content Include="Views\Home\AudifonosView.cshtml" />
     <Content Include="Views\Home\ComponentesPCView.cshtml" />
     <Content Include="Views\Home\SmartphonesView.cshtml" />
+    <Content Include="Views\Home\CarritoConsultaParcial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

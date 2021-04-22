@@ -91,7 +91,12 @@ cedula int);
 		 VALUES
 			   (4, 'Smartphones')
 	GO
-
+    	INSERT INTO [dbo].[Categoria]
+			   ([idCategoria]
+			   ,[nombreCategoria])
+		 VALUES
+			   (5, 'Televisores')
+	GO
 
 -----------------------------------------------------------------
 
@@ -203,4 +208,38 @@ INSERT INTO [dbo].[Productos]
            ,'Silla gaming de la marca Cougar'
            ,2
            ,'cougar_armor_one.png')
+GO
+
+INSERT INTO [dbo].[Productos]
+           ([idProducto]
+           ,[nombreProducto]
+           ,[precio]
+           ,[descripcion]
+           ,[idCategoria]
+           ,[imagen])
+     VALUES
+           (8
+           ,'Televisor Samsung'
+           ,1900000
+           ,' Televisor de 73 pulgadas'
+           ,2
+           ,'QLEDSamsung.jpg')
+GO
+
+
+
+INSERT INTO [dbo].[Productos]
+           ([idProducto]
+           ,[nombreProducto]
+           ,[precio]
+           ,[descripcion]
+           ,[idCategoria]
+           ,[imagen])
+     VALUES
+           (8
+           ,'IPHONE 12 PRO MAX'
+           ,850000
+           ,' IPHONE 128 GB 6 RAM'
+           ,4
+           ,'iphone12ProMax.png')
 GO

@@ -34,7 +34,8 @@
 <br />
 <br>
 <center>
-    <form>
+    @using (Html.BeginForm("AgregaItem", "Home", FormMethod.Post))
+    {
         <h2 style="font-family:Arial; font-size:30px"> Top de Categorias </h2>
         <br />
         <div style="text-align-last: justify;">
@@ -57,8 +58,8 @@
             </a>
 
         </div>
-    </form>
-</center>
+    }
+    </center>
 @*@{
     var categoriaBtn = Request.Form.GetValues.;
     if (categoriaBtn == 0)
