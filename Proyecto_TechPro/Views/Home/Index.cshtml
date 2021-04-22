@@ -5,6 +5,18 @@
 }
 
 
+<div id="divLoading" style="margin: 0px; padding: 0px; position: fixed; right: 0px;
+    top: 0px; width: 100%; height: 100%; background-color: rgba(255,255,255,0.7); z-index: 30001;
+    opacity: .8; filter: alpha(opacity=70);display:none">
+    <p style="position: absolute; top: 50%; left: 50%; color: White;">
+        <div class="d-flex flex-wrap justify-content-center" style="margin-top:25%;">
+        <div class="spinner-border " role="status" >
+            <span class="sr-only">Loading...</span>
+        </div>
+        </div>
+    </p>
+</div>
+
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -38,23 +50,33 @@
     {
         <h2 style="font-family:Arial; font-size:30px"> Top de Categorias </h2>
         <br />
-        <div style="text-align-last: justify;">
+        <div class="d-flex flex-wrap justify-content-around">
 
             <a href="@Url.Action("LaptopView", "Home")" name="lkLaptop" title="Laptops" class="links">
-                <img alt="laptops" src="@Url.Content("~/images/TopCategorias/laptops.jpg")">
+                <div>
+                    <img alt="laptops" src="@Url.Content("~/images/TopCategorias/laptops.jpg")">
+                </div>
             </a>
             <a href="@Url.Action("TelevisorView", "Home")" title="Televisor">
-                <img alt="televisor" src="@Url.Content("~/images/TopCategorias/televisores.jpg")">
+                <div>
+                    <img alt="televisor" src="@Url.Content("~/images/TopCategorias/televisores.jpg")">
+                </div>
             </a>
 
             <a href="@Url.Action("ComponentesPCView", "Home")" title="ComponentesPC">
-                <img alt="componentesPC" src="@Url.Content("~/images/TopCategorias/componentesPC.jpg")">
+                <div>
+                    <img alt="componentesPC" src="@Url.Content("~/images/TopCategorias/componentesPC.jpg")">
+                </div>
             </a>
             <a href="@Url.Action("SmartphonesView", "Home")" title="Smartphones">
-                <img alt="componentesPC" src="@Url.Content("~/images/TopCategorias/smartphones.jpg")">
+                <div>
+                    <img alt="componentesPC" src="@Url.Content("~/images/TopCategorias/smartphones.jpg")">
+                </div>
             </a>
             <a href="@Url.Action("AudifinosView", "Home")" title="Audifinos">
-                <img alt="audifinos" src="@Url.Content("~/images/TopCategorias/audifinos.jpg")">
+                <div>
+                    <img alt="audifinos" src="@Url.Content("~/images/TopCategorias/audifinos.jpg")">
+                </div>
             </a>
 
         </div>
@@ -76,7 +98,7 @@
             </div>
             <div class="card-footer justify-content-center">
                 <h6 class="precio text-center"><b>₡@item.precio</b></h6>
-                <a class="btn btn-success d-flex justify-content-center" itemid="@item.idProducto" onclick="agregarCarrito(this)">Agregar al carrito</a>
+                <button type="button" class="btn btn-success d-flex justify-content-center" style="width:100%;" itemid="@item.idProducto" onclick="agregarCarrito(this)">Agregar al carrito</button>
             </div>
         </div>
     }
