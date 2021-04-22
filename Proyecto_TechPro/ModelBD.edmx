@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ProyectoPrograModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="ProyectoPrograModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="administrador">
           <Key>
             <PropertyRef Name="idAdmin" />
@@ -75,7 +75,7 @@ warning 6013: The table/view 'ProyectoProgra.dbo.Ordenes' does not have a primar
           <Property Name="primerApellido" Type="varchar" MaxLength="25" />
           <Property Name="segundoApellido" Type="varchar" MaxLength="25" />
         </EntityType>
-        <Association Name="FK__Invetario__idPro__29572725">
+        <Association Name="FK__Invetario__idPro__3B75D760">
           <End Role="Productos" Type="Self.Productos" Multiplicity="1" />
           <End Role="Invetario" Type="Self.Invetario" Multiplicity="0..1" />
           <ReferentialConstraint>
@@ -89,17 +89,17 @@ warning 6013: The table/view 'ProyectoProgra.dbo.Ordenes' does not have a primar
         </Association>
         <!--Errors Found During Generation:
 error 6004: The table 'ProyectoProgra.dbo.Ordenes' is referenced by a relationship, but cannot be found.
-        <Association Name="FK__Ordenes__idCateg__33D4B598" />-->
+        <Association Name="FK__Ordenes__idCateg__4316F928" />-->
         <!--Errors Found During Generation:
 error 6004: The table 'ProyectoProgra.dbo.Ordenes' is referenced by a relationship, but cannot be found.
-        <Association Name="FK__Ordenes__idDirec__35BCFE0A" />-->
+        <Association Name="FK__Ordenes__idDirec__44FF419A" />-->
         <!--Errors Found During Generation:
 error 6004: The table 'ProyectoProgra.dbo.Ordenes' is referenced by a relationship, but cannot be found.
-        <Association Name="FK__Ordenes__idProdu__32E0915F" />-->
+        <Association Name="FK__Ordenes__idProdu__4222D4EF" />-->
         <!--Errors Found During Generation:
 error 6004: The table 'ProyectoProgra.dbo.Ordenes' is referenced by a relationship, but cannot be found.
-        <Association Name="FK__Ordenes__idUsuar__34C8D9D1" />-->
-        <Association Name="FK__Productos__idCat__267ABA7A">
+        <Association Name="FK__Ordenes__idUsuar__440B1D61" />-->
+        <Association Name="FK__Productos__idCat__38996AB5">
           <End Role="Categoria" Type="Self.Categoria" Multiplicity="0..1" />
           <End Role="Productos" Type="Self.Productos" Multiplicity="*" />
           <ReferentialConstraint>
@@ -111,7 +111,7 @@ error 6004: The table 'ProyectoProgra.dbo.Ordenes' is referenced by a relationsh
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__usuario__idDirec__2E1BDC42">
+        <Association Name="FK__usuario__idDirec__403A8C7D">
           <End Role="Direccion" Type="Self.Direccion" Multiplicity="0..1" />
           <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
           <ReferentialConstraint>
@@ -130,21 +130,20 @@ error 6004: The table 'ProyectoProgra.dbo.Ordenes' is referenced by a relationsh
           <EntitySet Name="Invetario" EntityType="Self.Invetario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Productos" EntityType="Self.Productos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="usuario" EntityType="Self.usuario" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Invetario__idPro__29572725" Association="Self.FK__Invetario__idPro__29572725">
+          <AssociationSet Name="FK__Invetario__idPro__3B75D760" Association="Self.FK__Invetario__idPro__3B75D760">
             <End Role="Productos" EntitySet="Productos" />
             <End Role="Invetario" EntitySet="Invetario" />
           </AssociationSet>
-          <AssociationSet Name="FK__Productos__idCat__267ABA7A" Association="Self.FK__Productos__idCat__267ABA7A">
+          <AssociationSet Name="FK__Productos__idCat__38996AB5" Association="Self.FK__Productos__idCat__38996AB5">
             <End Role="Categoria" EntitySet="Categoria" />
             <End Role="Productos" EntitySet="Productos" />
           </AssociationSet>
-          <AssociationSet Name="FK__usuario__idDirec__2E1BDC42" Association="Self.FK__usuario__idDirec__2E1BDC42">
+          <AssociationSet Name="FK__usuario__idDirec__403A8C7D" Association="Self.FK__usuario__idDirec__403A8C7D">
             <End Role="Direccion" EntitySet="Direccion" />
             <End Role="usuario" EntitySet="usuario" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ProyectoPrograModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">

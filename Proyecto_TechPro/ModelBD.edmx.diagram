@@ -14,6 +14,7 @@
         <AssociationConnector Association="ProyectoPrograModel.FK__Productos__idCat__267ABA7A" ManuallyRouted="false" />
         <AssociationConnector Association="ProyectoPrograModel.FK__usuario__idDirec__2E1BDC42" ManuallyRouted="false" />
         <AssociationConnector Association="ProyectoPrograModel.FK__Invetario__idPro__29572725" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ProyectoPrograModel.sysdiagrams" Width="1.5" PointX="7.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

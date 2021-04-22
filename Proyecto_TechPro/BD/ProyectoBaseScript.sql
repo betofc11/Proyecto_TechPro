@@ -1,6 +1,6 @@
 Create database ProyectoProgra; 
 
-
+use ProyectoProgra;
 
 create table Categoria(
 idCategoria int primary key, 
