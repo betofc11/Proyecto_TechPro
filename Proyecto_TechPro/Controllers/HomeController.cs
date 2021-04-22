@@ -213,12 +213,7 @@ namespace Proyecto_TechPro.Controllers
             }
         }
 
-        public ActionResult VistaCarrito()
-        {
-            ViewBag.Message = "Carrito";
-
-            return View("VistaCarrito");
-        }
+      
 
 
         public ActionResult LaptopView()

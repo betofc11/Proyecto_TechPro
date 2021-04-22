@@ -136,6 +136,7 @@
     <Compile Include="Categoria.cs">
       <DependentUpon>ModelBD.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\CarritoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Direccion.cs">
       <DependentUpon>ModelBD.tt</DependentUpon>
@@ -363,13 +364,12 @@
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Home\FiltrarCategoria.cshtml" />
-    <Content Include="Views\Home\VistaCarrito.cshtml" />
     <Content Include="Views\Home\LaptopView.cshtml" />
     <Content Include="Views\Home\TelevisorView.cshtml" />
     <Content Include="Views\Home\AudifonosView.cshtml" />
     <Content Include="Views\Home\ComponentesPCView.cshtml" />
     <Content Include="Views\Home\SmartphonesView.cshtml" />
-    <Content Include="Views\Home\CarritoConsultaParcial.cshtml" />
+    <Content Include="Views\Carrito\CarritoView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
