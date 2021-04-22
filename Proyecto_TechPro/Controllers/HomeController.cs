@@ -127,7 +127,7 @@ namespace Proyecto_TechPro.Controllers
 
                         Session["ProductosCarrito"] = prodNuevos;
                         Session["CantidadCarrito"] = prodNuevos.Count;
-
+                        
                     }
                 }
             }
@@ -188,13 +188,7 @@ namespace Proyecto_TechPro.Controllers
                 return View();
             
         }
-        public ActionResult CarritoConsultaParcial()
-        {
-            CargarViewBag();
-
-            return View();
-
-        }
+    
         public void CargarViewBag()
         {
             using (var contexto = new ProyectoPrograEntities())
