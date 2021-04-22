@@ -107,14 +107,14 @@ namespace Proyecto_TechPro.Controllers
                     {
                         foreach (var res in resultado)
                         {
-                            if (sesP.idProducto != res.idProducto)
+                            if (sesP.idProducto == res.idProducto)
                             {
                                 repeated = true;
                             }
                         }
                     }
 
-                    if (repeated)
+                    if (!repeated)
                     {
                         prodNuevos.Add(new Producto { 
                             idProducto = nuev.idProducto, 
