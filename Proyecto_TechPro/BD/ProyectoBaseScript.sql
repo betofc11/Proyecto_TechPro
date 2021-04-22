@@ -236,7 +236,7 @@ INSERT INTO [dbo].[Productos]
            ,[idCategoria]
            ,[imagen])
      VALUES
-           (8
+           (9
            ,'IPHONE 12 PRO MAX'
            ,850000
            ,' IPHONE 128 GB 6 RAM'
