@@ -198,6 +198,11 @@ namespace Proyecto_TechPro.Controllers
 
                 List<SelectListItem> lista = new List<SelectListItem>();
 
+                if (lista.Count == 0)
+                {
+                    lista.Add(new SelectListItem { Value = "", Text = "Todos" });
+                }
+
                 foreach (var item in res)
                 {
                     lista.Add(new SelectListItem { Value = item.idCategoria.ToString(), Text = item.nombreCategoria });
@@ -207,44 +212,33 @@ namespace Proyecto_TechPro.Controllers
             }
         }
 
-      
-
-
-        public ActionResult LaptopView()
+        public ActionResult SeleccionaCat(Productos cat)
         {
-            ViewBag.Message = "Laptos";
 
-            return View("LaptopView");
+            CargarViewBag();
+
+            if (cat.idCategoria != null)
+            {
+                using (var contexto = new ProyectoPrograEntities())
+                {
+                    var res = (from c in contexto.Productos
+                               where c.idCategoria == cat.idCategoria
+                               select c).ToList();
+
+                    return View("Index", res);
+                }
+            }
+            else
+            {
+                using (var contexto = new ProyectoPrograEntities())
+                {
+                    var res = (from c in contexto.Productos
+                               select c).ToList();
+
+                    return View("Index", res);
+                }
+            }
+            
         }
-
-        public ActionResult TelevisorView()
-        {
-            ViewBag.Message = "Televisor";
-
-            return View("TelevisorView");
-        }
-
-        public ActionResult ComponentesPCView()
-        {
-            //ViewBag.Message = "Laptos";
-
-            return View("ComponentesPCView");
-        }
-
-
-        public ActionResult AudifonosView()
-        {
-            //ViewBag.Message = "Laptos";
-
-            return View("AudifonosView");
-        }
-
-        public ActionResult SmartphonesView()
-        {
-            //ViewBag.Message = "Laptos";
-
-            return View("SmartphonesView");
-        }
-
     }
 }

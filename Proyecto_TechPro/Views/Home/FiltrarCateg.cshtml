@@ -1,0 +1,9 @@
+﻿@model Productos
+
+<div class="d-flex flex-wrap justify-content-end">
+    <label class="col-form-label mr-2 ">Categoria: </label>
+    @using (Html.BeginForm("SeleccionaCat", "Home", FormMethod.Post))
+    {
+        @Html.DropDownListFor(m => m.idCategoria, ViewBag.comboCategorias as IEnumerable<SelectListItem>, new { @class = "form-control", @onchange = @"form.submit();" })
+    }
+</div>

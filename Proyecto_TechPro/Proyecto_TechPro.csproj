@@ -365,15 +365,11 @@
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Home\FiltrarCategoria.cshtml" />
-    <Content Include="Views\Home\LaptopView.cshtml" />
-    <Content Include="Views\Home\TelevisorView.cshtml" />
-    <Content Include="Views\Home\AudifonosView.cshtml" />
-    <Content Include="Views\Home\ComponentesPCView.cshtml" />
-    <Content Include="Views\Home\SmartphonesView.cshtml" />
     <Content Include="Views\Carrito\CarritoView.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Login\Registrarse.cshtml" />
     <Content Include="Views\Login\RecuperarContrasena.cshtml" />
+    <Content Include="Views\Home\FiltrarCateg.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

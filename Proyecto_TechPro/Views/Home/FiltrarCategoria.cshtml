@@ -1,8 +1,15 @@
 ﻿
+@model Productos
+
 @{
+
     ViewBag.Title = "FiltrarCategoria";
-    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>FiltrarCategoria</h2>
+
+@using (Html.BeginForm("SeleccionaCat", "Home", FormMethod.Post))
+{
+    @Html.DropDownListFor(m => m.idCategoria, ViewBag.comboCategorias as IEnumerable<SelectListItem>, new { @class = "form-control", @onchange=@"form.submit();" })
+}
 

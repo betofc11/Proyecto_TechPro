@@ -29,3 +29,27 @@
     $(itemID).html('En el carrito');
 }
 
+
+function seleccionaCat(catID) {
+
+    $.ajax({
+        type: 'Post',
+        url: '/Home/SeleccionaCat',
+        data: {
+            cat: $(catID).attr("catID")
+        },
+        cache: false,
+        dataType: 'html',
+        success: function (data) {
+            alert("good");
+
+
+        },
+        error: function () {
+            alert("ERROR KRUK");
+        }
+
+
+    });
+}
+

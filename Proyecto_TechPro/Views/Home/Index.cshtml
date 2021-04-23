@@ -46,62 +46,74 @@
 <br />
 <br>
 <center>
-    @using (Html.BeginForm("AgregaItem", "Home", FormMethod.Post))
-    {
-        <h2 style="font-family:Arial; font-size:30px"> Top de Categorias </h2>
-        <br />
-        <div class="d-flex flex-wrap justify-content-around">
 
-            <a href="@Url.Action("LaptopView", "Home")" name="lkLaptop" title="Laptops" class="links">
-                <div>
-                    <img alt="laptops" src="@Url.Content("~/images/TopCategorias/laptops.jpg")">
-                </div>
-            </a>
-            <a href="@Url.Action("TelevisorView", "Home")" title="Televisor">
-                <div>
-                    <img alt="televisor" src="@Url.Content("~/images/TopCategorias/televisores.jpg")">
-                </div>
-            </a>
+    @Html.Partial("FiltrarCateg", new Productos())
 
-            <a href="@Url.Action("ComponentesPCView", "Home")" title="ComponentesPC">
-                <div>
-                    <img alt="componentesPC" src="@Url.Content("~/images/TopCategorias/componentesPC.jpg")">
-                </div>
-            </a>
-            <a href="@Url.Action("SmartphonesView", "Home")" title="Smartphones">
-                <div>
-                    <img alt="componentesPC" src="@Url.Content("~/images/TopCategorias/smartphones.jpg")">
-                </div>
-            </a>
-            <a href="@Url.Action("AudifonosView", "Home")" title="Audifinos">
-                <div>
-                    <img alt="audifinos" src="@Url.Content("~/images/TopCategorias/audifinos.jpg")">
-                </div>
-            </a>
-
-        </div>
-    }
-    </center>
+</center>
 <br>
 <br>
 <div class="card-deck d-flex flex-wrap justify-content-center">
 
+    @{
+        List<Proyecto_TechPro.Entidades.Producto> sesion = new List<Proyecto_TechPro.Entidades.Producto>();
+
+        sesion = (List<Proyecto_TechPro.Entidades.Producto>)Session["ProductosCarrito"];
+        bool repetido = false;
+        if (sesion == null)
+        {
+            sesion = new List<Proyecto_TechPro.Entidades.Producto>();
+        }
+
+    }
+
+
     @foreach (var item in Model)
     {
-        <div class="card">
-            <div class="text-center">
-                <img class="card-img-top align-content-center" alt="Imagen de pizza" src="~/images/productos/@item.imagen" style="max-width: 200px" />
+        foreach (var it in sesion)
+        {
+            if (it.idProducto == item.idProducto)
+            {
+                repetido = true;
+            }
+        }
+
+        if (repetido)
+        {
+            <div class="card">
+                <div class="text-center">
+                    <img class="card-img-top align-content-center" alt="Imagen de pizza" src="~/images/productos/@item.imagen" style="max-width: 200px" />
+                </div>
+                <div class="card-body">
+                    <input type="text" id="" value="@item.idProducto" hidden />
+                    <h5 class="card-title">@item.nombreProducto</h5>
+                </div>
+                <div class="card-footer justify-content-center">
+                    <h6 class="precio text-center"><b>₡@item.precio</b></h6>
+                    <button type="button" class="btn btn-secondary d-flex justify-content-center" style="width:100%;" itemid="@item.idProducto" onclick="agregarCarrito(this)" disabled>En el carrito</button>
+                </div>
             </div>
-            <div class="card-body">
-                <input type="text" id="" value="@item.idProducto" hidden />
-                <h5 class="card-title">@item.nombreProducto</h5>
+        }
+        else
+        {
+            <div class="card">
+                <div class="text-center">
+                    <img class="card-img-top align-content-center" alt="Imagen de pizza" src="~/images/productos/@item.imagen" style="max-width: 200px" />
+                </div>
+                <div class="card-body">
+                    <input type="text" id="" value="@item.idProducto" hidden />
+                    <h5 class="card-title">@item.nombreProducto</h5>
+                </div>
+                <div class="card-footer justify-content-center">
+                    <h6 class="precio text-center"><b>₡@item.precio</b></h6>
+                    <button type="button" class="btn btn-success d-flex justify-content-center" style="width:100%;" itemid="@item.idProducto" onclick="agregarCarrito(this)">Agregar al carrito</button>
+                </div>
             </div>
-            <div class="card-footer justify-content-center">
-                <h6 class="precio text-center"><b>₡@item.precio</b></h6>
-                <button type="button" class="btn btn-success d-flex justify-content-center" style="width:100%;" itemid="@item.idProducto" onclick="agregarCarrito(this)">Agregar al carrito</button>
-            </div>
-        </div>
+        }
+        repetido = false;
+
     }
+
+
 
 </div>
 <br />
