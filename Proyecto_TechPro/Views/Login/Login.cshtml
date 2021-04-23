@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewBag.Title = "Iniciar sesión";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="container-fluid">
+        <div class="row d-flex flex-wrap justify-content-around align-content-center">
+            <div class="col-lg-3 pr-0" style="margin:0px auto">  
+                        @*<h3 class="text-center m-0">
+            <img src="~/images/logo.png" height="80" alt="logo" class="my-3">
+        </h3>*@
+
+                        <div class="px-2 mt-2">
+                            <h2 class="heading heading-focus font-size-24 mb-2 text-center">¡Bienvenido! </h2>
+                            <p class="text-muted text-center">Inicie sesión y disfrute de nuestros servicios</p>
+
+                            <form class="form-horizontal my-4" action="index.html">
+
+                                <div class="form-group">
+                                    <label for="email">Correo electrónico</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon1"><i class="far fa-user"></i></span>
+                                        </div>
+                                        <input type="text" class="form-control" id="email" placeholder="usuario@dominio.com">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="contraseña">Contraseña</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon2"><i class="fa fa-key"></i></span>
+                                        </div>
+                                        <input type="password" class="form-control" id="contraseña" placeholder="Digite su contraseña">
+                                    </div>
+                                </div>
+
+                                <div class="form-group mb-0 row">
+                                    <div class="col-12 mt-2">
+                                        <button class="btn btn-dark btn-block waves-effect waves-light" type="button" onclick="window.location='@Url.Action("Index", "Home")'">Continuar<i class="fas fa-sign-in-alt ml-1"></i></button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div>
+                            <h6 class="text-center">¿No tiene una cuenta? Cree una.</h6>
+                            <h6 class="text-center">¿No puede acceder a su cuenta?</h6>
+                        </div>
+                    </div>
+            </div>
+        </div>

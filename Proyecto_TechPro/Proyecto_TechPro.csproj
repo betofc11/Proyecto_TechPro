@@ -138,6 +138,7 @@
     </Compile>
     <Compile Include="Controllers\CarritoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Direccion.cs">
       <DependentUpon>ModelBD.tt</DependentUpon>
     </Compile>
@@ -370,6 +371,9 @@
     <Content Include="Views\Home\ComponentesPCView.cshtml" />
     <Content Include="Views\Home\SmartphonesView.cshtml" />
     <Content Include="Views\Carrito\CarritoView.cshtml" />
+    <Content Include="Views\Login\Login.cshtml" />
+    <Content Include="Views\Login\Registrarse.cshtml" />
+    <Content Include="Views\Login\RecuperarContrasena.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

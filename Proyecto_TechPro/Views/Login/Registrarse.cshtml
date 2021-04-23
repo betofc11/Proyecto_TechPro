@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewBag.Title = "Registrarse";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    @@media (min-width: 576px){
+        .col-sm-2 {
+            max-width:16%;
+        }
+    }
+</style>
+
+<center>
+    <br />
+    <h1>Registrarse</h1>
+    <br />
+
+    <form>
+        <div class="form-group">
+            <label for="txt_email">Correo electrónico</label>
+            <input type="text" class="form-control" id="txt_email" placeholder="Ingrese el correo electrónico">
+        </div>
+        <div class="form-group">
+            <label for="txt_numero">Número de celular</label>
+            <input type="number" class="form-control" id="txt_numero" placeholder="Ingrese su número de teléfono">
+        </div>
+        <div class="form-group">
+            <label for="txt_nombre">Nombre</label>
+            <input type="text" class="form-control" id="txt_nombre" placeholder="Ingrese su nombre">
+        </div>
+        <div class="form-group">
+            <label for="txt_primer">Primer apellido</label>
+            <input type="text" class="form-control" id="txt_primer" placeholder="Ingrese su primer apellido">
+        </div>
+        <div class="form-group">
+            <label for="txt_segundo">Segundo apellido</label>
+            <input type="text" class="form-control" id="txt_segundo" placeholder="Ingrese su segundo apellido">
+        </div>
+        <div class="form-group">
+            <label for="txt_pass">Contraseña</label>
+            <input type="password" class="form-control" id="txt_pass" placeholder="Ingrese su contraseña">
+        </div>
+        <div class="form-group">
+            <label for="txt_pass1">Validación contraseña</label>
+            <input type="password" class="form-control" id="txt_pass1" placeholder="Repita su contraseña">
+        </div>
+        <div class="form-group ">
+            <label class="col-form-label pt-0" for="direccion">Direccion</label>
+            <textarea class="form-control" id="direccion" rows="4" placeholder="Ingrese su dirección física"></textarea>
+        </div>
+        <br />
+    </form>
+    <button class="btn btn-primary" onclick="">Crea tu cuenta TechPro</button>
+    <div id="guardar" style="display:none">
+    </div>
+    <br />
+    <h6 class="text-center">¿Ya tiene una cuenta? Inicie sesión</h6>
+    <br />
+</center>
