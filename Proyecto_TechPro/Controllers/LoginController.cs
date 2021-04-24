@@ -51,6 +51,7 @@ namespace Proyecto_TechPro.Controllers
                         us.segundoApellido = user.segundoApellido;
                         us.telefono = user.telefono;
                         us.Pass = user.Pass;
+                        contexto.usuario.Add(us);
                         contexto.SaveChanges();
 
                         return View("Login");
