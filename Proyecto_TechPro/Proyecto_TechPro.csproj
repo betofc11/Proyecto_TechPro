@@ -191,6 +191,7 @@
     <Content Include="images\carousel\carousel2.jpg" />
     <Content Include="images\carousel\carousel3.jpg" />
     <Content Include="images\contactenos.png" />
+    <Content Include="images\iconosSist\carritoVacio.png" />
     <Content Include="images\logo.png" />
     <Content Include="images\LogoMarcas\AMD_logo.png" />
     <Content Include="images\LogoMarcas\flx_Razer_green_hz_RGB.jpg" />
