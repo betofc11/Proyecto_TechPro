@@ -11,7 +11,7 @@
 <body>
     
     <div class="d-flex justify-content-center">
-        <img class="d-flex justify-content-center" src="~/images/logo.png" alt="Master Pizza" style="max-width:100%;" />
+        <img class="d-flex justify-content-center" src="~/images/logo.png" alt="TechPro" style="max-width:100%;" />
     </div>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -22,6 +22,7 @@
              id="navbarSupportedContent">
             <ul class="navbar-nav mb-2 mb-lg-0">
                 <li class="nav-item text-black-50">@Html.ActionLink("TechPro", "Index", "Home", new { @class = "nav-link" })</li>
+                <li class="nav-item menuPrincipal">@Html.ActionLink("Iniciar sesión", "Login", "Login", new { @class = "nav-link" })</li>
                 <li class="nav-item menuPrincipal">@Html.ActionLink("About", "About", "Home", new { @class = "nav-link" })</li>
                 <li class="nav-item menuPrincipal">@Html.ActionLink("Contacto", "Contact", "Home", new { @class = "nav-link" })</li>
             </ul>
