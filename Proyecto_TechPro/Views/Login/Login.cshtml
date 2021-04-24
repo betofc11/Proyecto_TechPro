@@ -45,8 +45,8 @@
                             </form>
                         </div>
                         <div>
-                            <h6 class="text-center">¿No tiene una cuenta? Cree una.</h6>
-                            <h6 class="text-center">¿No puede acceder a su cuenta?</h6>
+                            <h6 class="text-center">¿No tiene una cuenta? @Html.ActionLink("Cree una", "Registrarse", "Login")</h6>
+                            <h6 class="text-center">@Html.ActionLink("¿No puede acceder a su cuenta?", "RecuperarContraseña", "Login")</h6>
                         </div>
                     </div>
             </div>
