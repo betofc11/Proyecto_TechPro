@@ -136,6 +136,8 @@
     <Compile Include="Categoria.cs">
       <DependentUpon>ModelBD.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\AdminLoginController.cs" />
     <Compile Include="Controllers\CarritoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -175,6 +177,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Acciones\app.js" />
+    <Content Include="Acciones\appAdmin.js" />
     <Content Include="BD\ProyectoBaseScript.sql" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
@@ -370,9 +373,12 @@
     <Content Include="Views\Login\Registrarse.cshtml" />
     <Content Include="Views\Login\RecuperarContrasena.cshtml" />
     <Content Include="Views\Home\FiltrarCateg.cshtml" />
+    <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\AdminLogin\" />
+    <Folder Include="Views\Admin\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
