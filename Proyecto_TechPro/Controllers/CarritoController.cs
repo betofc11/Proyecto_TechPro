@@ -10,22 +10,7 @@ namespace Proyecto_TechPro.Controllers
     public class CarritoController : Controller
     {
         // GET: Carrito
-        public ActionResult Index()
-        {
-
-
-            if (ViewBag.CantidadCarrito == null)
-            {
-                ViewBag.CantidadCarrito = 0;
-            }
-
-            using (var contexto = new ProyectoPrograEntities())
-            {
-                var resultado = (from x in contexto.Productos
-                                 select x).ToList();
-                return View(resultado);
-            }
-        }
+   
 
 
         public ActionResult CarritoView()
@@ -82,7 +67,16 @@ namespace Proyecto_TechPro.Controllers
             }
         
         }
-       
 
+        public ActionResult FinalizarPedido()
+        {
+            ViewBag.Message = "Your application description page.";
+
+            return View();
+        }
     }
+
+   
+
+
 }
