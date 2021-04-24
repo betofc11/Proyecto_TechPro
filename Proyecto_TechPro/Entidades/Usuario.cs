@@ -10,11 +10,10 @@ namespace Proyecto_TechPro.Entidades
     public Nullable<int> telefono { get; set; }
     public string email { get; set; }
     public string Pass { get; set; }
-    public Nullable<int> idDireccion { get; set; }
+    public string Pass2 { get; set; }
     public string nombre { get; set; }
     public string primerApellido { get; set; }
     public string segundoApellido { get; set; }
-    public virtual Direccion Direccion { get; set; }
     }   
 
 
