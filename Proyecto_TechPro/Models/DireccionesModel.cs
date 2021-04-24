@@ -12,23 +12,23 @@ namespace Proyecto_TechPro.Models
     {
 
 
-        public DireccionApi ConsultarP()
-        {
-            using (var cliente = new HttpClient())
-            {
+        //public DireccionApi ConsultarP()
+        //{
+        //    using (var cliente = new HttpClient())
+        //    {
 
-                var url = ConfigurationManager.AppSettings["urlP"].ToString();
-                HttpResponseMessage respuesta = cliente.GetAsync(url).Result;
+        //        var url = ConfigurationManager.AppSettings["urlP"].ToString();
+        //        HttpResponseMessage respuesta = cliente.GetAsync(url).Result;
 
-                if (respuesta.IsSuccessStatusCode)
-                {
-                    var resultado = respuesta.Content.ReadAsAsync<DireccionApi>().Result;
-                    return resultado;
-                }
-            }
+        //        if (respuesta.IsSuccessStatusCode)
+        //        {
+        //            var resultado = respuesta.Content.ReadAsAsync<DireccionApi>().Result;
+        //            return resultado;
+        //        }
+        //    }
 
-            return null;
-        }
+        //    return null;
+        //}
 
     }
 }
