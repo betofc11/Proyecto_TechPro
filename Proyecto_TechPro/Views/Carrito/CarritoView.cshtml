@@ -4,50 +4,89 @@
     ViewBag.Title = "CarritoView";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@if (Session["ProductosCarrito"] != null)
+{
+    <h2>Carrito de Compra</h2>
 
-<h2>Carrito de Compra</h2>
+    <table class="table align-middle">
 
-<table class="table align-middle">
-
-    <thead>
-        <tr>
-            <th scope="col">Producto</th>
-            <th scope="col">Precio</th>
-            <th scope="col">Cantidad</th>
-            <th scope="col">Total</th>
-            <th scope="col"> </th>
-        </tr>
-    </thead>
-
-    @foreach (var item in Model)
-    {
-        <tbody>
+        <thead>
             <tr>
-                <th scope="row">   <img class="card-img-top align-content-center" alt="Imagen de pizza" src="~/images/productos/@item.imagen" style="max-width: 120px" /></th>
-                <td>₡@item.precio</td>
-                <td><input type="number" min="1" max="5" value="1" id="cantIn"></td>
-
-                <td>₡@item.precio</td>
-                <td>
-                    <button type="button" class="btn btn-danger btn-sm px-3">
-                        <i class="fas fa-times">Eliminar</i>
-                    </button>
-                </td>
+                <th scope="col">Producto</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Cantidad</th>
+                <th scope="col">Total</th>
+                <th scope="col"> </th>
             </tr>
+        </thead>
 
-        </tbody>
-    }
+        @foreach (var item in Model)
+        {
+            <tbody>
+                <tr>
+                    <th scope="row">   <img class="card-img-top align-content-center" alt="Imagen de pizza" src="~/images/productos/@item.imagen" style="max-width: 120px" /></th>
+                    <td>₡@item.precio</td>
+                    <td><input type="number" min="1" max="5" value="1" id="cantIn"></td>
 
-</table>
-<div style="display:flex;justify-content:space-evenly;">
-    <div>
-        <a href="@Url.Action("Index", "Home")">
-            <input id="Submit1" type="submit" value="Continuar Comprando" class="form-control btn-info" />
-        </a>
+                    <td>₡@item.precio</td>
+                    <td>
+                        <button type="button" class="btn btn-danger btn-sm px-3">
+                            <i class="fas fa-times">Eliminar</i>
+                        </button>
+                    </td>
+                </tr>
+
+            </tbody>
+        }
+
+    </table>
+    <div style="display:flex;justify-content:space-evenly;">
+        <div>
+            <a href="@Url.Action("Index", "Home")">
+                <input id="Submit1" type="submit" value="Continuar Comprando" class="form-control btn-info" />
+            </a>
+        </div>
+        <div>
+            <input id="Submit1" type="submit" value="Finalizar Pedido" class="form-control btn-dark" />
+        </div>
+
     </div>
-    <div>    
-    <input id="Submit1" type="submit" value="Finalizar Pedido" class="form-control btn-dark" />
-    </div>
 
-</div>
+}
+@if (Session["ProductosCarrito"] == null)
+{
+    <div style="display:flex;justify-content:center;">
+        <h2>Carrito de Compra</h2>
+        <br />
+
+    </div>
+    <div style="display:flex;justify-content:center;">
+
+        <p style="font-size:45px">Su carrito de compra está vacío.</p>
+    
+
+
+    </div>
+    <div style="display:flex;justify-content:center;">
+        <img width="80px" src="~/images/iconosSist/carritoVacio.png" />
+
+
+    </div>
+    <br />
+    <br />
+        <div style=" display: flex;justify-content: center;">
+            <div>
+                <a href="@Url.Action("Index", "Home")">
+                    <input id="Submit1" type="submit" value="Continuar Comprando" class="form-control btn-info" />
+                </a>
+            </div>
+
+
+        </div>
+        }
+
+
+
+
+
 

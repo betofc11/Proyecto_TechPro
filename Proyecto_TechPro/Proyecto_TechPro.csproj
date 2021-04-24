@@ -136,15 +136,12 @@
     <Compile Include="Categoria.cs">
       <DependentUpon>ModelBD.tt</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\AdminController.cs" />
-    <Compile Include="Controllers\AdminLoginController.cs" />
     <Compile Include="Controllers\CarritoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Direccion.cs">
       <DependentUpon>ModelBD.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entidades\Usuario.cs" />
     <Compile Include="Entidades\Producto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -167,6 +164,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelBD.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\DireccionesModel.cs" />
     <Compile Include="Models\HomeModel.cs" />
     <Compile Include="Productos.cs">
       <DependentUpon>ModelBD.tt</DependentUpon>
@@ -178,7 +176,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Acciones\app.js" />
-    <Content Include="Acciones\appAdmin.js" />
     <Content Include="BD\ProyectoBaseScript.sql" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
@@ -194,6 +191,7 @@
     <Content Include="images\carousel\carousel2.jpg" />
     <Content Include="images\carousel\carousel3.jpg" />
     <Content Include="images\contactenos.png" />
+    <Content Include="images\iconosSist\carritoVacio.png" />
     <Content Include="images\logo.png" />
     <Content Include="images\LogoMarcas\AMD_logo.png" />
     <Content Include="images\LogoMarcas\flx_Razer_green_hz_RGB.jpg" />
@@ -371,15 +369,14 @@
     <Content Include="Views\Home\FiltrarCategoria.cshtml" />
     <Content Include="Views\Carrito\CarritoView.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
-    <Content Include="Views\Login\Registrarse.cshtml" />
     <Content Include="Views\Login\RecuperarContrasena.cshtml" />
     <Content Include="Views\Home\FiltrarCateg.cshtml" />
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Views\Shared\_LayoutLogin.cshtml" />
+    <Content Include="Views\Login\Registrarse.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\AdminLogin\" />
-    <Folder Include="Views\Admin\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
