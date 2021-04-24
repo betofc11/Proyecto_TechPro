@@ -136,12 +136,15 @@
     <Compile Include="Categoria.cs">
       <DependentUpon>ModelBD.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\AdminLoginController.cs" />
     <Compile Include="Controllers\CarritoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Direccion.cs">
       <DependentUpon>ModelBD.tt</DependentUpon>
     </Compile>
+	<Compile Include="Entidades\Usuario.cs" />
     <Compile Include="Entidades\Producto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
