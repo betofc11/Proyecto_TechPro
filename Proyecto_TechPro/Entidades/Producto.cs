@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Web;
 
@@ -13,7 +14,10 @@ namespace Proyecto_TechPro.Entidades
         public string descripcion { get; set; }
         public int? idCategoria { get; set; }
         public string imagen { get; set; }
-      
+
+        [DefaultValue(1)]
+        public int estado { get; set; }
+
 
     }
 }
