@@ -144,7 +144,7 @@
     <Compile Include="Direccion.cs">
       <DependentUpon>ModelBD.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entidades\Admin.cs" />
+    <Compile Include="Entidades\ProductoVM.cs" />
     <Compile Include="Entidades\Usuario.cs" />
     <Compile Include="Entidades\Producto.cs" />
     <Compile Include="Global.asax.cs">
@@ -380,6 +380,7 @@
     <Content Include="Views\Home\FiltrarCateg.cshtml" />
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
     <Content Include="Views\Shared\_LayoutLogin.cshtml" />
+    <Content Include="Views\Carrito\EliminaCarrito.cshtml" />
     <Content Include="Views\Login\Registrarse.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\Productos.cshtml" />

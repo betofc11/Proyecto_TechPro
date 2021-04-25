@@ -1,4 +1,4 @@
-﻿@model Proyecto_TechPro.Entidades.Usuario 
+﻿@model Proyecto_TechPro.Entidades.Usuario
 @{
     ViewBag.Title = "Registrarse";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -11,44 +11,53 @@
 
     @using (Html.BeginForm("RegistrarUsuario", "Login", FormMethod.Post))
     {
+        @Html.AntiForgeryToken()
+
+        @Html.ValidationMessage("error", new { @class = "text-danger" })
 
         <div class="form-group">
             <label for="txt_email">Cedula</label>
             @Html.TextBoxFor(m => m.idUsuario, new { @class = "form-control", @type = "number", @placeholder = "Numero de cedula", @id = "txt_cedula" })
+            @Html.ValidationMessage("idUsuario", new { @class = "text-danger" })
         </div>
         <div class="form-group">
             <label for="txt_email">Correo electrónico</label>
             @Html.TextBoxFor(m => m.email, new { @class = "form-control", @placeholder = "Ingresar correo electronico", @id = "txt_email" })
+            @Html.ValidationMessage("email", new { @class = "text-danger" })
         </div>
         <div class="form-group">
             <label for="txt_numero">Número de celular</label>
             @Html.TextBoxFor(m => m.telefono, new { @class = "form-control", @placeholder = "Numero de telfono", @type = "number", @id = "txt_telefono" })
+            @Html.ValidationMessage("telefono", new { @class = "text-danger" })
         </div>
         <div class="form-group">
             <label for="txt_nombre">Nombre</label>
             @Html.TextBoxFor(m => m.nombre, new { @class = "form-control", @placeholder = "Nombre", @type = "text", @id = "txt_nombre" })
+            @Html.ValidationMessage("nombre", new { @class = "text-danger" })
         </div>
         <div class="form-group">
             <label for="txt_primer">Primer apellido</label>
             @Html.TextBoxFor(m => m.primerApellido, new { @class = "form-control", @placeholder = "Primer Apellido", @type = "text", @id = "txt_apellido1" })
+            @Html.ValidationMessage("primerApellido", new { @class = "text-danger" })
         </div>
         <div class="form-group">
             <label for="txt_segundo">Segundo apellido</label>
             @Html.TextBoxFor(m => m.segundoApellido, new { @class = "form-control", @placeholder = "Segundo Apellido", @type = "text", @id = "txt_apellido2" })
+            @Html.ValidationMessage("segundoApellido", new { @class = "text-danger" })
         </div>
         <div class="form-group">
             <label for="txt_pass">Contraseña</label>
             @Html.TextBoxFor(m => m.Pass, new { @class = "form-control", @placeholder = "Contraseña", @type = "password", @id = "txt_pass1" })
+            @Html.ValidationMessage("Pass", new { @class = "text-danger" })
         </div>
         <div class="form-group">
             <label for="txt_pass1">Validación contraseña</label>
             @Html.TextBoxFor(m => m.Pass2, new { @class = "form-control", @placeholder = "Confirmar contraseña", @type = "password", @id = "txt_pass2" })
+            @Html.ValidationMessage("Pass2", new { @class = "text-danger" })
         </div>
         <br />
         <button class="btn btn-primary" type="submit">Crea tu cuenta TechPro</button>
-
     }
-
 
     <div id="guardar" style="display:none">
     </div>

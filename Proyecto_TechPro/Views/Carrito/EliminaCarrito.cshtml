@@ -5,7 +5,7 @@
     var total = 0;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@if (Session["ProductosCarrito"] != null)
+@if (Session["CantidadCarrito"].ToString() != "0")
 {
     <h2>Carrito de Compra</h2>
 
@@ -41,12 +41,12 @@
 
                 </tbody>
 
-                total = total + (int)item.precio;
+                    total = total + (int)item.precio;
+
+                }
 
             }
-
-        }
-    </table>
+        </table>
     <br />
     <div class="input-field col s12 m4" style="text-align:right">
         <label for="disabled" style="font-size:26px">Total: </label>
@@ -71,7 +71,7 @@
     </div>
 
 }
-@if (Session["ProductosCarrito"] == null)
+@if (Session["CantidadCarrito"].ToString() == "0" )
 {
     <div style="display:flex;justify-content:center;">
         <h2>Carrito de Compra</h2>
