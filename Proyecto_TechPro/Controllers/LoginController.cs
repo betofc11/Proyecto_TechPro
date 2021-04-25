@@ -37,7 +37,7 @@ namespace Proyecto_TechPro.Controllers
 
             public ActionResult Registrarse()
         {
-            return RedirectToAction("Registrarse","login");
+            return View("Registrarse");
         }
 
         public ActionResult RegistrarUsuario(Usuario user)
@@ -69,16 +69,16 @@ namespace Proyecto_TechPro.Controllers
                         us.Pass = user.Pass;
                         contexto.usuario.Add(us);
                         contexto.SaveChanges();
-                        return RedirectToAction("Login","Login");
+                        return View("Login");
                     }
                 }
-                return RedirectToAction("Registrarse");
+                return View("Registrarse");
            }
         }
 
         public ActionResult RecuperarContrasena()
         {
-            return RedirectToAction("RecuperarContrasena","Login");
+            return View("RecuperarContrasena");
         }
 
     }
