@@ -10,18 +10,34 @@ namespace Proyecto_TechPro.Controllers
     public class LoginController : Controller
     {
         // GET: Login
-        public ActionResult Index()
-        {
-            return View();
-        }
         public ActionResult Login()
         {
-            return View();
+            return View("Login");
         }
 
-        public ActionResult Registrarse()
+        [HttpPost]
+        public ActionResult iniciarSesion(Usuario usuario)
         {
-            return View();
+            using (var contexto = new ProyectoPrograEntities())
+            {
+                var resultado = contexto.usuario.Where(x => x.email == usuario.email && x.Pass == usuario.Pass).FirstOrDefault();
+                if (resultado == null)
+                {
+                    ViewBag.Message = "El correo electronico o la contrasena no son validos";
+                    return View("Login", usuario);
+                }
+                else
+                {
+                    Session["userID"] = resultado;
+                }
+            }
+            ViewBag.Message = "¡Bienvenido " + usuario.nombre + "!";    
+            return RedirectToAction("Index","Home");
+            }
+
+            public ActionResult Registrarse()
+        {
+            return RedirectToAction("Registrarse","login");
         }
 
         public ActionResult RegistrarUsuario(Usuario user)
@@ -53,17 +69,16 @@ namespace Proyecto_TechPro.Controllers
                         us.Pass = user.Pass;
                         contexto.usuario.Add(us);
                         contexto.SaveChanges();
-
-                        return View("Login");
+                        return RedirectToAction("Login","Login");
                     }
                 }
-                return View("Registrarse");
+                return RedirectToAction("Registrarse");
            }
         }
 
         public ActionResult RecuperarContrasena()
         {
-            return View();
+            return RedirectToAction("RecuperarContrasena","Login");
         }
 
     }
