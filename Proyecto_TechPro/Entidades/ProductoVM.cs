@@ -14,6 +14,6 @@ namespace Proyecto_TechPro.Entidades
         public int idCategoria { get; set; }
         public string imagen { get; set; }
         public string total { get; set; }
-   
+    
     }
 }

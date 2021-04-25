@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "CarritoView";
+    var total = 0;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @if (Session["ProductosCarrito"] != null)
@@ -22,34 +23,38 @@
 
         @foreach (var item in Model)
         {
-            <tbody>
-                <tr>
-                    <th scope="row">   <img class="card-img-top align-content-center" alt="Imagen de pizza" src="~/images/productos/@item.imagen" style="max-width: 120px" /></th>
-                    <td>₡@item.precio</td>
-                    <td><input type="number" min="1" max="5"disabled  value="1" id="cantIn"></td>
+            if (item.estado == 1)
+            {
 
-                    <td>₡@item.precio</td>
-                    <td>
-                        @*<button type="button" class="btn btn-danger btn-sm px-3">
-            <i class="fas fa-times">Eliminar</i>
-        </button>*@
-                        <a class="btn" href="@Url.Action("EliminaCarrito", "Carrito", new { Producto = item.idProducto })">Eliminar</a>
-                    </td>
-                </tr>
+                <tbody>
+                    <tr>
+                        <th scope="row">   <img class="card-img-top align-content-center" alt="Imagen de pizza" src="~/images/productos/@item.imagen" style="max-width: 120px" /></th>
+                        <td>₡@item.precio</td>
+                        <td><input type="number" min="1" max="5" value="1" id="cantIn" disabled></td>
 
-            </tbody>
+                        <td>₡@item.precio</td>
+                        <td>
+                            <a class="btn" href="@Url.Action("EliminaCarrito", "Carrito", new { Producto = item.idProducto })">Eliminar</a>
+
+                        </td>
+                    </tr>
+
+                </tbody>
+
+                total = total + (int)item.precio;
+
+            }
+
         }
-
-
     </table>
     <br />
     <div class="input-field col s12 m4" style="text-align:right">
         <label for="disabled" style="font-size:26px">Total: </label>
-        <label id="total" name="total" style="font-size:45px" for="disabled">₡@ViewBag.Total</label>
-       
+        <label id="total" name="total" style="font-size:45px" for="disabled">₡@total</label>
+
     </div>
     <br />
-   
+
 
 
     <br />

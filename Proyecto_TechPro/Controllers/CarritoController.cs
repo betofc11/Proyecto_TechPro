@@ -40,6 +40,8 @@ namespace Proyecto_TechPro.Controllers
             }
 
         }
+
+
         public ActionResult EliminaCarrito(int Producto)
         {
 
@@ -51,34 +53,75 @@ namespace Proyecto_TechPro.Controllers
                 List<Producto> prods = new List<Producto>();
 
                 prods = (List<Producto>)Session["ProductosCarrito"];
-                var eliminado = false;
-                    for(int i=0;i<=prods.Count-1;i++)
+
+                foreach (var p in prods)
+                {
+
+
+                    if (p.idProducto == Producto)
                     {
-                    //while (eliminado != true) 
-                    //{
-                        var p = prods[i];
-                        if (p.idProducto == Producto)
-                        {
-                            var x = prods.Remove(p);
-                            Session["ProductosCarrito"] = prods;
-                            Session["CantidadCarrito"] = prods.Count;
-                            eliminado = true;
-                            i = prods.Count;
-                        }
-                        else
-                        {
-                            i++;
-                        }
-                        
-                    //}
-                       
+                        p.estado = 2;
+                        Session["ProductosCarrito"] = prods;
+                    
                     }
-                
+
+                }
+                var Contador = 0;
               
-                return View (prods);
-              
+                foreach (var it in prods)
+                {
+
+                    if (it.estado == 2)
+                    {
+                        Contador++;
+                    }
+                }
+                Session["CantidadCarrito"] = prods.Count - Contador;
+
+                return View(prods);
+
             }
         }
+
+        //public ActionResult EliminaCarrito(int Producto)
+        //{
+
+
+        //    using (var contexto = new ProyectoPrograEntities())
+        //    {
+
+
+        //        List<Producto> prods = new List<Producto>();
+
+        //        prods = (List<Producto>)Session["ProductosCarrito"];
+        //        var eliminado = false;
+        //            for(int i=0;i<=prods.Count-1;i++)
+        //            {
+        //            //while (eliminado != true) 
+        //            //{
+        //                var p = prods[i];
+        //                if (p.idProducto == Producto)
+        //                {
+        //                    var x = prods.Remove(p);
+        //                    Session["ProductosCarrito"] = prods;
+        //                    Session["CantidadCarrito"] = prods.Count;
+        //                    eliminado = true;
+        //                    i = prods.Count;
+        //                }
+        //                else
+        //                {
+        //                    i++;
+        //                }
+
+        //            //}
+
+        //            }
+
+
+        //        return View (prods);
+
+        //    }
+        //}
 
         // GET: Carrito
 
