@@ -12,7 +12,7 @@ namespace Proyecto_TechPro.Entidades
         public string nombre { get; set; }
         public string primerApellido { get; set; }
         public string segundoApellido { get; set; }
-        public int? cedula { get; set; }
+        public string cedula { get; set; }
         public int idAdmin { get; set; }
         public bool logueado { get; set; }
     }

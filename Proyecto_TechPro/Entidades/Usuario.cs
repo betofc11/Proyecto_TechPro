@@ -13,7 +13,7 @@ namespace Proyecto_TechPro.Entidades
         public int idUsuario { get; set; }
         [Required]
         [Display(Name = "teléfono")]
-        public Nullable<int> telefono { get; set; }
+        public string telefono { get; set; }
         [Required]
         [EmailAddress]
         [Display(Name = "correo electrónico")]

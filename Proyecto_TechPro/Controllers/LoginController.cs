@@ -47,7 +47,7 @@ namespace Proyecto_TechPro.Controllers
                 var resultado = (from x in contexto.usuario
                                  where x.email == user.email
                                  select x).FirstOrDefault();
-                if (resultado == null && 
+                if (resultado != null && 
                     user.idUsuario > 0 && 
                     user.email != null && 
                     user.nombre != null &&
@@ -55,7 +55,7 @@ namespace Proyecto_TechPro.Controllers
                     user.segundoApellido != null &&
                     user.Pass != null &&
                     user.Pass2 != null &&
-                    user.telefono > 0)
+                    user.telefono != null)
                 {
                     if (user.Pass == user.Pass2)
                     {

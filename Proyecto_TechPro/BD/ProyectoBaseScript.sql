@@ -24,7 +24,7 @@ FOREIGN KEY (idProducto) REFERENCES Productos(idProducto)
 );
 
 create table Direccion(
-idDireccion int primary key,
+idDireccion int IDENTITY(1,1) primary key,
 provincia varchar(25),
 canton varchar (25),
 codigoPostal varchar (25),
