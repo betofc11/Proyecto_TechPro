@@ -144,6 +144,7 @@
     <Compile Include="Direccion.cs">
       <DependentUpon>ModelBD.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entidades\Admin.cs" />
     <Compile Include="Entidades\ProductoVM.cs" />
     <Compile Include="Entidades\Usuario.cs" />
     <Compile Include="Entidades\Producto.cs" />
