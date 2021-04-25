@@ -1,20 +1,41 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
 namespace Proyecto_TechPro.Entidades
 {
-    public class Usuario { 
-    public int idUsuario { get; set; }
-    public Nullable<int> telefono { get; set; }
-    public string email { get; set; }
-    public string Pass { get; set; }
-    public string Pass2 { get; set; }
-    public string nombre { get; set; }
-    public string primerApellido { get; set; }
-    public string segundoApellido { get; set; }
-    }   
-
-
+    public class Usuario
+    {
+        [Required]
+        [Display(Name = "cédula")]
+        public int idUsuario { get; set; }
+        [Required]
+        [Display(Name = "teléfono")]
+        public Nullable<int> telefono { get; set; }
+        [Required]
+        [EmailAddress]
+        [Display(Name = "correo electrónico")]
+        public string email { get; set; }
+        [Required]
+        [DataType(DataType.Password)]
+        [StringLength(100, ErrorMessage = "La {0} debe tener al menos {1} caracteres", MinimumLength = 8)]
+        [Display(Name = "contraseña")]
+        public string Pass { get; set; }
+        [Required]
+        [DataType(DataType.Password)]
+        [StringLength(100, ErrorMessage = "La {0} debe tener al menos {1} caracteres", MinimumLength = 8)]
+        [Display(Name = "confirmar contraseña")]
+        [Compare("Pass", ErrorMessage = "Las contraseñas no coinciden")]
+        public string Pass2 { get; set; }
+        [Required]
+        public string nombre { get; set; }
+        [Required]
+        [Display(Name = "primer apellido")]
+        public string primerApellido { get; set; }
+        [Required]
+        [Display(Name = "segundo apellido")]
+        public string segundoApellido { get; set; }
+    }
 }
