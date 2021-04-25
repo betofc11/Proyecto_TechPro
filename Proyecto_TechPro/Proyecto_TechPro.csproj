@@ -144,7 +144,8 @@
     <Compile Include="Direccion.cs">
       <DependentUpon>ModelBD.tt</DependentUpon>
     </Compile>
-	<Compile Include="Entidades\Usuario.cs" />
+    <Compile Include="Entidades\Admin.cs" />
+    <Compile Include="Entidades\Usuario.cs" />
     <Compile Include="Entidades\Producto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -169,6 +170,9 @@
     </Compile>
     <Compile Include="Models\DireccionesModel.cs" />
     <Compile Include="Models\HomeModel.cs" />
+    <Compile Include="Ordenes.cs">
+      <DependentUpon>ModelBD.tt</DependentUpon>
+    </Compile>
     <Compile Include="Productos.cs">
       <DependentUpon>ModelBD.tt</DependentUpon>
     </Compile>
@@ -377,6 +381,8 @@
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
     <Content Include="Views\Shared\_LayoutLogin.cshtml" />
     <Content Include="Views\Login\Registrarse.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\Productos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -4,16 +4,20 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="8e8bb2c24799496cbc20290a42ebee04" Name="Diagram1">
-        <EntityTypeShape EntityType="ProyectoPrograModel.administrador" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProyectoPrograModel.Categoria" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProyectoPrograModel.Direccion" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProyectoPrograModel.Invetario" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProyectoPrograModel.Productos" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProyectoPrograModel.usuario" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+      <Diagram DiagramId="6c2b9860f7744b3b90098558487c7c71" Name="Diagram1">
+        <EntityTypeShape EntityType="ProyectoPrograModel.administrador" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoPrograModel.Categoria" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoPrograModel.Direccion" Width="1.5" PointX="3" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoPrograModel.Invetario" Width="1.5" PointX="5.25" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoPrograModel.Ordenes" Width="1.5" PointX="5.25" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoPrograModel.Productos" Width="1.5" PointX="3" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoPrograModel.usuario" Width="1.5" PointX="3" PointY="10.875" IsExpanded="true" />
+        <AssociationConnector Association="ProyectoPrograModel.FK__Ordenes__idCateg__38996AB5" ManuallyRouted="false" />
         <AssociationConnector Association="ProyectoPrograModel.FK__Productos__idCat__267ABA7A" ManuallyRouted="false" />
-        <AssociationConnector Association="ProyectoPrograModel.FK__usuario__idDirec__2E1BDC42" ManuallyRouted="false" />
-        <AssociationConnector Association="ProyectoPrograModel.FK__Invetario__idPro__29572725" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoPrograModel.FK__Ordenes__idDirec__3A81B327" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoPrograModel.FK__Invetario__idPro__2A4B4B5E" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoPrograModel.FK__Ordenes__idProdu__37A5467C" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoPrograModel.FK__Ordenes__idUsuar__398D8EEE" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

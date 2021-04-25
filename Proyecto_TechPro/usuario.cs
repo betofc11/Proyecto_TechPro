@@ -14,15 +14,21 @@ namespace Proyecto_TechPro
     
     public partial class usuario
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public usuario()
+        {
+            this.Ordenes = new HashSet<Ordenes>();
+        }
+    
         public int idUsuario { get; set; }
-        public Nullable<int> telefono { get; set; }
+        public string telefono { get; set; }
         public string email { get; set; }
         public string Pass { get; set; }
-        public Nullable<int> idDireccion { get; set; }
         public string nombre { get; set; }
         public string primerApellido { get; set; }
         public string segundoApellido { get; set; }
     
-        public virtual Direccion Direccion { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Ordenes> Ordenes { get; set; }
     }
 }
