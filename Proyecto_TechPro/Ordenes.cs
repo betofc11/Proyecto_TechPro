@@ -17,13 +17,12 @@ namespace Proyecto_TechPro
         public int idOrden { get; set; }
         public Nullable<int> idProducto { get; set; }
         public Nullable<int> cantidad { get; set; }
-        public Nullable<int> idDireccion { get; set; }
+        public string direccion { get; set; }
         public Nullable<int> idUsuario { get; set; }
         public Nullable<int> idCategoria { get; set; }
         public string estado { get; set; }
     
         public virtual Categoria Categoria { get; set; }
-        public virtual Direccion Direccion { get; set; }
         public virtual Productos Productos { get; set; }
         public virtual usuario usuario { get; set; }
     }

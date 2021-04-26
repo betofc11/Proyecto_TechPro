@@ -27,7 +27,6 @@ namespace Proyecto_TechPro
     
         public virtual DbSet<administrador> administrador { get; set; }
         public virtual DbSet<Categoria> Categoria { get; set; }
-        public virtual DbSet<Direccion> Direccion { get; set; }
         public virtual DbSet<Invetario> Invetario { get; set; }
         public virtual DbSet<Ordenes> Ordenes { get; set; }
         public virtual DbSet<Productos> Productos { get; set; }

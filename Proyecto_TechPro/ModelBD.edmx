@@ -24,17 +24,6 @@
           <Property Name="idCategoria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nombreCategoria" Type="varchar" MaxLength="50" />
         </EntityType>
-        <EntityType Name="Direccion">
-          <Key>
-            <PropertyRef Name="idDireccion" />
-          </Key>
-          <Property Name="idDireccion" Type="int" Nullable="false" />
-          <Property Name="provincia" Type="varchar" MaxLength="25" />
-          <Property Name="canton" Type="varchar" MaxLength="25" />
-          <Property Name="codigoPostal" Type="varchar" MaxLength="25" />
-          <Property Name="dirExacta" Type="varchar" MaxLength="100" />
-          <Property Name="indicaciones" Type="varchar" MaxLength="50" />
-        </EntityType>
         <EntityType Name="Invetario">
           <Key>
             <PropertyRef Name="idProducto" />
@@ -49,7 +38,7 @@
           <Property Name="idOrden" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="idProducto" Type="int" />
           <Property Name="cantidad" Type="int" />
-          <Property Name="idDireccion" Type="int" />
+          <Property Name="direccion" Type="varchar" MaxLength="150" />
           <Property Name="idUsuario" Type="int" />
           <Property Name="idCategoria" Type="int" />
           <Property Name="estado" Type="varchar" MaxLength="9" />
@@ -77,7 +66,7 @@
           <Property Name="primerApellido" Type="varchar" MaxLength="25" />
           <Property Name="segundoApellido" Type="varchar" MaxLength="25" />
         </EntityType>
-        <Association Name="FK__Invetario__idPro__2A4B4B5E">
+        <Association Name="FK__Invetario__idPro__29572725">
           <End Role="Productos" Type="Self.Productos" Multiplicity="1" />
           <End Role="Invetario" Type="Self.Invetario" Multiplicity="0..1" />
           <ReferentialConstraint>
@@ -89,7 +78,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Ordenes__idCateg__38996AB5">
+        <Association Name="FK__Ordenes__idCateg__2F10007B">
           <End Role="Categoria" Type="Self.Categoria" Multiplicity="0..1" />
           <End Role="Ordenes" Type="Self.Ordenes" Multiplicity="*" />
           <ReferentialConstraint>
@@ -101,19 +90,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Ordenes__idDirec__3A81B327">
-          <End Role="Direccion" Type="Self.Direccion" Multiplicity="0..1" />
-          <End Role="Ordenes" Type="Self.Ordenes" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Direccion">
-              <PropertyRef Name="idDireccion" />
-            </Principal>
-            <Dependent Role="Ordenes">
-              <PropertyRef Name="idDireccion" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Ordenes__idProdu__37A5467C">
+        <Association Name="FK__Ordenes__idProdu__2E1BDC42">
           <End Role="Productos" Type="Self.Productos" Multiplicity="0..1" />
           <End Role="Ordenes" Type="Self.Ordenes" Multiplicity="*" />
           <ReferentialConstraint>
@@ -125,7 +102,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Ordenes__idUsuar__398D8EEE">
+        <Association Name="FK__Ordenes__idUsuar__300424B4">
           <End Role="usuario" Type="Self.usuario" Multiplicity="0..1" />
           <End Role="Ordenes" Type="Self.Ordenes" Multiplicity="*" />
           <ReferentialConstraint>
@@ -152,28 +129,23 @@
         <EntityContainer Name="ProyectoPrograModelStoreContainer">
           <EntitySet Name="administrador" EntityType="Self.administrador" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Categoria" EntityType="Self.Categoria" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Direccion" EntityType="Self.Direccion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Invetario" EntityType="Self.Invetario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ordenes" EntityType="Self.Ordenes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Productos" EntityType="Self.Productos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="usuario" EntityType="Self.usuario" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Invetario__idPro__2A4B4B5E" Association="Self.FK__Invetario__idPro__2A4B4B5E">
+          <AssociationSet Name="FK__Invetario__idPro__29572725" Association="Self.FK__Invetario__idPro__29572725">
             <End Role="Productos" EntitySet="Productos" />
             <End Role="Invetario" EntitySet="Invetario" />
           </AssociationSet>
-          <AssociationSet Name="FK__Ordenes__idCateg__38996AB5" Association="Self.FK__Ordenes__idCateg__38996AB5">
+          <AssociationSet Name="FK__Ordenes__idCateg__2F10007B" Association="Self.FK__Ordenes__idCateg__2F10007B">
             <End Role="Categoria" EntitySet="Categoria" />
             <End Role="Ordenes" EntitySet="Ordenes" />
           </AssociationSet>
-          <AssociationSet Name="FK__Ordenes__idDirec__3A81B327" Association="Self.FK__Ordenes__idDirec__3A81B327">
-            <End Role="Direccion" EntitySet="Direccion" />
-            <End Role="Ordenes" EntitySet="Ordenes" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Ordenes__idProdu__37A5467C" Association="Self.FK__Ordenes__idProdu__37A5467C">
+          <AssociationSet Name="FK__Ordenes__idProdu__2E1BDC42" Association="Self.FK__Ordenes__idProdu__2E1BDC42">
             <End Role="Productos" EntitySet="Productos" />
             <End Role="Ordenes" EntitySet="Ordenes" />
           </AssociationSet>
-          <AssociationSet Name="FK__Ordenes__idUsuar__398D8EEE" Association="Self.FK__Ordenes__idUsuar__398D8EEE">
+          <AssociationSet Name="FK__Ordenes__idUsuar__300424B4" Association="Self.FK__Ordenes__idUsuar__300424B4">
             <End Role="usuario" EntitySet="usuario" />
             <End Role="Ordenes" EntitySet="Ordenes" />
           </AssociationSet>
@@ -205,20 +177,8 @@
           </Key>
           <Property Name="idCategoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombreCategoria" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Ordenes" Relationship="Self.FK__Ordenes__idCateg__38996AB5" FromRole="Categoria" ToRole="Ordenes" />
+          <NavigationProperty Name="Ordenes" Relationship="Self.FK__Ordenes__idCateg__2F10007B" FromRole="Categoria" ToRole="Ordenes" />
           <NavigationProperty Name="Productos" Relationship="Self.FK__Productos__idCat__267ABA7A" FromRole="Categoria" ToRole="Productos" />
-        </EntityType>
-        <EntityType Name="Direccion">
-          <Key>
-            <PropertyRef Name="idDireccion" />
-          </Key>
-          <Property Name="idDireccion" Type="Int32" Nullable="false" />
-          <Property Name="provincia" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-          <Property Name="canton" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-          <Property Name="codigoPostal" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-          <Property Name="dirExacta" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="indicaciones" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Ordenes" Relationship="Self.FK__Ordenes__idDirec__3A81B327" FromRole="Direccion" ToRole="Ordenes" />
         </EntityType>
         <EntityType Name="Invetario">
           <Key>
@@ -226,7 +186,7 @@
           </Key>
           <Property Name="idProducto" Type="Int32" Nullable="false" />
           <Property Name="cantidad" Type="Int32" />
-          <NavigationProperty Name="Productos" Relationship="Self.FK__Invetario__idPro__2A4B4B5E" FromRole="Invetario" ToRole="Productos" />
+          <NavigationProperty Name="Productos" Relationship="Self.FK__Invetario__idPro__29572725" FromRole="Invetario" ToRole="Productos" />
         </EntityType>
         <EntityType Name="Ordenes">
           <Key>
@@ -235,14 +195,13 @@
           <Property Name="idOrden" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="idProducto" Type="Int32" />
           <Property Name="cantidad" Type="Int32" />
-          <Property Name="idDireccion" Type="Int32" />
+          <Property Name="direccion" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="idUsuario" Type="Int32" />
           <Property Name="idCategoria" Type="Int32" />
           <Property Name="estado" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Categoria" Relationship="Self.FK__Ordenes__idCateg__38996AB5" FromRole="Ordenes" ToRole="Categoria" />
-          <NavigationProperty Name="Direccion" Relationship="Self.FK__Ordenes__idDirec__3A81B327" FromRole="Ordenes" ToRole="Direccion" />
-          <NavigationProperty Name="Productos" Relationship="Self.FK__Ordenes__idProdu__37A5467C" FromRole="Ordenes" ToRole="Productos" />
-          <NavigationProperty Name="usuario" Relationship="Self.FK__Ordenes__idUsuar__398D8EEE" FromRole="Ordenes" ToRole="usuario" />
+          <NavigationProperty Name="Categoria" Relationship="Self.FK__Ordenes__idCateg__2F10007B" FromRole="Ordenes" ToRole="Categoria" />
+          <NavigationProperty Name="Productos" Relationship="Self.FK__Ordenes__idProdu__2E1BDC42" FromRole="Ordenes" ToRole="Productos" />
+          <NavigationProperty Name="usuario" Relationship="Self.FK__Ordenes__idUsuar__300424B4" FromRole="Ordenes" ToRole="usuario" />
         </EntityType>
         <EntityType Name="Productos">
           <Key>
@@ -255,8 +214,8 @@
           <Property Name="idCategoria" Type="Int32" />
           <Property Name="imagen" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Categoria" Relationship="Self.FK__Productos__idCat__267ABA7A" FromRole="Productos" ToRole="Categoria" />
-          <NavigationProperty Name="Invetario" Relationship="Self.FK__Invetario__idPro__2A4B4B5E" FromRole="Productos" ToRole="Invetario" />
-          <NavigationProperty Name="Ordenes" Relationship="Self.FK__Ordenes__idProdu__37A5467C" FromRole="Productos" ToRole="Ordenes" />
+          <NavigationProperty Name="Invetario" Relationship="Self.FK__Invetario__idPro__29572725" FromRole="Productos" ToRole="Invetario" />
+          <NavigationProperty Name="Ordenes" Relationship="Self.FK__Ordenes__idProdu__2E1BDC42" FromRole="Productos" ToRole="Ordenes" />
         </EntityType>
         <EntityType Name="usuario">
           <Key>
@@ -269,9 +228,9 @@
           <Property Name="nombre" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Name="primerApellido" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Name="segundoApellido" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Ordenes" Relationship="Self.FK__Ordenes__idUsuar__398D8EEE" FromRole="usuario" ToRole="Ordenes" />
+          <NavigationProperty Name="Ordenes" Relationship="Self.FK__Ordenes__idUsuar__300424B4" FromRole="usuario" ToRole="Ordenes" />
         </EntityType>
-        <Association Name="FK__Ordenes__idCateg__38996AB5">
+        <Association Name="FK__Ordenes__idCateg__2F10007B">
           <End Role="Categoria" Type="Self.Categoria" Multiplicity="0..1" />
           <End Role="Ordenes" Type="Self.Ordenes" Multiplicity="*" />
           <ReferentialConstraint>
@@ -295,19 +254,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Ordenes__idDirec__3A81B327">
-          <End Role="Direccion" Type="Self.Direccion" Multiplicity="0..1" />
-          <End Role="Ordenes" Type="Self.Ordenes" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Direccion">
-              <PropertyRef Name="idDireccion" />
-            </Principal>
-            <Dependent Role="Ordenes">
-              <PropertyRef Name="idDireccion" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Invetario__idPro__2A4B4B5E">
+        <Association Name="FK__Invetario__idPro__29572725">
           <End Role="Productos" Type="Self.Productos" Multiplicity="1" />
           <End Role="Invetario" Type="Self.Invetario" Multiplicity="0..1" />
           <ReferentialConstraint>
@@ -319,7 +266,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Ordenes__idProdu__37A5467C">
+        <Association Name="FK__Ordenes__idProdu__2E1BDC42">
           <End Role="Productos" Type="Self.Productos" Multiplicity="0..1" />
           <End Role="Ordenes" Type="Self.Ordenes" Multiplicity="*" />
           <ReferentialConstraint>
@@ -331,7 +278,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Ordenes__idUsuar__398D8EEE">
+        <Association Name="FK__Ordenes__idUsuar__300424B4">
           <End Role="usuario" Type="Self.usuario" Multiplicity="0..1" />
           <End Role="Ordenes" Type="Self.Ordenes" Multiplicity="*" />
           <ReferentialConstraint>
@@ -346,12 +293,11 @@
         <EntityContainer Name="ProyectoPrograEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="administrador" EntityType="Self.administrador" />
           <EntitySet Name="Categoria" EntityType="Self.Categoria" />
-          <EntitySet Name="Direccion" EntityType="Self.Direccion" />
           <EntitySet Name="Invetario" EntityType="Self.Invetario" />
           <EntitySet Name="Ordenes" EntityType="Self.Ordenes" />
           <EntitySet Name="Productos" EntityType="Self.Productos" />
           <EntitySet Name="usuario" EntityType="Self.usuario" />
-          <AssociationSet Name="FK__Ordenes__idCateg__38996AB5" Association="Self.FK__Ordenes__idCateg__38996AB5">
+          <AssociationSet Name="FK__Ordenes__idCateg__2F10007B" Association="Self.FK__Ordenes__idCateg__2F10007B">
             <End Role="Categoria" EntitySet="Categoria" />
             <End Role="Ordenes" EntitySet="Ordenes" />
           </AssociationSet>
@@ -359,19 +305,15 @@
             <End Role="Categoria" EntitySet="Categoria" />
             <End Role="Productos" EntitySet="Productos" />
           </AssociationSet>
-          <AssociationSet Name="FK__Ordenes__idDirec__3A81B327" Association="Self.FK__Ordenes__idDirec__3A81B327">
-            <End Role="Direccion" EntitySet="Direccion" />
-            <End Role="Ordenes" EntitySet="Ordenes" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Invetario__idPro__2A4B4B5E" Association="Self.FK__Invetario__idPro__2A4B4B5E">
+          <AssociationSet Name="FK__Invetario__idPro__29572725" Association="Self.FK__Invetario__idPro__29572725">
             <End Role="Productos" EntitySet="Productos" />
             <End Role="Invetario" EntitySet="Invetario" />
           </AssociationSet>
-          <AssociationSet Name="FK__Ordenes__idProdu__37A5467C" Association="Self.FK__Ordenes__idProdu__37A5467C">
+          <AssociationSet Name="FK__Ordenes__idProdu__2E1BDC42" Association="Self.FK__Ordenes__idProdu__2E1BDC42">
             <End Role="Productos" EntitySet="Productos" />
             <End Role="Ordenes" EntitySet="Ordenes" />
           </AssociationSet>
-          <AssociationSet Name="FK__Ordenes__idUsuar__398D8EEE" Association="Self.FK__Ordenes__idUsuar__398D8EEE">
+          <AssociationSet Name="FK__Ordenes__idUsuar__300424B4" Association="Self.FK__Ordenes__idUsuar__300424B4">
             <End Role="usuario" EntitySet="usuario" />
             <End Role="Ordenes" EntitySet="Ordenes" />
           </AssociationSet>
@@ -403,18 +345,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Direccion">
-            <EntityTypeMapping TypeName="ProyectoPrograModel.Direccion">
-              <MappingFragment StoreEntitySet="Direccion">
-                <ScalarProperty Name="idDireccion" ColumnName="idDireccion" />
-                <ScalarProperty Name="provincia" ColumnName="provincia" />
-                <ScalarProperty Name="canton" ColumnName="canton" />
-                <ScalarProperty Name="codigoPostal" ColumnName="codigoPostal" />
-                <ScalarProperty Name="dirExacta" ColumnName="dirExacta" />
-                <ScalarProperty Name="indicaciones" ColumnName="indicaciones" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Invetario">
             <EntityTypeMapping TypeName="ProyectoPrograModel.Invetario">
               <MappingFragment StoreEntitySet="Invetario">
@@ -429,7 +359,7 @@
                 <ScalarProperty Name="idOrden" ColumnName="idOrden" />
                 <ScalarProperty Name="idProducto" ColumnName="idProducto" />
                 <ScalarProperty Name="cantidad" ColumnName="cantidad" />
-                <ScalarProperty Name="idDireccion" ColumnName="idDireccion" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
                 <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
                 <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
                 <ScalarProperty Name="estado" ColumnName="estado" />
