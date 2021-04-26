@@ -9,7 +9,7 @@
     @Styles.Render("~/Content/Site.css")
 </head>
 <body>
-    
+
     <div class="d-flex justify-content-center">
         <a href="@Url.Action("Index", "Home")" title="Logo">
             <img alt="logo" src="@Url.Content("~/images/logo.png")">
@@ -24,9 +24,19 @@
         <div class="collapse navbar-collapse justify-content-around"
              id="navbarSupportedContent">
             <ul class="navbar-nav mb-2 mb-lg-0">
-                <li class="nav-item text-black-50">@Html.ActionLink("TechPro", "Index", "Home", new { @class = "nav-link" })</li>
-                <li class="nav-item text-black-50">@Html.ActionLink("Iniciar sesión", "Login", "Login", new { @class = "nav-link" })</li>
-                <li class="nav-item menuPrincipal">@Html.ActionLink("Contacto", "Contact", "Home", new { @class = "nav-link" })</li>
+                <li class="nav-item text-black-50"><a class="nav-link" href="@Url.Action("Index", "Home")">TechPro</a></li>
+
+                @if (Session["userID"] != null)
+                {
+                    <li class="nav-item text-black-50"><a class="nav-link" href="@Url.Action("Perfil", "Login")">Mi perfil</a></li>
+                    <li class="nav-item text-black-50"><a class="nav-link" href="@Url.Action("cerrarSesion", "Login")">Cerrar sesión</a></li>
+                }
+                else
+                {
+                    <li class="nav-item text-black-50"><a class="nav-link" href="@Url.Action("Login", "Login")">Iniciar sesión</a></li>
+                }
+                <li class="nav-item text-black-50"><a class="nav-link" href="@Url.Action("Contact", "Home")">Contacto</a></li>
+
 
                 <li class="nav-item menuPrincipal">
                     <a href="@Url.Action("CarritoView", "Carrito")">
@@ -43,12 +53,23 @@
                             }
                         </div>
                     </a>
-
-
                 </li>
             </ul>
         </div>
     </nav>
+    <center>
+        @if (Session["userID"] != null)
+        {
+             
+            var usuario = (Proyecto_TechPro.Entidades.Usuario)Session["userID"];
+     
+            <h5>Bienvenido @usuario.nombre</h5>
+
+        }
+        else
+        {
+        }
+    </center>
     <br />
     <div class="container body-content">
         @RenderBody()

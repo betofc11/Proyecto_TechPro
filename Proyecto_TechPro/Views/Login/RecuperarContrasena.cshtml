@@ -1,20 +1,30 @@
-﻿
+﻿@model Proyecto_TechPro.Entidades.Usuario
+
 @{
-    ViewBag.Title = "RecuperarContrasena";
+    ViewBag.Title = "Recuperar Contraseña";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-
-
 <center>
-    <h4>Digite su correo electrónico para recuperar su contrasena</h4>
-    <br />
-    <form>
+    <h2>Recuperar Contraseña</h2>
+
+    @using (Html.BeginForm("olvidoContrasena", "login", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">   
+            <hr />
+            @Html.ValidationMessage("Error", new { @class = "text-danger" })
         <div class="form-group">
-            <input type="text" class="form-control" id="txt_email" placeholder="Ingrese el correo electrónico">
+            <label for="email">Correo electrónico</label>
+            @Html.TextBoxFor(m => m.email, new { @class = "form-control", @type = "text", @placeholder = "usuario@dominio.com", @id = "txt_email" })
+            @Html.ValidationMessage("email", new { @class = "text-danger" })
         </div>
-        <button class="btn btn-primary" onclick="">Continuar</button>
-        <div id="recuperar" style="display:none">
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Continuar" class="btn btn-success" />
+                </div>
+            </div>
         </div>
-    </form>
+    }
 </center>
