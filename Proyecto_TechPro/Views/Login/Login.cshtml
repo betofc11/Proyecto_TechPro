@@ -4,6 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<hr />
 <div class="container-fluid">
     <div class="row d-flex flex-wrap justify-content-around align-content-center">
         <div class="col-lg-3 pr-0" style="margin:0px auto">
@@ -34,20 +35,20 @@
                     </div>
                 }
             </div>
-            <br/>
+            <br />
             <div>
                 <h6 class="text-center">¿No tiene una cuenta? @Html.ActionLink("Cree una", "Registrarse", "Login")</h6>
-                <h6 class="text-center">@Html.ActionLink("¿No puede acceder a su cuenta?", "RecuperarContraseña", "Login")</h6>
+                <h6 class="text-center">@Html.ActionLink("¿No puede acceder a su cuenta?", "RecuperarContrasena", "Login")</h6>
             </div>
         </div>
     </div>
 </div>
 
-@if(ViewBag.Message != null)
+@if (ViewBag.Message != null)
 {
     <script type="text/javascript">
         window.onload = function () {
             alert("@ViewBag.message")
-        }; 
+        };
     </script>
 }
