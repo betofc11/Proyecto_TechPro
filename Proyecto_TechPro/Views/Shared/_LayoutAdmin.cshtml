@@ -32,17 +32,16 @@
         <div class="collapse navbar-collapse justify-content-around"
              id="navbarSupportedContent">
             <ul class="navbar-nav mb-2 mb-lg-0">
-                <li class="nav-item text-black-50"><a class="nav-link" href="@Url.Action("Index", "Admin")">TechPro</a></li>
                 <li class="nav-item text-black-50"><a class="nav-link" href="@Url.Action("Index", "Admin")">Ordenes</a></li>
                 <li class="nav-item text-black-50"><a class="nav-link" href="@Url.Action("Productos", "Admin")">Productos</a></li>
                 <li class="nav-item text-black-50"><a class="nav-link" href="@Url.Action("RegistrarAdmin", "AdminLogin")">Registrar Administrador</a></li>
                 <li class="nav-item menuPrincipal">
-                    @admn.nombre @admn.primerApellido @admn.segundoApellido
-                </li>
-                <li>
-
-                </li>
-            </ul>
+                    @if (admn != null)
+                    {
+                    <li class="nav-item text-black-50"><a class="btn btn-danger ml-5" href="@Url.Action("CerrarSesion", "AdminLogin")">@admn.nombre Cerrar sesión</a></li>
+                     
+                }
+                </ul>
         </div>
     </nav>
     <br />

@@ -5,13 +5,14 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
-
-<h2>Index Admin</h2>
-
+<div class="d-flex flex-wrap justify-content-center">
+    <h2 style="text-align:center">Listado de Ordenes</h2>
+</div>
+<br />
 
 @if (Model != null)
 {
-    <table class="table">
+    <table class="table table-striped">
         <thead>
             <tr>
                 <td>#</td>

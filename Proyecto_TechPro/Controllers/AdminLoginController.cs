@@ -48,10 +48,24 @@ namespace Proyecto_TechPro.Controllers
 
         public ActionResult RegistrarAdmin()
         {
-            return View();
+            if (Session["adminUser"] != null)
+            {
+                return View();
+            }
+            else
+            {
+                return View("Index");
+            }
+            
         }
 
-            public ActionResult Registrarse(Admin admin)
+        public ActionResult CerrarSesion()
+        {
+            Session.Abandon();
+            return RedirectToAction("Index", "AdminLogin");
+        }
+
+        public ActionResult Registrarse(Admin admin)
             {
                 using (var contexto = new ProyectoPrograEntities())
                 {
