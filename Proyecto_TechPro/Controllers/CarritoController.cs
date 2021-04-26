@@ -103,125 +103,125 @@ namespace Proyecto_TechPro.Controllers
             }
         }
 
-        //public ActionResult EliminaCarrito(int Producto)
-        //{
-
-
-        //    using (var contexto = new ProyectoPrograEntities())
-        //    {
-
-
-        //        List<Producto> prods = new List<Producto>();
-
-        //        prods = (List<Producto>)Session["ProductosCarrito"];
-        //        var eliminado = false;
-        //            for(int i=0;i<=prods.Count-1;i++)
-        //            {
-        //            //while (eliminado != true) 
-        //            //{
-        //                var p = prods[i];
-        //                if (p.idProducto == Producto)
-        //                {
-        //                    var x = prods.Remove(p);
-        //                    Session["ProductosCarrito"] = prods;
-        //                    Session["CantidadCarrito"] = prods.Count;
-        //                    eliminado = true;
-        //                    i = prods.Count;
-        //                }
-        //                else
-        //                {
-        //                    i++;
-        //                }
-
-        //            //}
-
-        //            }
-
-
-        //        return View (prods);
-
-        //    }
-        //}
-
-        // GET: Carrito
-
-
-
-        //public ActionResult CarritoView()
-        //{
-        //    var nuevos = "";
-        //    //int idPs = int.Parse(idp);
-        //    using (var contexto = new ProyectoPrograEntities())
-        //    {
-
-
-        //        List<Producto> prods = new List<Producto>();
-        //        prods = (List<Producto>)Session["ProductosCarrito"];
-
-
-
-        //        if (Session["ProductosCarrito"] == null)
-        //        {
-        //            ViewBag.Message = "NO HAY NADA";
-
-        //        }
-        //        else
-        //        {
-
-        //            List<Producto> prodNuevos = new List<Producto>();
-        //            foreach (var items in prods)
-        //            {
-
-
-
-        //                prodNuevos.Add(new Producto
-        //                {
-        //                    idProducto = items.idProducto,
-        //                    nombreProducto = items.nombreProducto,
-        //                    precio = items.precio,
-        //                    idCategoria = items.idCategoria,
-        //                    imagen = items.imagen,
-        //                    descripcion = items.descripcion
-        //                });
-
-
-
-        //                var resultado = (from x in contexto.Productos
-        //                                 where x.idProducto == items.idProducto
-        //                         select x).ToList();
-
-
-        //                 View(resultado);
-        //            }
-
-
-        //        }
-
-        //        return View();
-        //    }
-
-        //}
-        //public Task<ActionResult> VistaProductos(string id)
-        //{
-        //    var idP = Int64.Parse(id);
-        //    string Produc = " ";
-        //    using (var contexto = new ProyectoPrograEntities())
-        //    {
-        //        var Productos = (from x in contexto.Productos
-        //                         where x.idProducto == idP
-        //                         select x).FirstOrDefault();
-
-        //        Produc = Productos.ToString();
-
-        //    }
-        //    return (Productos);
-        //}
-        public ActionResult FinalizarPedido()
+        public ActionResult FinalizarPedido (int Producto)
         {
-            ViewBag.Message = "Your application description page.";
-
             return View();
         }
+
+            //public ActionResult EliminaCarrito(int Producto)
+            //{
+
+
+            //    using (var contexto = new ProyectoPrograEntities())
+            //    {
+
+
+            //        List<Producto> prods = new List<Producto>();
+
+            //        prods = (List<Producto>)Session["ProductosCarrito"];
+            //        var eliminado = false;
+            //            for(int i=0;i<=prods.Count-1;i++)
+            //            {
+            //            //while (eliminado != true) 
+            //            //{
+            //                var p = prods[i];
+            //                if (p.idProducto == Producto)
+            //                {
+            //                    var x = prods.Remove(p);
+            //                    Session["ProductosCarrito"] = prods;
+            //                    Session["CantidadCarrito"] = prods.Count;
+            //                    eliminado = true;
+            //                    i = prods.Count;
+            //                }
+            //                else
+            //                {
+            //                    i++;
+            //                }
+
+            //            //}
+
+            //            }
+
+
+            //        return View (prods);
+
+            //    }
+            //}
+
+            // GET: Carrito
+
+
+
+            //public ActionResult CarritoView()
+            //{
+            //    var nuevos = "";
+            //    //int idPs = int.Parse(idp);
+            //    using (var contexto = new ProyectoPrograEntities())
+            //    {
+
+
+            //        List<Producto> prods = new List<Producto>();
+            //        prods = (List<Producto>)Session["ProductosCarrito"];
+
+
+
+            //        if (Session["ProductosCarrito"] == null)
+            //        {
+            //            ViewBag.Message = "NO HAY NADA";
+
+            //        }
+            //        else
+            //        {
+
+            //            List<Producto> prodNuevos = new List<Producto>();
+            //            foreach (var items in prods)
+            //            {
+
+
+
+            //                prodNuevos.Add(new Producto
+            //                {
+            //                    idProducto = items.idProducto,
+            //                    nombreProducto = items.nombreProducto,
+            //                    precio = items.precio,
+            //                    idCategoria = items.idCategoria,
+            //                    imagen = items.imagen,
+            //                    descripcion = items.descripcion
+            //                });
+
+
+
+            //                var resultado = (from x in contexto.Productos
+            //                                 where x.idProducto == items.idProducto
+            //                         select x).ToList();
+
+
+            //                 View(resultado);
+            //            }
+
+
+            //        }
+
+            //        return View();
+            //    }
+
+            //}
+            //public Task<ActionResult> VistaProductos(string id)
+            //{
+            //    var idP = Int64.Parse(id);
+            //    string Produc = " ";
+            //    using (var contexto = new ProyectoPrograEntities())
+            //    {
+            //        var Productos = (from x in contexto.Productos
+            //                         where x.idProducto == idP
+            //                         select x).FirstOrDefault();
+
+            //        Produc = Productos.ToString();
+
+            //    }
+            //    return (Productos);
+            //}
+    
     }
 
 

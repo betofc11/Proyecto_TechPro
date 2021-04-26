@@ -386,6 +386,7 @@
     <Content Include="Views\Login\Registrarse.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\Productos.cshtml" />
+    <Content Include="Views\Carrito\FinalizarPedido.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
