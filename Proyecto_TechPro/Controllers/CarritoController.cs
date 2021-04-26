@@ -41,7 +41,32 @@ namespace Proyecto_TechPro.Controllers
 
         }
 
+        public ActionResult FinalizarPedidoP()
+        {
 
+            //int idPs = int.Parse(idp);k
+            //int idPs = int.Parse(idp);k
+            using (var contexto = new ProyectoPrograEntities())
+            {
+
+
+                List<Producto> prods = new List<Producto>();
+                prods = (List<Producto>)Session["ProductosCarrito"];
+
+                var Suma = 0;
+                if (Session["ProductosCarrito"] != null)
+                {
+                    foreach (var items in prods)
+                    {
+                        Suma = (int)(Suma + items.precio);
+                    }
+
+                }
+                ViewBag.Total = Suma;
+                return View(prods);
+            }
+
+        }
         public ActionResult EliminaCarrito(int Producto)
         {
 
@@ -103,8 +128,39 @@ namespace Proyecto_TechPro.Controllers
             }
         }
 
-        public ActionResult FinalizarPedido (int Producto)
+
+        public ActionResult GuardarPedido(OrdenesEnt ord)
         {
+            var usuario = (Proyecto_TechPro.Entidades.Usuario)Session["userID"]; 
+           
+          
+            var prod = (List<Producto>)Session["ProductosCarrito"];
+            using (var contexto = new ProyectoPrograEntities())
+            {
+
+                foreach (var item in prod)
+                {
+                    Ordenes ordeE = new Ordenes();
+                    ordeE.idProducto = item.idProducto;
+                    ordeE.cantidad = 1;
+                    ordeE.direccion = ord.direccion;
+                    ordeE.idUsuario = usuario.idUsuario;
+                    ordeE.idCategoria = item.idCategoria;
+                    ordeE.estado = "Pendiente";
+                    contexto.Ordenes.Add(ordeE);
+                    contexto.SaveChanges();
+                    ViewBag.MessageO = "¡Se ha registrado su Orden!";
+               
+                }
+
+                Session["ProductosCarrito"] = null;
+                return RedirectToAction("Index","Home");
+            }
+             
+        }
+        public ActionResult FinalizarPedido ()
+        {
+
             return View();
         }
 

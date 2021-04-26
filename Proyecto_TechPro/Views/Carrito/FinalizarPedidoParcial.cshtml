@@ -1,0 +1,62 @@
+﻿@model Proyecto_TechPro.Entidades.Producto
+
+
+@{
+
+
+    var total = 0;
+
+}
+
+<table class="table align-middle">
+
+    <thead>
+        <tr>
+            <th scope="col">Producto</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Cantidad</th>
+            <th scope="col">Total</th>
+            <th scope="col"> </th>
+        </tr>
+    </thead>
+    @if (Session["userID"] != null)
+    {
+        var prods = (List<Proyecto_TechPro.Entidades.Producto>)Session["ProductosCarrito"];
+
+
+    foreach (var item in prods)
+    {
+        if (item.estado == 1)
+        {
+
+            <tbody>
+                <tr>
+                    <th scope="row">   <img class="card-img-top align-content-center" alt="Imagen de pizza" src="~/images/productos/@item.imagen" style="max-width: 120px" /></th>
+                    <td>₡@item.precio</td>
+                    <td><input type="number" min="1" max="5" value="1" id="cantIn" disabled></td>
+
+                    <td>₡@item.precio</td>
+                    <td>
+                        <a class="btn" href="@Url.Action("EliminaCarrito", "Carrito", new { Producto = item.idProducto })">Eliminar</a>
+
+                    </td>
+                </tr>
+
+            </tbody>
+
+            total = total + (int)item.precio;
+
+        }
+
+    }
+    }
+</table>
+<br />
+<div class="input-field col s12 m4" style="text-align:right">
+    <label for="disabled" style="font-size:26px">Total: </label>
+    <label id="total" name="total" style="font-size:45px" for="disabled">₡@total</label>
+
+</div>
+@*<a href="@Url.Action("Confirmar", "Carrito")">
+        <input id="Submit1" type="submit" value="Finalizar Pedido" class="form-control btn-dark" />
+    </a>*@

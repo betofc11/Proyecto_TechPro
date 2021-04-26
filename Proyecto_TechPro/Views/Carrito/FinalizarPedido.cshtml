@@ -1,9 +1,81 @@
-﻿
+﻿@model Proyecto_TechPro.Entidades.OrdenesEnt
 @{
     ViewBag.Title = "FinalizarPedido";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var total = 0;
 }
 
-<h2>FinalizarPedido</h2>
 
 
+@if (Session["userID"] != null)
+{
+    using (Html.BeginForm("GuardarPedido", "Carrito", FormMethod.Post))
+    {
+        var usuario = (Proyecto_TechPro.Entidades.Usuario)Session["userID"];
+        <div class="container">
+            <div class="row">
+
+                <div class="col-6">
+
+                    <h2> Informacion de Contacto </h2>
+                    <br />
+                    <div class="">
+                        @Html.TextBoxFor(m => m.nombreUsuario, new { @class = "form-control", @type = "text", @placeholder = usuario.nombre, @disabled = "true" })
+                        <br />
+                        @Html.TextBoxFor(m => m.primerApellido, new { @class = "form-control", @placeholder = usuario.primerApellido, @type = "text", @disabled = "true" })
+                        <br />
+                        @Html.TextBoxFor(m => m.segundoApellido, new { @class = "form-control", @placeholder = usuario.segundoApellido, @type = "text", @disabled = "true" })
+                    </div>
+                    <br />
+                    <div class="">
+                        @Html.TextBoxFor(m => m.telefono, new { @class = "form-control", @type = "text", @placeholder = usuario.telefono, @disabled = "true" })
+                        <br />
+                        <input id="Submit1" type="text" disabled class="form-control" value="@usuario.email" />
+
+                        <br />
+                        @Html.TextAreaFor(m => m.direccion, new { @class = "form-control", @type = "text", @placeholder = "direccion", required = "required" })
+
+                    </div>
+                </div>
+                <div class="col-6">
+
+                    <h2> Productos</h2>
+
+                    @Html.Partial("FinalizarPedidoParcial", new Proyecto_TechPro.Entidades.Producto())
+
+
+
+                    <input id="Submit1" type="submit" value="Confirmar Pedido" class="form-control btn-outline-success" />
+
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+    }
+}
+else
+{
+    <h4 class="text-center">Por favor inicie sesion</h4>
+    <br />
+    <div>
+        <h6 class="text-center">@Html.ActionLink("Iniciar Sesion", "Login", "Login")</h6>
+        <h6 class="text-center">¿No tiene una cuenta? @Html.ActionLink("Cree una", "Registrarse", "Login")</h6>
+
+    </div>
+}
+
+@if (ViewBag.MessageO != null)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            alert("@ViewBag.messageO")
+        };
+    </script>
+}
+@*insertar en ordenes estos idproducto,cantidad,idusario,  (direcccion que lo escriba) idcategoria estado.pendiente*@
