@@ -16,11 +16,9 @@ namespace Proyecto_TechPro.Controllers
             {
                 var resultado = (from o in contexto.Ordenes
                                  from p in contexto.Productos
-                                 from d in contexto.Direccion
                                  from u in contexto.usuario
                                  from c in contexto.Categoria
                                  where p.idProducto == o.idProducto
-                                 where d.idDireccion == o.idDireccion
                                  where u.idUsuario == o.idUsuario
                                  where c.idCategoria == o.idCategoria
                                  select new
@@ -29,11 +27,7 @@ namespace Proyecto_TechPro.Controllers
                                      o.estado,
                                      p.nombreProducto,
                                      p.precio,
-                                     d.provincia,
-                                     d.canton,
-                                     d.codigoPostal,
-                                     d.dirExacta,
-                                     d.indicaciones,
+                                     o.direccion,
                                      u.nombre,
                                      u.primerApellido,
                                      u.segundoApellido,
@@ -53,11 +47,7 @@ namespace Proyecto_TechPro.Controllers
                             estado = item.estado,
                             nombreProd = item.nombreProducto,
                             precio = item.precio,
-                            provincia = item.provincia,
-                            canton = item.canton,
-                            codPostal = item.codigoPostal,
-                            dirExact = item.dirExacta,
-                            indica = item.indicaciones,
+                            direccion = item.direccion,
                             nombreUsuario = item.nombre,
                             primerApellido = item.primerApellido,
                             segundoApellido = item.segundoApellido,
@@ -84,11 +74,27 @@ namespace Proyecto_TechPro.Controllers
         }
         public ActionResult confirmarItem(string item)
         {
+            int val = int.Parse(item);
             using (var contexto = new ProyectoPrograEntities())
             {
-                var 
+                var result = (from x in contexto.Ordenes
+                              where x.idOrden == val
+                              select x).FirstOrDefault();
+
+                if (result != null)
+                {
+                    result.estado = "Enviado";
+                    contexto.SaveChanges();
+                    string vari = result.estado;
+                    return Json(vari, JsonRequestBehavior.AllowGet);
+                }
+                else
+                {
+                    return Json(null, JsonRequestBehavior.AllowGet);
+                }
+                
+
             }
-            return View();
         }
     }
 }

@@ -12,6 +12,9 @@
         cache: false,
         dataType: 'json',
         success: function (data) {
+            let ejemplo = $(idItem).attr("idItem").valueOf;
+            let xd =$(ejemplo)
+            alert(data + xd);
             $("#divLoading").hide();
             $("#badgeCart").text(data);
 

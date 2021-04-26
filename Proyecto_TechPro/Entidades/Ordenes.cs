@@ -11,11 +11,7 @@ namespace Proyecto_TechPro.Entidades
         public int? precio { get; set; }
         public string estado { get; set; }
         public string nombreProd { get; set; }
-        public string provincia { get; set; }
-        public string canton { get; set; }
-        public string codPostal { get; set; }
-        public string dirExact { get; set; }
-        public string indica { get; set; }
+        public string direccion { get; set; }
         public string nombreUsuario { get; set; }
         public string primerApellido { get; set; }
         public string segundoApellido { get; set; }
