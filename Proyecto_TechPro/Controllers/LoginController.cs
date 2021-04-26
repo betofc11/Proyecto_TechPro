@@ -100,7 +100,7 @@ namespace Proyecto_TechPro.Controllers
         public ActionResult olvidoContrasena(string email)
         {
             string mensaje = "";
-            bool estado = false;
+            bool restado = false;
 
             using (var contexto = new ProyectoPrograEntities())
             {

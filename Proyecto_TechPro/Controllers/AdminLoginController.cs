@@ -41,14 +41,52 @@ namespace Proyecto_TechPro.Controllers
                         });
 
                         Session["adminUser"] = adminUs;
-                        return RedirectToAction("Index","Admin");
+                        return RedirectToAction("RegistrarAdmin", "AdminLogin");
                     }
                 }
-
+                ViewBag.Message = "El correo electronico o la contrasena no son validos";
                 return View("Index");
             }
         }
+
+        public ActionResult RegistrarAdmin()
+        {
+            return View();
+        }
+
+            public ActionResult Registrarse(Admin admin)
+            {
+                using (var contexto = new ProyectoPrograEntities())
+                {
+                    var resultado = (from x in contexto.administrador
+                                     where x.email == admin.email
+                                     select x).FirstOrDefault();
+                    if (resultado == null &&
+                                       admin.email != null &&
+                                       admin.nombre != null &&
+                                       admin.primerApellido != null &&
+                                       admin.segundoApellido != null &&
+                                       admin.pass != null &&
+                                       admin.pass2 != null &&
+                                       admin.cedula != null)
+                    {
+                        if (admin.pass == admin.pass2)
+                        {
+                            administrador ad = new administrador();
+                            ad.email = admin.email;
+                            ad.nombre = admin.nombre;
+                            ad.primerApellido = admin.primerApellido;
+                            ad.segundoApellido = admin.segundoApellido;
+                            ad.cedula = admin.cedula;
+                            ad.adminPass = admin.pass;
+                            contexto.administrador.Add(ad);
+                            contexto.SaveChanges();
+                            ViewBag.Message = "Se ha registrado exitosamente!";
+                            return View("Index");
+                        }
+                    }
+                    return View("RegistrarAdmin");
+                }
+            }
+        }
     }
-
-
-}
