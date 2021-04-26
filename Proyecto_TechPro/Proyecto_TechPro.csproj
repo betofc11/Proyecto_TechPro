@@ -153,9 +153,6 @@
     <Compile Include="Controllers\CarritoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
-    <Compile Include="Direccion.cs">
-      <DependentUpon>ModelBD.tt</DependentUpon>
-    </Compile>
     <Compile Include="Entidades\Admin.cs" />
     <Compile Include="Entidades\passReset.cs" />
     <Compile Include="Entidades\Ordenes.cs" />
@@ -197,6 +194,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Acciones\admin.js" />
     <Content Include="Acciones\app.js" />
     <Content Include="BD\ProyectoBaseScript.sql" />
     <Content Include="Content\bootstrap-grid.css" />
@@ -396,6 +394,7 @@
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
     <Content Include="Views\Shared\_LayoutLogin.cshtml" />
     <Content Include="Views\Carrito\EliminaCarrito.cshtml" />
+    <Content Include="Views\Carrito\FinalizarPedido.cshtml" />
     <Content Include="Views\Login\Registrarse.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\Productos.cshtml" />
