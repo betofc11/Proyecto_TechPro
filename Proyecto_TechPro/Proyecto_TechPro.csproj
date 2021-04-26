@@ -400,6 +400,7 @@
     <Content Include="Views\Admin\Productos.cshtml" />
     <Content Include="Views\AdminLogin\Index.cshtml" />
     <Content Include="Views\Login\RestablecerContrasena.cshtml" />
+    <Content Include="Views\AdminLogin\RegistrarAdmin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

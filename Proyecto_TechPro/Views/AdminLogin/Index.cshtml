@@ -14,9 +14,13 @@
 
         <div class="px-2 mt-5" style="margin-top:15%;">
             <h2 class="heading heading-focus font-size-24 mb-2 text-center">Administrador TechPro </h2>
+            <hr />
 
             @using (Html.BeginForm("IniciarSesion", "AdminLogin", FormMethod.Post, new { @class = "form-horizontal my-4" }))
             {
+                @Html.AntiForgeryToken()
+
+                @Html.ValidationMessage("error", new { @class = "text-danger" })
 
                 <div class="form-group">
                     <label for="email">Correo electrónico</label>
@@ -25,6 +29,7 @@
                             <span class="input-group-text" id="basic-addon1"><i class="far fa-user"></i></span>
                         </div>
                         @Html.TextBoxFor(m => m.email, new { @class = "form-control", @type = "email", @placeholder = "Correo electronico", @id = "admin_login_email" })
+                        @Html.ValidationMessage("email", new { @class = "text-danger" })
                     </div>
                 </div>
 
@@ -35,6 +40,7 @@
                             <span class="input-group-text" id="basic-addon2"><i class="fa fa-key"></i></span>
                         </div>
                         @Html.TextBoxFor(m => m.pass, new { @class = "form-control", @type = "password", @placeholder = "Contraseña", @id = "admin_login_pass" })
+                        @Html.ValidationMessage("pass", new { @class = "text-danger" })
                     </div>
                 </div>
 
@@ -47,3 +53,12 @@
         </div>
     </div>
 </div>
+
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            alert("@ViewBag.message")
+        };
+    </script>
+}
