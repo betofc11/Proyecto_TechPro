@@ -1,0 +1,42 @@
+﻿@model Proyecto_TechPro.usuario
+
+@{
+    ViewBag.Title = "Perfil";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<Center>
+    <div>
+        <h4>Datos de usuario</h4>
+
+        <hr />
+        @if (Session["userID"] != null)
+        {
+
+            var usuario = (Proyecto_TechPro.Entidades.Usuario)Session["userID"];
+
+            <dl class="dl-horizontal">
+                <dt>
+                    <h5>Nombre completo: @usuario.nombre @usuario.primerApellido @usuario.segundoApellido <h5>
+                </dt>
+                <br />
+                <dt>
+                    <h5>Correo electrónico: @usuario.email</h5>
+                </dt>
+                <br />
+                <dd>
+                    <h5>Número de teléfono: @usuario.telefono</h5>
+                </dd>
+                <br />
+            </dl>
+
+        }
+        else
+        {
+        }
+
+    </div>
+</Center>
+<p>
+    @Html.ActionLink("Volver al inicio", "Index", "Home")
+</p>
