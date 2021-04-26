@@ -54,31 +54,51 @@ namespace Proyecto_TechPro.Controllers
 
                 prods = (List<Producto>)Session["ProductosCarrito"];
 
+                List<Producto> prodsT = new List<Producto>();
+                //prodsT = (List<Producto>)Session["ProductosCarrito"];
+                foreach (var item in prods)
+                {
+                    prodsT.Add(new Producto
+                    {
+                        idProducto = item.idProducto,
+                        nombreProducto = item.nombreProducto,
+                        descripcion = item.descripcion,
+                        precio = item.precio,
+                        estado = item.estado,
+                        idCategoria = item.idCategoria,
+                        imagen = item.imagen
+                    });
+                }
                 foreach (var p in prods)
                 {
 
 
                     if (p.idProducto == Producto)
                     {
-                        p.estado = 2;
-                        Session["ProductosCarrito"] = prods;
-                    
+
+                        var itemToRemove = prodsT.Single(r => r.idProducto == Producto);
+                        prodsT.Remove(itemToRemove);
+
+                        //p.estado = 2;
+                        //Session["ProductosCarrito"] = prods;
+
                     }
 
                 }
-                var Contador = 0;
-              
-                foreach (var it in prods)
-                {
+                //var Contador = 0;
 
-                    if (it.estado == 2)
-                    {
-                        Contador++;
-                    }
-                }
-                Session["CantidadCarrito"] = prods.Count - Contador;
+                //foreach (var it in prods)
+                //{
 
-                return View(prods);
+                //    if (it.estado == 2)
+                //    {
+                //        Contador++;
+                //    }
+                //}
+                Session["ProductosCarrito"] = prodsT;
+                Session["CantidadCarrito"] = prodsT.Count;
+
+                return View(prodsT);
 
             }
         }
