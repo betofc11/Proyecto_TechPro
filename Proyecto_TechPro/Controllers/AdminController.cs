@@ -13,69 +13,84 @@ namespace Proyecto_TechPro.Controllers
         // GET: Admin
         public ActionResult Index()
         {
-            using (var contexto = new ProyectoPrograEntities())
+            if (Session["adminUser"] != null)
             {
-                var resultado = (from o in contexto.Ordenes
-                                 from p in contexto.Productos
-                                 from u in contexto.usuario
-                                 from c in contexto.Categoria
-                                 where p.idProducto == o.idProducto
-                                 where u.idUsuario == o.idUsuario
-                                 where c.idCategoria == o.idCategoria
-                                 select new
-                                 {
-                                     o.idOrden,
-                                     o.estado,
-                                     p.nombreProducto,
-                                     p.precio,
-                                     o.direccion,
-                                     u.nombre,
-                                     u.primerApellido,
-                                     u.segundoApellido,
-                                     u.telefono,
-                                     c.nombreCategoria
-                                 }).ToList();
-
-                if (resultado != null)
+                using (var contexto = new ProyectoPrograEntities())
                 {
-                    List<OrdenesEnt> ord = new List<OrdenesEnt>();
+                    var resultado = (from o in contexto.Ordenes
+                                     from p in contexto.Productos
+                                     from u in contexto.usuario
+                                     from c in contexto.Categoria
+                                     where p.idProducto == o.idProducto
+                                     where u.idUsuario == o.idUsuario
+                                     where c.idCategoria == o.idCategoria
+                                     select new
+                                     {
+                                         o.idOrden,
+                                         o.estado,
+                                         p.nombreProducto,
+                                         p.precio,
+                                         o.direccion,
+                                         u.nombre,
+                                         u.primerApellido,
+                                         u.segundoApellido,
+                                         u.telefono,
+                                         c.nombreCategoria
+                                     }).ToList();
 
-                    foreach (var item in resultado)
+                    if (resultado != null)
                     {
-                        ord.Add(new OrdenesEnt
+                        List<OrdenesEnt> ord = new List<OrdenesEnt>();
+
+                        foreach (var item in resultado)
                         {
-                            idOrden = item.idOrden,
-                            estado = item.estado,
-                            nombreProd = item.nombreProducto,
-                            precio = item.precio,
-                            direccion = item.direccion,
-                            nombreUsuario = item.nombre,
-                            primerApellido = item.primerApellido,
-                            segundoApellido = item.segundoApellido,
-                            telefono = item.telefono,
-                            nombreCat = item.nombreCategoria
-                        });
+                            ord.Add(new OrdenesEnt
+                            {
+                                idOrden = item.idOrden,
+                                estado = item.estado,
+                                nombreProd = item.nombreProducto,
+                                precio = item.precio,
+                                direccion = item.direccion,
+                                nombreUsuario = item.nombre,
+                                primerApellido = item.primerApellido,
+                                segundoApellido = item.segundoApellido,
+                                telefono = item.telefono,
+                                nombreCat = item.nombreCategoria
+                            });
+                        }
+                        return View(ord);
                     }
-                    return View(ord);
+                    else
+                    {
+                        ViewBag.Productos = "No existen ordenes disponibles";
+                        return View();
+                    }
+
+
+
                 }
-                else
-                {
-                    ViewBag.Productos = "No existen ordenes disponibles";
-                    return View();
-                }
-
-
-
             }
+            else
+            {
+                return RedirectToAction("Index", "AdminLogin");
+            }
+            
         }
 
 
 
         public ActionResult Productos()
         {
-            CargarViewBag();
+            if (Session["adminUser"] != null)
+            {
+                CargarViewBag();
 
-            return View();
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "AdminLogin");
+            }
         }
         public ActionResult confirmarItem(string item)
         {

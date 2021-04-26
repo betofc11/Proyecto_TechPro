@@ -27,21 +27,18 @@ namespace Proyecto_TechPro.Controllers
 
                     if (result != null)
                     {
-                        List<Admin> adminUs = new List<Admin>();
+                        Admin adminUs = new Admin();
 
-                        adminUs.Add(new Admin
-                        {
-                            cedula = result.cedula,
-                            email = result.email,
-                            idAdmin = result.idAdmin,
-                            nombre = result.nombre,
-                            primerApellido = result.primerApellido,
-                            segundoApellido = result.segundoApellido,
-                            logueado = true
-                        });
+                        adminUs.cedula = result.cedula;
+                        adminUs.email = result.email;
+                        adminUs.idAdmin = result.idAdmin;
+                        adminUs.nombre = result.nombre;
+                        adminUs.primerApellido = result.primerApellido;
+                        adminUs.segundoApellido = result.segundoApellido;
+                        adminUs.logueado = true;
 
                         Session["adminUser"] = adminUs;
-                        return RedirectToAction("RegistrarAdmin", "AdminLogin");
+                        return RedirectToAction("Index", "Admin");
                     }
                 }
                 ViewBag.Message = "El correo electronico o la contrasena no son validos";
