@@ -5,41 +5,52 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Ordenes</h2>
-<br />
 <div class="d-flex flex-wrap justify-content-center">
-@using (Html.BeginForm("InsertaProducto", "Admin", FormMethod.Post, new { enctype = "multipart/form-data"}))
-{
+    <h2 style="text-align:center">Añadir productos</h2>
+</div>
+<br />
+<br />
 
-    <div class="form-group">
-        <label for="txt_producto">Nombre del producto:</label>
-        @Html.TextBoxFor(m => m.nombreProducto, new { @class = "form-control", @placeholder = "Nombre del producto", @id = "txt_producto" })
+<div class="d-flex flex-wrap justify-content-center">
+    @using (Html.BeginForm("InsertaProducto", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+    <div class="row">
+        <div class="col-6">
+            <div class="form-group">
+                <label for="txt_producto">Nombre del producto:</label>
+                @Html.TextBoxFor(m => m.nombreProducto, new { @class = "form-control", @placeholder = "Nombre del producto", @id = "txt_producto" })
+            </div>
+            <div class="form-group">
+                <label for="txt_producto">Categoria::</label>
+                @Html.DropDownListFor(m => m.idCategoria, ViewBag.comboCatProd as IEnumerable<SelectListItem>, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label for="txt_descripcion">Descripcion:</label>
+                @Html.TextBoxFor(m => m.descripcion, new { @class = "form-control", @placeholder = "Descripcion", @type = "text", @id = "txt_descripcion" })
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="form-group">
+                <label for="txt_imagen">Imagen:</label>
+                @Html.TextBoxFor(m => m.imagen, new { @class = "form-control", @placeholder = "Descripcion", @type = "hidden", @id = "txt_imagen" })
+                <input type="file" name="imageFile" id="imageFile" class="form-control" required />
+            </div>
+            <div class="form-group">
+                <label for="txt_precio">Cantidad:</label>
+                @Html.TextBoxFor(m => m.cantidad, new { @class = "form-control", @placeholder = "Cantidad", @type = "number", @id = "txt_cantidad" })
+            </div>
+            <div class="form-group">
+                <label for="txt_precio">Precio:</label>
+                @Html.TextBoxFor(m => m.precio, new { @class = "form-control", @placeholder = "Precio en colones", @type = "number", @id = "txt_precio" })
+            </div>
+        </div>
     </div>
-    <div class="form-group">
-        <label for="txt_producto">Categoria::</label>
-        @Html.DropDownListFor(m => m.idCategoria, ViewBag.comboCatProd as IEnumerable<SelectListItem>, new { @class = "form-control" })
-    </div>
-    <div class="form-group">
-        <label for="txt_descripcion">Descripcion:</label>
-        @Html.TextBoxFor(m => m.descripcion, new { @class = "form-control", @placeholder = "Descripcion", @type = "text", @id = "txt_descripcion" })
-    </div>
-    <div class="form-group">
-        <label for="txt_imagen">Imagen:</label>
-        @Html.TextBoxFor(m => m.imagen, new { @class = "form-control", @placeholder = "Descripcion", @type = "hidden", @id = "txt_imagen" })
-        <input type="file" name="imageFile" id="imageFile" class="form-control" required/>
-    </div>
-    <div class="form-group">
-        <label for="txt_precio">Cantidad:</label>
-        @Html.TextBoxFor(m => m.cantidad, new { @class = "form-control", @placeholder = "Cantidad", @type = "number", @id = "txt_cantidad" })
-    </div>
-    <div class="form-group">
-        <label for="txt_precio">Precio:</label>
-        @Html.TextBoxFor(m => m.precio, new { @class = "form-control", @placeholder = "Precio en colones", @type = "number", @id = "txt_precio" })
-    </div>
-    <br />
-    <button class="btn btn-success" type="submit">Insertar Producto</button>
-}
-    </div>
+        <br />
+        <div class="d-flex flex-wrap justify-content-center">
+            <button class="btn btn-success" type="submit">Insertar Producto</button>
+        </div>
+    }
+</div>
 
 
 

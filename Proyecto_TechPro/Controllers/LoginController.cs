@@ -174,6 +174,11 @@ namespace Proyecto_TechPro.Controllers
             }
         }
 
+        public ActionResult Perfil()
+        {
+            return View();
+        }
+
         //[HttpPost]
         //[ValidateAntiForgeryToken]
         //public ActionResult ResetPassword(Usuario model)
