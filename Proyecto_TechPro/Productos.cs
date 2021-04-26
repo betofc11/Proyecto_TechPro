@@ -14,6 +14,12 @@ namespace Proyecto_TechPro
     
     public partial class Productos
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Productos()
+        {
+            this.Ordenes = new HashSet<Ordenes>();
+        }
+    
         public int idProducto { get; set; }
         public string nombreProducto { get; set; }
         public Nullable<int> precio { get; set; }
@@ -23,5 +29,7 @@ namespace Proyecto_TechPro
     
         public virtual Categoria Categoria { get; set; }
         public virtual Invetario Invetario { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Ordenes> Ordenes { get; set; }
     }
 }

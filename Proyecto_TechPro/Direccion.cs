@@ -17,7 +17,7 @@ namespace Proyecto_TechPro
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Direccion()
         {
-            this.usuario = new HashSet<usuario>();
+            this.Ordenes = new HashSet<Ordenes>();
         }
     
         public int idDireccion { get; set; }
@@ -28,6 +28,6 @@ namespace Proyecto_TechPro
         public string indicaciones { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<usuario> usuario { get; set; }
+        public virtual ICollection<Ordenes> Ordenes { get; set; }
     }
 }

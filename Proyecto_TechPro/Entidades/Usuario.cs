@@ -13,19 +13,19 @@ namespace Proyecto_TechPro.Entidades
         public int idUsuario { get; set; }
         [Required]
         [Display(Name = "teléfono")]
-        public Nullable<int> telefono { get; set; }
+        public string telefono { get; set; }
         [Required]
         [EmailAddress]
         [Display(Name = "correo electrónico")]
         public string email { get; set; }
         [Required]
         [DataType(DataType.Password)]
-        [StringLength(100, ErrorMessage = "La {0} debe tener al menos {1} caracteres", MinimumLength = 8)]
+        [StringLength(15, ErrorMessage = "La {0} debe tener al menos 8 caracteres", MinimumLength = 8)]
         [Display(Name = "contraseña")]
         public string Pass { get; set; }
         [Required]
         [DataType(DataType.Password)]
-        [StringLength(100, ErrorMessage = "La {0} debe tener al menos {1} caracteres", MinimumLength = 8)]
+        [StringLength(15, ErrorMessage = "La {0} debe tener al menos 8 caracteres", MinimumLength = 8)]
         [Display(Name = "confirmar contraseña")]
         [Compare("Pass", ErrorMessage = "Las contraseñas no coinciden")]
         public string Pass2 { get; set; }
@@ -38,4 +38,6 @@ namespace Proyecto_TechPro.Entidades
         [Display(Name = "segundo apellido")]
         public string segundoApellido { get; set; }
     }
+
+
 }

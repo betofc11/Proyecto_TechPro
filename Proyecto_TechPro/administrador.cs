@@ -20,6 +20,6 @@ namespace Proyecto_TechPro
         public string nombre { get; set; }
         public string primerApellido { get; set; }
         public string segundoApellido { get; set; }
-        public Nullable<int> cedula { get; set; }
+        public string cedula { get; set; }
     }
 }

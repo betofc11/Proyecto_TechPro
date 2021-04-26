@@ -1,53 +1,53 @@
-﻿
+﻿@model Proyecto_TechPro.Entidades.Usuario
 @{
     ViewBag.Title = "Iniciar sesión";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-    <div class="container-fluid">
-        <div class="row d-flex flex-wrap justify-content-around align-content-center">
-            <div class="col-lg-3 pr-0" style="margin:0px auto">  
-                        @*<h3 class="text-center m-0">
-            <img src="~/images/logo.png" height="80" alt="logo" class="my-3">
-        </h3>*@
+<div class="container-fluid">
+    <div class="row d-flex flex-wrap justify-content-around align-content-center">
+        <div class="col-lg-3 pr-0" style="margin:0px auto">
+            <div class="px-2 mt-2">
+                <h2 class="heading heading-focus font-size-24 mb-2 text-center">¡Bienvenido! </h2>
+                <p class="text-muted text-center">Inicie sesión y disfrute de nuestros servicios</p>
 
-                        <div class="px-2 mt-2">
-                            <h2 class="heading heading-focus font-size-24 mb-2 text-center">¡Bienvenido! </h2>
-                            <p class="text-muted text-center">Inicie sesión y disfrute de nuestros servicios</p>
+                @using (Html.BeginForm("iniciarSesion", "Login", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
 
-                            <form class="form-horizontal my-4" action="index.html">
+                    @Html.ValidationMessage("error", new { @class = "text-danger" })
 
-                                <div class="form-group">
-                                    <label for="email">Correo electrónico</label>
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text" id="basic-addon1"><i class="far fa-user"></i></span>
-                                        </div>
-                                        <input type="text" class="form-control" id="email" placeholder="usuario@dominio.com">
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="contraseña">Contraseña</label>
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text" id="basic-addon2"><i class="fa fa-key"></i></span>
-                                        </div>
-                                        <input type="password" class="form-control" id="contraseña" placeholder="Digite su contraseña">
-                                    </div>
-                                </div>
-
-                                <div class="form-group mb-0 row">
-                                    <div class="col-12 mt-2">
-                                        <button class="btn btn-dark btn-block waves-effect waves-light" type="button" onclick="window.location='@Url.Action("Index", "Home")'">Continuar<i class="fas fa-sign-in-alt ml-1"></i></button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                        <div>
-                            <h6 class="text-center">¿No tiene una cuenta? @Html.ActionLink("Cree una", "Registrarse", "Login")</h6>
-                            <h6 class="text-center">@Html.ActionLink("¿No puede acceder a su cuenta?", "RecuperarContraseña", "Login")</h6>
+                    <div class="form-group">
+                        <label for="email">Correo electrónico</label>
+                        @Html.TextBoxFor(m => m.email, new { @class = "form-control", @type = "text", @placeholder = "usuario@dominio.com", @id = "txt_email" })
+                        @Html.ValidationMessage("email", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        <label for="contraseña">Contraseña</label>
+                        @Html.TextBoxFor(m => m.Pass, new { @class = "form-control", @placeholder = "Contraseña", @type = "password", @id = "txt_pass1" })
+                        @Html.ValidationMessage("Pass", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group mb-0 row">
+                        <div class="col-12 mt-2">
+                            <button class="btn btn-dark btn-block waves-effect waves-light" type="submit">Continuar<i class="fas fa-sign-in-alt ml-1"></i></button>
                         </div>
                     </div>
+                }
+            </div>
+            <br/>
+            <div>
+                <h6 class="text-center">¿No tiene una cuenta? @Html.ActionLink("Cree una", "Registrarse", "Login")</h6>
+                <h6 class="text-center">@Html.ActionLink("¿No puede acceder a su cuenta?", "RecuperarContraseña", "Login")</h6>
             </div>
         </div>
+    </div>
+</div>
+
+@if(ViewBag.Message != null)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            alert("@ViewBag.message")
+        }; 
+    </script>
+}

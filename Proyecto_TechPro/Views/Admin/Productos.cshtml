@@ -1,0 +1,55 @@
+﻿
+@model IEnumerable<Proyecto_TechPro.Entidades.OrdenesEnt>
+
+@{
+    ViewBag.Title = "Productos";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Ordenes</h2>
+<br />
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <td>#</td>
+            <td>Cliente</td>
+            <td>Telefono</td>
+            <td>Producto</td>
+            <td>Precio</td>
+            <td>Provincia</td>
+            <td>Canton</td>
+            <td>Direccion exacta</td>
+            <td>Zip Code</td>
+            <td>Estado</td>
+            <td>Accion</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.idOrden</td>
+                <td>@item.nombreUsuario @item.primerApellido @item.segundoApellido</td>
+                <td>@item.telefono</td>
+                <td>@item.nombreProd</td>
+                <td>₡@item.precio</td>
+                <td>@item.provincia</td>
+                <td>@item.canton</td>
+                <td>@item.dirExact @item.indica</td>
+                <td>@item.codPostal</td>
+                <td>@item.estado</td>
+                <td>
+                    <button class="btn btn-success btn-sm">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2" viewBox="0 0 16 16">
+                            <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z" />
+                        </svg>
+                    </button>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+

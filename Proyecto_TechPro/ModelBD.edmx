@@ -9,19 +9,19 @@
           <Key>
             <PropertyRef Name="idAdmin" />
           </Key>
-          <Property Name="idAdmin" Type="int" Nullable="false" />
+          <Property Name="idAdmin" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="email" Type="varchar" MaxLength="35" />
           <Property Name="adminPass" Type="varchar" MaxLength="30" />
           <Property Name="nombre" Type="varchar" MaxLength="20" />
           <Property Name="primerApellido" Type="varchar" MaxLength="20" />
           <Property Name="segundoApellido" Type="varchar" MaxLength="20" />
-          <Property Name="cedula" Type="int" />
+          <Property Name="cedula" Type="varchar" MaxLength="9" />
         </EntityType>
         <EntityType Name="Categoria">
           <Key>
             <PropertyRef Name="idCategoria" />
           </Key>
-          <Property Name="idCategoria" Type="int" Nullable="false" />
+          <Property Name="idCategoria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nombreCategoria" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Direccion">
@@ -42,20 +42,23 @@
           <Property Name="idProducto" Type="int" Nullable="false" />
           <Property Name="cantidad" Type="int" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'ProyectoProgra.dbo.Ordenes' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
         <EntityType Name="Ordenes">
+          <Key>
+            <PropertyRef Name="idOrden" />
+          </Key>
+          <Property Name="idOrden" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="idProducto" Type="int" />
           <Property Name="cantidad" Type="int" />
           <Property Name="idDireccion" Type="int" />
           <Property Name="idUsuario" Type="int" />
           <Property Name="idCategoria" Type="int" />
-        </EntityType>-->
+          <Property Name="estado" Type="varchar" MaxLength="9" />
+        </EntityType>
         <EntityType Name="Productos">
           <Key>
             <PropertyRef Name="idProducto" />
           </Key>
-          <Property Name="idProducto" Type="int" Nullable="false" />
+          <Property Name="idProducto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nombreProducto" Type="varchar" MaxLength="50" />
           <Property Name="precio" Type="int" />
           <Property Name="descripcion" Type="varchar" MaxLength="100" />
@@ -66,16 +69,15 @@ warning 6013: The table/view 'ProyectoProgra.dbo.Ordenes' does not have a primar
           <Key>
             <PropertyRef Name="idUsuario" />
           </Key>
-          <Property Name="idUsuario" Type="int" Nullable="false" />
-          <Property Name="telefono" Type="int" />
+          <Property Name="idUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="telefono" Type="varchar" MaxLength="8" />
           <Property Name="email" Type="varchar" MaxLength="30" />
           <Property Name="Pass" Type="varchar" MaxLength="30" />
-          <Property Name="idDireccion" Type="int" />
           <Property Name="nombre" Type="varchar" MaxLength="25" />
           <Property Name="primerApellido" Type="varchar" MaxLength="25" />
           <Property Name="segundoApellido" Type="varchar" MaxLength="25" />
         </EntityType>
-        <Association Name="FK__Invetario__idPro__29572725">
+        <Association Name="FK__Invetario__idPro__2A4B4B5E">
           <End Role="Productos" Type="Self.Productos" Multiplicity="1" />
           <End Role="Invetario" Type="Self.Invetario" Multiplicity="0..1" />
           <ReferentialConstraint>
@@ -87,18 +89,54 @@ warning 6013: The table/view 'ProyectoProgra.dbo.Ordenes' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <!--Errors Found During Generation:
-error 6004: The table 'ProyectoProgra.dbo.Ordenes' is referenced by a relationship, but cannot be found.
-        <Association Name="FK__Ordenes__idCateg__33D4B598" />-->
-        <!--Errors Found During Generation:
-error 6004: The table 'ProyectoProgra.dbo.Ordenes' is referenced by a relationship, but cannot be found.
-        <Association Name="FK__Ordenes__idDirec__35BCFE0A" />-->
-        <!--Errors Found During Generation:
-error 6004: The table 'ProyectoProgra.dbo.Ordenes' is referenced by a relationship, but cannot be found.
-        <Association Name="FK__Ordenes__idProdu__32E0915F" />-->
-        <!--Errors Found During Generation:
-error 6004: The table 'ProyectoProgra.dbo.Ordenes' is referenced by a relationship, but cannot be found.
-        <Association Name="FK__Ordenes__idUsuar__34C8D9D1" />-->
+        <Association Name="FK__Ordenes__idCateg__38996AB5">
+          <End Role="Categoria" Type="Self.Categoria" Multiplicity="0..1" />
+          <End Role="Ordenes" Type="Self.Ordenes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categoria">
+              <PropertyRef Name="idCategoria" />
+            </Principal>
+            <Dependent Role="Ordenes">
+              <PropertyRef Name="idCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ordenes__idDirec__3A81B327">
+          <End Role="Direccion" Type="Self.Direccion" Multiplicity="0..1" />
+          <End Role="Ordenes" Type="Self.Ordenes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Direccion">
+              <PropertyRef Name="idDireccion" />
+            </Principal>
+            <Dependent Role="Ordenes">
+              <PropertyRef Name="idDireccion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ordenes__idProdu__37A5467C">
+          <End Role="Productos" Type="Self.Productos" Multiplicity="0..1" />
+          <End Role="Ordenes" Type="Self.Ordenes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Productos">
+              <PropertyRef Name="idProducto" />
+            </Principal>
+            <Dependent Role="Ordenes">
+              <PropertyRef Name="idProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ordenes__idUsuar__398D8EEE">
+          <End Role="usuario" Type="Self.usuario" Multiplicity="0..1" />
+          <End Role="Ordenes" Type="Self.Ordenes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="idUsuario" />
+            </Principal>
+            <Dependent Role="Ordenes">
+              <PropertyRef Name="idUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Productos__idCat__267ABA7A">
           <End Role="Categoria" Type="Self.Categoria" Multiplicity="0..1" />
           <End Role="Productos" Type="Self.Productos" Multiplicity="*" />
@@ -111,36 +149,37 @@ error 6004: The table 'ProyectoProgra.dbo.Ordenes' is referenced by a relationsh
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__usuario__idDirec__2E1BDC42">
-          <End Role="Direccion" Type="Self.Direccion" Multiplicity="0..1" />
-          <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Direccion">
-              <PropertyRef Name="idDireccion" />
-            </Principal>
-            <Dependent Role="usuario">
-              <PropertyRef Name="idDireccion" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="ProyectoPrograModelStoreContainer">
           <EntitySet Name="administrador" EntityType="Self.administrador" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Categoria" EntityType="Self.Categoria" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Direccion" EntityType="Self.Direccion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Invetario" EntityType="Self.Invetario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ordenes" EntityType="Self.Ordenes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Productos" EntityType="Self.Productos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="usuario" EntityType="Self.usuario" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Invetario__idPro__29572725" Association="Self.FK__Invetario__idPro__29572725">
+          <AssociationSet Name="FK__Invetario__idPro__2A4B4B5E" Association="Self.FK__Invetario__idPro__2A4B4B5E">
             <End Role="Productos" EntitySet="Productos" />
             <End Role="Invetario" EntitySet="Invetario" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ordenes__idCateg__38996AB5" Association="Self.FK__Ordenes__idCateg__38996AB5">
+            <End Role="Categoria" EntitySet="Categoria" />
+            <End Role="Ordenes" EntitySet="Ordenes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ordenes__idDirec__3A81B327" Association="Self.FK__Ordenes__idDirec__3A81B327">
+            <End Role="Direccion" EntitySet="Direccion" />
+            <End Role="Ordenes" EntitySet="Ordenes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ordenes__idProdu__37A5467C" Association="Self.FK__Ordenes__idProdu__37A5467C">
+            <End Role="Productos" EntitySet="Productos" />
+            <End Role="Ordenes" EntitySet="Ordenes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ordenes__idUsuar__398D8EEE" Association="Self.FK__Ordenes__idUsuar__398D8EEE">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="Ordenes" EntitySet="Ordenes" />
           </AssociationSet>
           <AssociationSet Name="FK__Productos__idCat__267ABA7A" Association="Self.FK__Productos__idCat__267ABA7A">
             <End Role="Categoria" EntitySet="Categoria" />
             <End Role="Productos" EntitySet="Productos" />
-          </AssociationSet>
-          <AssociationSet Name="FK__usuario__idDirec__2E1BDC42" Association="Self.FK__usuario__idDirec__2E1BDC42">
-            <End Role="Direccion" EntitySet="Direccion" />
-            <End Role="usuario" EntitySet="usuario" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -152,20 +191,21 @@ error 6004: The table 'ProyectoProgra.dbo.Ordenes' is referenced by a relationsh
           <Key>
             <PropertyRef Name="idAdmin" />
           </Key>
-          <Property Name="idAdmin" Type="Int32" Nullable="false" />
+          <Property Name="idAdmin" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="email" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
           <Property Name="adminPass" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="primerApellido" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="segundoApellido" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="cedula" Type="Int32" />
+          <Property Name="cedula" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Categoria">
           <Key>
             <PropertyRef Name="idCategoria" />
           </Key>
-          <Property Name="idCategoria" Type="Int32" Nullable="false" />
+          <Property Name="idCategoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombreCategoria" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Ordenes" Relationship="Self.FK__Ordenes__idCateg__38996AB5" FromRole="Categoria" ToRole="Ordenes" />
           <NavigationProperty Name="Productos" Relationship="Self.FK__Productos__idCat__267ABA7A" FromRole="Categoria" ToRole="Productos" />
         </EntityType>
         <EntityType Name="Direccion">
@@ -178,7 +218,7 @@ error 6004: The table 'ProyectoProgra.dbo.Ordenes' is referenced by a relationsh
           <Property Name="codigoPostal" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Name="dirExacta" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="indicaciones" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="usuario" Relationship="Self.FK__usuario__idDirec__2E1BDC42" FromRole="Direccion" ToRole="usuario" />
+          <NavigationProperty Name="Ordenes" Relationship="Self.FK__Ordenes__idDirec__3A81B327" FromRole="Direccion" ToRole="Ordenes" />
         </EntityType>
         <EntityType Name="Invetario">
           <Key>
@@ -186,35 +226,63 @@ error 6004: The table 'ProyectoProgra.dbo.Ordenes' is referenced by a relationsh
           </Key>
           <Property Name="idProducto" Type="Int32" Nullable="false" />
           <Property Name="cantidad" Type="Int32" />
-          <NavigationProperty Name="Productos" Relationship="Self.FK__Invetario__idPro__29572725" FromRole="Invetario" ToRole="Productos" />
+          <NavigationProperty Name="Productos" Relationship="Self.FK__Invetario__idPro__2A4B4B5E" FromRole="Invetario" ToRole="Productos" />
+        </EntityType>
+        <EntityType Name="Ordenes">
+          <Key>
+            <PropertyRef Name="idOrden" />
+          </Key>
+          <Property Name="idOrden" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idProducto" Type="Int32" />
+          <Property Name="cantidad" Type="Int32" />
+          <Property Name="idDireccion" Type="Int32" />
+          <Property Name="idUsuario" Type="Int32" />
+          <Property Name="idCategoria" Type="Int32" />
+          <Property Name="estado" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Categoria" Relationship="Self.FK__Ordenes__idCateg__38996AB5" FromRole="Ordenes" ToRole="Categoria" />
+          <NavigationProperty Name="Direccion" Relationship="Self.FK__Ordenes__idDirec__3A81B327" FromRole="Ordenes" ToRole="Direccion" />
+          <NavigationProperty Name="Productos" Relationship="Self.FK__Ordenes__idProdu__37A5467C" FromRole="Ordenes" ToRole="Productos" />
+          <NavigationProperty Name="usuario" Relationship="Self.FK__Ordenes__idUsuar__398D8EEE" FromRole="Ordenes" ToRole="usuario" />
         </EntityType>
         <EntityType Name="Productos">
           <Key>
             <PropertyRef Name="idProducto" />
           </Key>
-          <Property Name="idProducto" Type="Int32" Nullable="false" />
+          <Property Name="idProducto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombreProducto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="precio" Type="Int32" />
           <Property Name="descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="idCategoria" Type="Int32" />
           <Property Name="imagen" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Categoria" Relationship="Self.FK__Productos__idCat__267ABA7A" FromRole="Productos" ToRole="Categoria" />
-          <NavigationProperty Name="Invetario" Relationship="Self.FK__Invetario__idPro__29572725" FromRole="Productos" ToRole="Invetario" />
+          <NavigationProperty Name="Invetario" Relationship="Self.FK__Invetario__idPro__2A4B4B5E" FromRole="Productos" ToRole="Invetario" />
+          <NavigationProperty Name="Ordenes" Relationship="Self.FK__Ordenes__idProdu__37A5467C" FromRole="Productos" ToRole="Ordenes" />
         </EntityType>
         <EntityType Name="usuario">
           <Key>
             <PropertyRef Name="idUsuario" />
           </Key>
-          <Property Name="idUsuario" Type="Int32" Nullable="false" />
-          <Property Name="telefono" Type="Int32" />
+          <Property Name="idUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="telefono" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
           <Property Name="email" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="Pass" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="idDireccion" Type="Int32" />
           <Property Name="nombre" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Name="primerApellido" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Name="segundoApellido" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Direccion" Relationship="Self.FK__usuario__idDirec__2E1BDC42" FromRole="usuario" ToRole="Direccion" />
+          <NavigationProperty Name="Ordenes" Relationship="Self.FK__Ordenes__idUsuar__398D8EEE" FromRole="usuario" ToRole="Ordenes" />
         </EntityType>
+        <Association Name="FK__Ordenes__idCateg__38996AB5">
+          <End Role="Categoria" Type="Self.Categoria" Multiplicity="0..1" />
+          <End Role="Ordenes" Type="Self.Ordenes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categoria">
+              <PropertyRef Name="idCategoria" />
+            </Principal>
+            <Dependent Role="Ordenes">
+              <PropertyRef Name="idCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Productos__idCat__267ABA7A">
           <End Role="Categoria" Type="Self.Categoria" Multiplicity="0..1" />
           <End Role="Productos" Type="Self.Productos" Multiplicity="*" />
@@ -227,19 +295,19 @@ error 6004: The table 'ProyectoProgra.dbo.Ordenes' is referenced by a relationsh
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__usuario__idDirec__2E1BDC42">
+        <Association Name="FK__Ordenes__idDirec__3A81B327">
           <End Role="Direccion" Type="Self.Direccion" Multiplicity="0..1" />
-          <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
+          <End Role="Ordenes" Type="Self.Ordenes" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Direccion">
               <PropertyRef Name="idDireccion" />
             </Principal>
-            <Dependent Role="usuario">
+            <Dependent Role="Ordenes">
               <PropertyRef Name="idDireccion" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Invetario__idPro__29572725">
+        <Association Name="FK__Invetario__idPro__2A4B4B5E">
           <End Role="Productos" Type="Self.Productos" Multiplicity="1" />
           <End Role="Invetario" Type="Self.Invetario" Multiplicity="0..1" />
           <ReferentialConstraint>
@@ -251,24 +319,61 @@ error 6004: The table 'ProyectoProgra.dbo.Ordenes' is referenced by a relationsh
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Ordenes__idProdu__37A5467C">
+          <End Role="Productos" Type="Self.Productos" Multiplicity="0..1" />
+          <End Role="Ordenes" Type="Self.Ordenes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Productos">
+              <PropertyRef Name="idProducto" />
+            </Principal>
+            <Dependent Role="Ordenes">
+              <PropertyRef Name="idProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ordenes__idUsuar__398D8EEE">
+          <End Role="usuario" Type="Self.usuario" Multiplicity="0..1" />
+          <End Role="Ordenes" Type="Self.Ordenes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="idUsuario" />
+            </Principal>
+            <Dependent Role="Ordenes">
+              <PropertyRef Name="idUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="ProyectoPrograEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="administrador" EntityType="Self.administrador" />
           <EntitySet Name="Categoria" EntityType="Self.Categoria" />
           <EntitySet Name="Direccion" EntityType="Self.Direccion" />
           <EntitySet Name="Invetario" EntityType="Self.Invetario" />
+          <EntitySet Name="Ordenes" EntityType="Self.Ordenes" />
           <EntitySet Name="Productos" EntityType="Self.Productos" />
           <EntitySet Name="usuario" EntityType="Self.usuario" />
+          <AssociationSet Name="FK__Ordenes__idCateg__38996AB5" Association="Self.FK__Ordenes__idCateg__38996AB5">
+            <End Role="Categoria" EntitySet="Categoria" />
+            <End Role="Ordenes" EntitySet="Ordenes" />
+          </AssociationSet>
           <AssociationSet Name="FK__Productos__idCat__267ABA7A" Association="Self.FK__Productos__idCat__267ABA7A">
             <End Role="Categoria" EntitySet="Categoria" />
             <End Role="Productos" EntitySet="Productos" />
           </AssociationSet>
-          <AssociationSet Name="FK__usuario__idDirec__2E1BDC42" Association="Self.FK__usuario__idDirec__2E1BDC42">
+          <AssociationSet Name="FK__Ordenes__idDirec__3A81B327" Association="Self.FK__Ordenes__idDirec__3A81B327">
             <End Role="Direccion" EntitySet="Direccion" />
-            <End Role="usuario" EntitySet="usuario" />
+            <End Role="Ordenes" EntitySet="Ordenes" />
           </AssociationSet>
-          <AssociationSet Name="FK__Invetario__idPro__29572725" Association="Self.FK__Invetario__idPro__29572725">
+          <AssociationSet Name="FK__Invetario__idPro__2A4B4B5E" Association="Self.FK__Invetario__idPro__2A4B4B5E">
             <End Role="Productos" EntitySet="Productos" />
             <End Role="Invetario" EntitySet="Invetario" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ordenes__idProdu__37A5467C" Association="Self.FK__Ordenes__idProdu__37A5467C">
+            <End Role="Productos" EntitySet="Productos" />
+            <End Role="Ordenes" EntitySet="Ordenes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ordenes__idUsuar__398D8EEE" Association="Self.FK__Ordenes__idUsuar__398D8EEE">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="Ordenes" EntitySet="Ordenes" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -318,6 +423,19 @@ error 6004: The table 'ProyectoProgra.dbo.Ordenes' is referenced by a relationsh
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Ordenes">
+            <EntityTypeMapping TypeName="ProyectoPrograModel.Ordenes">
+              <MappingFragment StoreEntitySet="Ordenes">
+                <ScalarProperty Name="idOrden" ColumnName="idOrden" />
+                <ScalarProperty Name="idProducto" ColumnName="idProducto" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+                <ScalarProperty Name="idDireccion" ColumnName="idDireccion" />
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+                <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Productos">
             <EntityTypeMapping TypeName="ProyectoPrograModel.Productos">
               <MappingFragment StoreEntitySet="Productos">
@@ -337,7 +455,6 @@ error 6004: The table 'ProyectoProgra.dbo.Ordenes' is referenced by a relationsh
                 <ScalarProperty Name="telefono" ColumnName="telefono" />
                 <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="Pass" ColumnName="Pass" />
-                <ScalarProperty Name="idDireccion" ColumnName="idDireccion" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="primerApellido" ColumnName="primerApellido" />
                 <ScalarProperty Name="segundoApellido" ColumnName="segundoApellido" />

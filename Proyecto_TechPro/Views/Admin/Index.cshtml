@@ -1,0 +1,54 @@
+﻿@model Proyecto_TechPro.Entidades.Admin
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+<h2>Index</h2>
+
+<div class="row d-flex flex-wrap justify-content-around align-content-center">
+    <div class="col-lg-3 pr-0" style="margin:0px auto">
+        @*<h3 class="text-center m-0">
+                <img src="~/images/logo.png" height="80" alt="logo" class="my-3">
+            </h3>*@
+
+        <div class="px-2 mt-2">
+            <h2 class="heading heading-focus font-size-24 mb-2 text-center">¡Bienvenido! </h2>
+            <p class="text-muted text-center">Inicie sesión y disfrute de nuestros servicios</p>
+
+            @using (Html.BeginForm("IniciarSesion","Admin",FormMethod.Post, new { @class= "form-horizontal my-4" }))
+            {
+
+                <div class="form-group">
+                    <label for="email">Correo electrónico</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1"><i class="far fa-user"></i></span>
+                        </div>
+                        @Html.TextBoxFor(m => m.email, new { @class = "form-control", @type = "email", @placeholder = "Correo electronico", @id = "admin_login_email" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="contraseña">Contraseña</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon2"><i class="fa fa-key"></i></span>
+                        </div>
+                        @Html.TextBoxFor(m => m.pass, new { @class = "form-control", @type = "password", @placeholder = "Contraseña", @id = "admin_login_pass" })
+                    </div>
+                </div>
+
+                <div class="form-group mb-0 row">
+                    <div class="col-12 mt-2">
+                        <button class="btn btn-dark btn-block waves-effect waves-light" type="submit" >Iniciar Sesion<i class="fas fa-sign-in-alt ml-1"></i></button>
+                    </div>
+                </div>
+                }
+        </div>
+        <div>
+            <h6 class="text-center">¿No tiene una cuenta? @Html.ActionLink("Cree una", "Registrarse", "Login")</h6>
+            <h6 class="text-center">@Html.ActionLink("¿No puede acceder a su cuenta?", "RecuperarContraseña", "Login")</h6>
+        </div>
+    </div>
+</div>
