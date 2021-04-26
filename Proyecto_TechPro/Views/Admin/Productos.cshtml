@@ -1,5 +1,4 @@
-﻿
-@model IEnumerable<Proyecto_TechPro.Entidades.OrdenesEnt>
+﻿@model Proyecto_TechPro.Entidades.Producto
 
 @{
     ViewBag.Title = "Productos";
@@ -8,52 +7,40 @@
 
 <h2>Ordenes</h2>
 <br />
-
-
-
-
-@if (Model != null)
+<div class="d-flex flex-wrap justify-content-center">
+@using (Html.BeginForm("InsertaProducto", "Admin", FormMethod.Post, new { enctype = "multipart/form-data"}))
 {
-    <table class="table">
-        <thead>
-            <tr>
-                <td>#</td>
-                <td>Cliente</td>
-                <td>Telefono</td>
-                <td>Producto</td>
-                <td>Precio</td>
-                <td>Direccion</td>
-                <td>Estado</td>
-                <td>Accion</td>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>@item.idOrden</td>
-                    <td>@item.nombreUsuario @item.primerApellido @item.segundoApellido</td>
-                    <td>@item.telefono</td>
-                    <td>@item.nombreProd</td>
-                    <td>₡@item.precio</td>
-                    <td>@item.direccion</td>
-                    <td>@item.estado</td>
-                    <td>
-                        <button class="btn btn-success btn-sm">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2" viewBox="0 0 16 16">
-                                <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z" />
-                            </svg>
-                        </button>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+
+    <div class="form-group">
+        <label for="txt_producto">Nombre del producto:</label>
+        @Html.TextBoxFor(m => m.nombreProducto, new { @class = "form-control", @placeholder = "Nombre del producto", @id = "txt_producto" })
+    </div>
+    <div class="form-group">
+        <label for="txt_producto">Categoria::</label>
+        @Html.DropDownListFor(m => m.idCategoria, ViewBag.comboCatProd as IEnumerable<SelectListItem>, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <label for="txt_descripcion">Descripcion:</label>
+        @Html.TextBoxFor(m => m.descripcion, new { @class = "form-control", @placeholder = "Descripcion", @type = "text", @id = "txt_descripcion" })
+    </div>
+    <div class="form-group">
+        <label for="txt_imagen">Imagen:</label>
+        @Html.TextBoxFor(m => m.imagen, new { @class = "form-control", @placeholder = "Descripcion", @type = "hidden", @id = "txt_imagen" })
+        <input type="file" name="imageFile" id="imageFile" class="form-control" required/>
+    </div>
+    <div class="form-group">
+        <label for="txt_precio">Cantidad:</label>
+        @Html.TextBoxFor(m => m.cantidad, new { @class = "form-control", @placeholder = "Cantidad", @type = "number", @id = "txt_cantidad" })
+    </div>
+    <div class="form-group">
+        <label for="txt_precio">Precio:</label>
+        @Html.TextBoxFor(m => m.precio, new { @class = "form-control", @placeholder = "Precio en colones", @type = "number", @id = "txt_precio" })
+    </div>
+    <br />
+    <button class="btn btn-success" type="submit">Insertar Producto</button>
 }
-else
-{
-    <h4>No existen ordenes disponibles</h4>
-}
+    </div>
+
 
 
 

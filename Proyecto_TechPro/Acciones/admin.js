@@ -12,9 +12,9 @@
         cache: false,
         dataType: 'json',
         success: function (data) {
-            let ejemplo = $(idItem).attr("idItem").valueOf;
-            let xd =$(ejemplo)
-            alert(data + xd);
+
+            var id = $(idItem).attr("idItem");
+            $("#"+id).find("#estado").html(data);
             $("#divLoading").hide();
             $("#badgeCart").text(data);
 
@@ -26,8 +26,12 @@
 
 
     });
-
-    $(itemID).prop("disabled", true);
-    $(itemID).removeClass('btn-success').addClass('btn-secondary ');
-    $(itemID).html('En el carrito');
 }
+
+
+
+    $('input[type="file"]').change(function (e) {
+        var fileName = e.target.files[0].name;
+        $("#txt_imagen").val(fileName)
+        alert('The file "' + fileName + '" has been selected.');
+    });

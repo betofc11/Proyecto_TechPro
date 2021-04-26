@@ -1,6 +1,7 @@
 ﻿using Proyecto_TechPro.Entidades;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -68,8 +69,12 @@ namespace Proyecto_TechPro.Controllers
             }
         }
 
+
+
         public ActionResult Productos()
         {
+            CargarViewBag();
+
             return View();
         }
         public ActionResult confirmarItem(string item)
@@ -94,6 +99,73 @@ namespace Proyecto_TechPro.Controllers
                 }
                 
 
+            }
+        }
+
+        public ActionResult InsertaProducto(Producto prod)
+        {
+            
+            using (var contexto = new ProyectoPrograEntities())
+            {
+                var resultado = (from x in contexto.Productos
+                                 where x.nombreProducto == prod.nombreProducto
+                                 select x).FirstOrDefault();
+                if (resultado == null)
+                {
+                    string filename = Path.GetFileNameWithoutExtension(prod.imageFile.FileName);
+                    string extension = Path.GetExtension(prod.imageFile.FileName);
+                    filename = filename + extension;
+                    filename = Path.Combine(Server.MapPath("~/images/productos"), filename);
+                    prod.imageFile.SaveAs(filename);
+                    Productos p = new Productos();
+                    p.nombreProducto = prod.nombreProducto;
+                    p.idCategoria = prod.idCategoria;
+                    p.imagen = prod.imagen;
+                    p.precio = prod.precio;
+                    p.descripcion = prod.descripcion;
+                    contexto.Productos.Add(p);
+                    contexto.SaveChanges();
+
+                    var resIn = (from x in contexto.Invetario
+                                 from c in contexto.Productos
+                                 where x.idProducto == c.idProducto && c.nombreProducto == prod.nombreProducto
+                                 select x).FirstOrDefault();
+                    if (resIn == null)
+                    {
+                        Invetario inv = new Invetario();
+                        inv.idProducto = prod.idProducto;
+                        inv.cantidad = prod.cantidad;
+                        contexto.Invetario.Add(inv);
+                        contexto.SaveChanges();
+                    }
+                    return View("Index");
+
+
+
+                }
+                else
+                {
+                    return View("Productos");
+                }
+            }
+        }
+
+        public void CargarViewBag()
+        {
+            using (var contexto = new ProyectoPrograEntities())
+            {
+                var res = (from x in contexto.Categoria
+                           select x).ToList();
+
+                List<SelectListItem> lista = new List<SelectListItem>();
+
+
+                foreach (var item in res)
+                {
+                    lista.Add(new SelectListItem { Value = item.idCategoria.ToString(), Text = item.nombreCategoria });
+                }
+
+                ViewBag.comboCatProd = lista;
             }
         }
     }

@@ -27,14 +27,14 @@
         <tbody>
             @foreach (var item in Model)
             {
-                <tr>
+                <tr id="@item.idOrden">
                     <td>@item.idOrden</td>
                     <td>@item.nombreUsuario @item.primerApellido @item.segundoApellido</td>
                     <td>@item.telefono</td>
                     <td>@item.nombreProd</td>
                     <td>₡@item.precio</td>
                     <td>@item.direccion</td>
-                    <td id="@item.idOrden">@item.estado</td>
+                    <td id="estado">@item.estado</td>
                     <td>
                         <button class="btn btn-success btn-sm" idItem="@item.idOrden" onclick="confirmar(this)">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2" viewBox="0 0 16 16">
