@@ -398,6 +398,7 @@
     <Content Include="Views\Login\Registrarse.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\Productos.cshtml" />
+    <Content Include="Views\AdminLogin\Index.cshtml" />
     <Content Include="Views\Login\RestablecerContrasena.cshtml" />
   </ItemGroup>
   <ItemGroup>
