@@ -23,14 +23,6 @@ cantidad int,
 FOREIGN KEY (idProducto) REFERENCES Productos(idProducto)
 );
 
-create table Direccion(
-idDireccion int IDENTITY(1,1) primary key,
-provincia varchar(25),
-canton varchar (25),
-codigoPostal varchar (25),
-dirExacta varchar (100),
-indicaciones varchar (50)
-);
 
 
 create table usuario(
@@ -47,14 +39,13 @@ create table Ordenes(
 idOrden int IDENTITY(1, 1) PRIMARY KEY,
 idProducto int,
 cantidad int,
-idDireccion int ,
+direccion varchar(150) ,
 idUsuario int,
 idCategoria int,
 estado varchar(9),
 FOREIGN KEY (idProducto) REFERENCES Productos(idProducto),
 FOREIGN KEY (idCategoria) REFERENCES Categoria(idCategoria),
-FOREIGN KEY (idUsuario) REFERENCES usuario(idUsuario),
-Foreign Key (idDireccion) references Direccion(idDireccion)
+FOREIGN KEY (idUsuario) REFERENCES usuario(idUsuario)
 );
 Create table administrador(
 idAdmin int IDENTITY(1,1) primary key,

@@ -12,44 +12,6 @@ namespace Proyecto_TechPro.Controllers
         // GET: Admin
         public ActionResult Index()
         {
-            return View();
-        }
-        public ActionResult IniciarSesion(Admin admin)
-        {
-            using (var contexto = new ProyectoPrograEntities())
-            {
-                if (admin.pass != null && admin.email != null)
-                {
-                    var result = (from x in contexto.administrador
-                                  where x.email == admin.email && x.adminPass == admin.pass
-                                  select x).FirstOrDefault();
-
-                    if (result != null)
-                    {
-                        List<Admin> adminUs = new List<Admin>();
-
-                        adminUs.Add(new Admin
-                        {
-                            cedula = result.cedula,
-                            email = result.email,
-                            idAdmin = result.idAdmin,
-                            nombre = result.nombre,
-                            primerApellido = result.primerApellido,
-                            segundoApellido = result.segundoApellido,
-                            logueado = true
-                        });
-
-                        Session["adminUser"] = adminUs;
-                        return View("Productos");
-                    }
-                }
-
-                return View("Index");
-            }
-        }
-
-        public ActionResult Productos()
-        {
             using (var contexto = new ProyectoPrograEntities())
             {
                 var resultado = (from o in contexto.Ordenes
@@ -61,15 +23,16 @@ namespace Proyecto_TechPro.Controllers
                                  where d.idDireccion == o.idDireccion
                                  where u.idUsuario == o.idUsuario
                                  where c.idCategoria == o.idCategoria
-                                 select new { 
+                                 select new
+                                 {
                                      o.idOrden,
                                      o.estado,
-                                     p.nombreProducto,  
-                                     p.precio,  
-                                     d.provincia, 
-                                     d.canton, 
-                                     d.codigoPostal, 
-                                     d.dirExacta, 
+                                     p.nombreProducto,
+                                     p.precio,
+                                     d.provincia,
+                                     d.canton,
+                                     d.codigoPostal,
+                                     d.dirExacta,
                                      d.indicaciones,
                                      u.nombre,
                                      u.primerApellido,
@@ -110,9 +73,22 @@ namespace Proyecto_TechPro.Controllers
                     return View();
                 }
 
-                
+
 
             }
+        }
+
+        public ActionResult Productos()
+        {
+            return View();
+        }
+        public ActionResult confirmarItem(string item)
+        {
+            using (var contexto = new ProyectoPrograEntities())
+            {
+                var 
+            }
+            return View();
         }
     }
 }
