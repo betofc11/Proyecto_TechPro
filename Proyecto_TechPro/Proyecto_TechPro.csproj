@@ -381,6 +381,7 @@
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
     <Content Include="Views\Shared\_LayoutLogin.cshtml" />
     <Content Include="Views\Carrito\EliminaCarrito.cshtml" />
+    <Content Include="Views\Carrito\FinalizarPedido.cshtml" />
     <Content Include="Views\Login\Registrarse.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\Productos.cshtml" />
