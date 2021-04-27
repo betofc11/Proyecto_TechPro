@@ -58,19 +58,6 @@
             </ul>
         </div>
     </nav>
-    <center>
-        @if (Session["userID"] != null)
-        {
-             
-            var usuario = (Proyecto_TechPro.Entidades.Usuario)Session["userID"];
-     
-            <h5>Bienvenido @usuario.nombre</h5>
-
-        }
-        else
-        {
-        }
-    </center>
     <br />
     <div class="container body-content">
         @RenderBody()

@@ -38,6 +38,7 @@ namespace Proyecto_TechPro.Controllers
                 else
                 {
                     Usuario user = new Usuario();
+                    user.idUsuario = resultado.idUsuario;
                     user.nombre = resultado.nombre;
                     user.primerApellido = resultado.primerApellido;
                     user.segundoApellido = resultado.segundoApellido;

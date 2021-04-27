@@ -154,6 +154,7 @@ namespace Proyecto_TechPro.Controllers
                 }
 
                 Session["ProductosCarrito"] = null;
+                Session["CantidadCarrito"] = null;
                 return RedirectToAction("Index","Home");
             }
              
